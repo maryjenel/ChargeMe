@@ -24,12 +24,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    _menuButton.target = self.revealViewController;
+    _menuButton.action = @selector(revealToggle:);
+
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController)
     {
 
         [self.menuButton setTarget: self.revealViewController];
-        [self.menuButton setAction: @selector( revealToggle: )];
+        [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
 }
@@ -58,6 +65,9 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
 -(BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
 {
     if (username && password && username.length != 0 && password.length != 0)
