@@ -443,11 +443,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOm-bg-Cqd">
-                                <rect key="frame" x="5" y="79" width="128" height="100"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="BOm-bg-Cqd">
+                                <rect key="frame" x="5" y="72" width="128" height="100"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zST-FN-4xe" appends="YES" id="poU-EB-yE0"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mary Jenel Myers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-Fw-mEA">
-                                <rect key="frame" x="155" y="118" width="139" height="21"/>
+                                <rect key="frame" x="154" y="111" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -474,9 +481,9 @@
                                     <action selector="logOutButtonPressed:" destination="iKh-aI-mNO" eventType="touchUpInside" id="llO-4I-n1k"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCN-0n-Rs5">
-                                <rect key="frame" x="-3" y="175" width="326" height="264"/>
-                                <color key="backgroundColor" red="0.20276521380000001" green="0.73630242599999995" blue="0.2081620066" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCN-0n-Rs5">
+                                <rect key="frame" x="0.0" y="267" width="326" height="264"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="elS-fd-BBA">
                                     <size key="itemSize" width="269" height="236"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -484,15 +491,15 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="MHO-cL-SeB" customClass="CustomProfileCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeslaModelS" id="MHO-cL-SeB" customClass="CustomProfileCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="269" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-rX-3KU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="213" height="140"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelS" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-rX-3KU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="140"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TripHistory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vql-2M-T6A">
                                                     <rect key="frame" x="0.0" y="22" width="326" height="264"/>
@@ -519,6 +526,38 @@
                                             <segue destination="1UU-cy-ACi" kind="push" id="jn2-cZ-BAC"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeslaModelX" id="Scs-7D-SQk" customClass="CustomProfileCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="269" height="236"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelX" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-iC-8ae">
+                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="140"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mb-D8-mqy">
+                                                    <rect key="frame" x="0.0" y="176" width="73" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite Charges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seb-M7-zBp">
+                                                    <rect key="frame" x="0.0" y="201" width="131" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TripHistory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCs-nh-chw">
+                                                    <rect key="frame" x="0.0" y="142" width="212" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="iKh-aI-mNO" id="rsd-nt-aEH"/>
@@ -534,11 +573,18 @@
                     <connections>
                         <outlet property="collectionView" destination="rCN-0n-Rs5" id="2kt-qK-6sf"/>
                         <outlet property="menuButton" destination="vhJ-nu-zNq" id="waL-ja-9Qs"/>
+                        <outlet property="profileImageView" destination="BOm-bg-Cqd" id="deE-B3-rdr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3I-6P-sy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zST-FN-4xe">
+                    <connections>
+                        <action selector="onProfilePictureTapped:" destination="iKh-aI-mNO" id="X77-TD-MZ1"/>
+                        <outlet property="delegate" destination="BOm-bg-Cqd" id="590-Kg-0gQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1320" y="1015"/>
+            <point key="canvasLocation" x="1245" y="1034"/>
         </scene>
         <!--Car Profile View Controller-->
         <scene sceneID="NjU-qy-nYc">
@@ -587,6 +633,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7Y-Xr-sEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1688" y="1028"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="NP2-Jr-wBZ">
+            <objects>
+                <viewController id="ISk-tJ-glX" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2t0-F5-L4F"/>
+                        <viewControllerLayoutGuide type="bottom" id="oGg-cY-hX4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MJd-dT-wvd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcN-DP-cV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2" y="-85"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G1d-j1-72F">
@@ -694,6 +758,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TeslaModelS" width="1261" height="469"/>
+        <image name="TeslaModelX" width="530" height="300"/>
         <image name="car" width="30" height="30"/>
         <image name="charge" width="148" height="224"/>
         <image name="dollar-sign" width="30" height="30"/>

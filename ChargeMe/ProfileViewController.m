@@ -11,17 +11,38 @@
 #import "CustomProfileCollectionViewCell.h"
 #import "NavViewController.h"
 #import "SWRevealViewController.h"
+#import "LoginViewController.h"
 
-@interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property UIImagePickerController *imagePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property NSArray *carArray;
+
 
 @end
 
 @implementation ProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    self.imagePicker = [[UIImagePickerController alloc]init];
+    self.imagePicker.delegate = self;
+    self.carArray = @[@"TeslaModelS",@"TeslaModelX"];
+    if ([PFUser currentUser])
+    {
+        PFFile *imageFile = [[PFUser currentUser]objectForKey:@"profilePhoto"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+        {
+            UIImage *image = [UIImage imageWithData:data];
+            self.profileImageView.image = image;
+            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+            self.profileImageView.clipsToBounds = YES;
+        }];
+    }
+
     _menuButton.target = self.revealViewController;
     _menuButton.action = @selector(revealToggle:);
 
@@ -39,25 +60,88 @@
 }
 
 
+- (IBAction)onProfilePictureTapped:(UITapGestureRecognizer *)sender
+{
+    [self.imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:self.imagePicker animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    self.profileImageView.image = image;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+    self.profileImageView.clipsToBounds = YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSData *imageData = UIImagePNGRepresentation(self.profileImageView.image);
+    PFFile *imageFile = [PFFile fileWithName:@"ProfilePicture.png" data:imageData];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+     {
+         if (!error) {
+             PFObject *user = [PFUser currentUser];
+             user[@"profilePhoto"] = imageFile;
+             [user saveInBackground];
+         }
+     }];
+}
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
+    NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
+    CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     return cell;
 
 
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
+{
+    if (username && password && username.length != 0 && password.length != 0)
+    {
+        return YES;
+    }
+    [[[UIAlertView alloc]initWithTitle:@"Missing Information!" message:@"Make sure you fill out all the information, please!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
+    return NO;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.carArray.count;
 }
 
 
 
+
+-(void)userLogin
+{
+    if (![PFUser currentUser]) {
+        LoginViewController *loginViewController = [[LoginViewController alloc]init];
+        [loginViewController setDelegate:self];
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc]init];
+        [signUpViewController setDelegate:self];
+
+        [loginViewController setSignUpController:signUpViewController];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
+}
+
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (IBAction)logOutButtonPressed:(UIButton *)sender
 {
     [PFUser logOut];
+    [self userLogin];
 }
 
 

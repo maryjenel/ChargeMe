@@ -8,6 +8,7 @@
 
 #import "ProfileShareViewController.h"
 #import "SWRevealViewController.h"
+#import <Parse/Parse.h>
 
 @interface ProfileShareViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
