@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import <ParseUI/ParseUI.h>
+#import "Crittercism.h"
+#import "SignUpViewController.h"
 
 
 @interface HomeViewController ()<PFLogInViewControllerDelegate,PFSignUpViewControllerDelegate>
@@ -24,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 
     _menuButton.target = self.revealViewController;
     _menuButton.action = @selector(revealToggle:);
@@ -39,18 +42,20 @@
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [Crittercism beginTransaction:@"login"];
     if (![PFUser currentUser]) {
+        [Crittercism beginTransaction:@"my_transaction"];
         LoginViewController *loginViewController = [[LoginViewController alloc]init];
         [loginViewController setDelegate:self];
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc]init];
+        SignUpViewController *signUpViewController = [[SignUpViewController alloc]init];
         [signUpViewController setDelegate:self];
-
+      //  [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
         [loginViewController setSignUpController:signUpViewController];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }

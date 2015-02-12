@@ -12,8 +12,10 @@
 #import "NavViewController.h"
 #import "SWRevealViewController.h"
 #import "LoginViewController.h"
+#import "Crittercism.h"
+#import "SignUpViewController.h"
 
-@interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CrittercismDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIImagePickerController *imagePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
@@ -121,7 +123,7 @@
     if (![PFUser currentUser]) {
         LoginViewController *loginViewController = [[LoginViewController alloc]init];
         [loginViewController setDelegate:self];
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc]init];
+        SignUpViewController *signUpViewController = [[SignUpViewController alloc]init];
         [signUpViewController setDelegate:self];
 
         [loginViewController setSignUpController:signUpViewController];
@@ -140,11 +142,16 @@
 }
 - (IBAction)logOutButtonPressed:(UIButton *)sender
 {
+    [Crittercism leaveBreadcrumb:@"merppp failllll log out"];
     [PFUser logOut];
+    [Crittercism endTransaction:@"my_transaction"];
     [self userLogin];
 }
 
-
+-(void)crittercismDidCrashOnLastLoad
+{
+    NSLog(@"App crashed the last time it was loaded :( merppppp");
+}
 
 /*
 #pragma mark - Navigation
@@ -157,3 +164,4 @@
 */
 
 @end
+

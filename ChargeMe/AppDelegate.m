@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Crittercism.h"
 
 @interface AppDelegate ()
 
@@ -16,9 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Crittercism enableWithAppID:@"54dce77d51de5e9f042ed95d"];
 
     [Parse setApplicationId:@"UwVCdD4fKU0zLNy5mvQA0KEYjy4xvCSHD14GNuGB" clientKey:@"aZcrYZX8M3EnjirC6ozy5g0Sq22S5c6GrhCAXcCv"];
+
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

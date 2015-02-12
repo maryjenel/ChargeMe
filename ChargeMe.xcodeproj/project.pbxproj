@@ -44,6 +44,10 @@
 		627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED71A8C03FF00B3438A /* ShareViewController.m */; };
 		627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */; };
 		62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */; };
+		62850D721A8D1FB50076739F /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 62850D701A8D1FB50076739F /* dsym_upload.sh */; };
+		62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */; };
+		62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D781A8D25AA0076739F /* SignUpViewController.m */; };
+		62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +112,15 @@
 		627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProfileCollectionViewCell.m; sourceTree = "<group>"; };
 		62850D691A8C1AB40076739F /* ProfileShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileShareViewController.h; sourceTree = "<group>"; };
 		62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileShareViewController.m; sourceTree = "<group>"; };
+		62850D6D1A8D1FB50076739F /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		62850D6E1A8D1FB50076739F /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		62850D6F1A8D1FB50076739F /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		62850D701A8D1FB50076739F /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_0_7.a; sourceTree = "<group>"; };
+		62850D771A8D25AA0076739F /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		62850D781A8D25AA0076739F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		62850D7A1A8D4E170076739F /* SignUpDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpDetailViewController.h; sourceTree = "<group>"; };
+		62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +137,7 @@
 				627B3E921A8AB07900B3438A /* QuartzCore.framework in Frameworks */,
 				627B3E901A8AB07400B3438A /* MobileCoreServices.framework in Frameworks */,
 				627B3E8E1A8AB06E00B3438A /* libz.1.1.3.dylib in Frameworks */,
+				62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */,
 				627B3EBC1A8BC9D900B3438A /* ParseUI.framework in Frameworks */,
 				627B3E8C1A8AB06800B3438A /* libsqlite3.dylib in Frameworks */,
 				627B3EBA1A8BC9D900B3438A /* ParseCrashReporting.framework in Frameworks */,
@@ -214,6 +228,7 @@
 		627B3E9F1A8AB0D400B3438A /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62850D6C1A8D1FB50076739F /* CrittercismSDK */,
 				627B3EB21A8BC9D900B3438A /* parseFramework */,
 				627B3E9D1A8AB09C00B3438A /* Foundation.framework */,
 				627B3E9B1A8AB09600B3438A /* UIKit.framework */,
@@ -274,6 +289,10 @@
 				627B3ED61A8C03FF00B3438A /* ShareViewController.h */,
 				627B3ED71A8C03FF00B3438A /* ShareViewController.m */,
 				627B3ED31A8C03F300B3438A /* PromotionsViewController.h */,
+				62850D7A1A8D4E170076739F /* SignUpDetailViewController.h */,
+				62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */,
+				62850D771A8D25AA0076739F /* SignUpViewController.h */,
+				62850D781A8D25AA0076739F /* SignUpViewController.m */,
 				627B3ED41A8C03F300B3438A /* PromotionsViewController.m */,
 				62850D691A8C1AB40076739F /* ProfileShareViewController.h */,
 				62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */,
@@ -300,6 +319,18 @@
 				627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		62850D6C1A8D1FB50076739F /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				62850D6D1A8D1FB50076739F /* CRFilter.h */,
+				62850D6E1A8D1FB50076739F /* Crittercism.h */,
+				62850D6F1A8D1FB50076739F /* CrittercismDelegate.h */,
+				62850D701A8D1FB50076739F /* dsym_upload.sh */,
+				62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */,
+			);
+			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62850D721A8D1FB50076739F /* dsym_upload.sh in Resources */,
 				627B3E561A89623500B3438A /* Main.storyboard in Resources */,
 				627B3E5B1A89623500B3438A /* LaunchScreen.xib in Resources */,
 				627B3E581A89623500B3438A /* Images.xcassets in Resources */,
@@ -409,10 +441,12 @@
 				627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */,
 				627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */,
 				627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */,
+				62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */,
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
 				627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */,
 				627B3E4A1A89623500B3438A /* main.m in Sources */,
 				62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */,
+				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
 				627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,11 +571,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/maryjenelmyers/Downloads/parse-library-1-3",
 					"$(PROJECT_DIR)/parseFramework",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CrittercismSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -552,11 +589,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/maryjenelmyers/Downloads/parse-library-1-3",
 					"$(PROJECT_DIR)/parseFramework",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CrittercismSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

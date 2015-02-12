@@ -307,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7s-Fg-efP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198" y="1700"/>
+            <point key="canvasLocation" x="2192" y="1651"/>
         </scene>
         <!--Charges View Controller-->
         <scene sceneID="Gkg-NK-D4D">
@@ -326,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgo-r2-gEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2600" y="1800"/>
+            <point key="canvasLocation" x="2580" y="1651"/>
         </scene>
         <!--SignUpShare View Controller-->
         <scene sceneID="SeR-xG-b0P">
@@ -634,23 +634,97 @@
             </objects>
             <point key="canvasLocation" x="1688" y="1028"/>
         </scene>
-        <!--Login View Controller-->
-        <scene sceneID="NP2-Jr-wBZ">
+        <!--Sign Up Detail View Controller-->
+        <scene sceneID="sQT-C3-CHd">
             <objects>
-                <viewController id="ISk-tJ-glX" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpDetailViewController" title="Sign Up Detail View Controller" id="tUr-M2-IZP" customClass="SignUpDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2t0-F5-L4F"/>
-                        <viewControllerLayoutGuide type="bottom" id="oGg-cY-hX4"/>
+                        <viewControllerLayoutGuide type="top" id="ecH-I3-cyf"/>
+                        <viewControllerLayoutGuide type="bottom" id="fMc-O0-bCo"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MJd-dT-wvd">
+                    <view key="view" contentMode="scaleToFill" id="btL-kj-7tK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="285-jq-xIk">
+                                <rect key="frame" x="16" y="246" width="264" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IQR-d0-OAW">
+                                <rect key="frame" x="16" y="301" width="264" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-NJ-ajp">
+                                <rect key="frame" x="225" y="521" width="55" height="30"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSignUpButtonPressed:" destination="tUr-M2-IZP" eventType="touchUpInside" id="ntd-ja-zi8"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fps-IU-NGx">
+                                <rect key="frame" x="16" y="192" width="264" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXP-I5-4Mt">
+                                <rect key="frame" x="16" y="370" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelS" translatesAutoresizingMaskIntoConstraints="NO" id="GAG-iW-j8I">
+                                <rect key="frame" x="11" y="399" width="135" height="112"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="yWj-lS-hDh" appends="YES" id="ZJz-hp-aQK"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelX" translatesAutoresizingMaskIntoConstraints="NO" id="7gz-Ow-J7O">
+                                <rect key="frame" x="178" y="399" width="126" height="112"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SJ9-53-75s" appends="YES" id="gu2-8c-hl0"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="dq8-XZ-XmM">
+                                <rect key="frame" x="60" y="14" width="176" height="128"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ox1-Pf-Uc9" appends="YES" id="6sy-Za-Az9"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="firstNameTextField" destination="Fps-IU-NGx" id="JjH-xh-4pG"/>
+                        <outlet property="lastNameTextField" destination="285-jq-xIk" id="QzE-eL-CWF"/>
+                        <outlet property="phoneNumberTextField" destination="IQR-d0-OAW" id="3MA-CM-Tog"/>
+                        <outlet property="profileImage" destination="dq8-XZ-XmM" id="TOl-s0-okD"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AcN-DP-cV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nHo-4u-8wy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ox1-Pf-Uc9">
+                    <connections>
+                        <action selector="onProfileImageTapped:" destination="tUr-M2-IZP" id="dot-iB-wZ4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="yWj-lS-hDh">
+                    <connections>
+                        <action selector="onTeslaModelSTapped:" destination="tUr-M2-IZP" id="gmU-EG-UXa"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="SJ9-53-75s">
+                    <connections>
+                        <action selector="onTeslaModelXTapped:" destination="tUr-M2-IZP" id="DL2-eE-bqB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2" y="-85"/>
+            <point key="canvasLocation" x="-97" y="140"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G1d-j1-72F">
