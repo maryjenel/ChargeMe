@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626FD7EB1A8D6D000087911F /* MapKit.framework */; };
+		626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7EE1A8D6F590087911F /* ChargingStation.m */; };
+		626FD7F21A8D6F760087911F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7F11A8D6F760087911F /* CustomAnnotation.m */; };
 		627B3E4A1A89623500B3438A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E491A89623500B3438A /* main.m */; };
 		627B3E4D1A89623500B3438A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E4C1A89623500B3438A /* AppDelegate.m */; };
 		627B3E501A89623500B3438A /* ChargeMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E4E1A89623500B3438A /* ChargeMe.xcdatamodeld */; };
@@ -61,6 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		626FD7EB1A8D6D000087911F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		626FD7ED1A8D6F590087911F /* ChargingStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingStation.h; sourceTree = "<group>"; };
+		626FD7EE1A8D6F590087911F /* ChargingStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingStation.m; sourceTree = "<group>"; };
+		626FD7F01A8D6F760087911F /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		626FD7F11A8D6F760087911F /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		627B3E441A89623500B3438A /* ChargeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChargeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		627B3E481A89623500B3438A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		627B3E491A89623500B3438A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,6 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627B3E8A1A8AB05700B3438A /* CoreLocation.framework in Frameworks */,
+				626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */,
 				627B3E9E1A8AB09C00B3438A /* Foundation.framework in Frameworks */,
 				627B3E9C1A8AB09600B3438A /* UIKit.framework in Frameworks */,
 				627B3E9A1A8AB09100B3438A /* SystemConfiguration.framework in Frameworks */,
@@ -142,7 +152,6 @@
 				627B3E8C1A8AB06800B3438A /* libsqlite3.dylib in Frameworks */,
 				627B3EBA1A8BC9D900B3438A /* ParseCrashReporting.framework in Frameworks */,
 				627B3EB91A8BC9D900B3438A /* Parse.framework in Frameworks */,
-				627B3E8A1A8AB05700B3438A /* CoreLocation.framework in Frameworks */,
 				627B3E881A8AB05100B3438A /* CoreGraphics.framework in Frameworks */,
 				627B3EB81A8BC9D900B3438A /* Bolts.framework in Frameworks */,
 				627B3E861A8AB04500B3438A /* CFNetwork.framework in Frameworks */,
@@ -228,6 +237,7 @@
 		627B3E9F1A8AB0D400B3438A /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				626FD7EB1A8D6D000087911F /* MapKit.framework */,
 				62850D6C1A8D1FB50076739F /* CrittercismSDK */,
 				627B3EB21A8BC9D900B3438A /* parseFramework */,
 				627B3E9D1A8AB09C00B3438A /* Foundation.framework */,
@@ -315,8 +325,12 @@
 		627B3EDE1A8C05CA00B3438A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				626FD7ED1A8D6F590087911F /* ChargingStation.h */,
+				626FD7EE1A8D6F590087911F /* ChargingStation.m */,
 				627B3ED91A8C059100B3438A /* CustomProfileCollectionViewCell.h */,
 				627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */,
+				626FD7F01A8D6F760087911F /* CustomAnnotation.h */,
+				626FD7F11A8D6F760087911F /* CustomAnnotation.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -437,6 +451,7 @@
 				627B3E501A89623500B3438A /* ChargeMe.xcdatamodeld in Sources */,
 				627B3E4D1A89623500B3438A /* AppDelegate.m in Sources */,
 				627B3ED21A8BF28900B3438A /* ProfileViewController.m in Sources */,
+				626FD7F21A8D6F760087911F /* CustomAnnotation.m in Sources */,
 				627B3ECC1A8BDBB200B3438A /* SWRevealViewController.m in Sources */,
 				627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */,
 				627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */,
@@ -448,6 +463,7 @@
 				62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */,
 				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
 				627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */,
+				626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

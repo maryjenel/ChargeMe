@@ -16,8 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIU-sW-m8r">
+                                <rect key="frame" x="135" y="518" width="30" height="30"/>
+                                <state key="normal" title="🚙">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LNR-PG-mys">
+                                <rect key="frame" x="0.0" y="64" width="320" height="391"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="E4n-9n-lwq"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
-                                <rect key="frame" x="16" y="318" width="276" height="29"/>
+                                <rect key="frame" x="28" y="475" width="276" height="29"/>
                                 <segments>
                                     <segment title="Public"/>
                                     <segment title="Fast"/>
@@ -25,22 +41,6 @@
                                     <segment title="Home"/>
                                 </segments>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AH4-YF-lO8">
-                                <rect key="frame" x="0.0" y="335" width="320" height="162"/>
-                            </pickerView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qIc-Yw-0y0">
-                                <rect key="frame" x="108" y="482" width="118" height="31"/>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIU-sW-m8r">
-                                <rect key="frame" x="137" y="520" width="30" height="30"/>
-                                <state key="normal" title="🚙">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -48,12 +48,14 @@
                         <barButtonItem key="leftBarButtonItem" title="💩" id="Qxv-Fq-JHj"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="LNR-PG-mys" id="Nav-Az-L6N"/>
                         <outlet property="menuButton" destination="Qxv-Fq-JHj" id="yfA-dl-3MU"/>
+                        <outlet property="searchBar" destination="I42-YO-A8f" id="JrS-yY-3Wo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021" y="346"/>
+            <point key="canvasLocation" x="963" y="338"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="Ura-E2-sQT">
@@ -75,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QlK-hm-JWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291" y="780"/>
+            <point key="canvasLocation" x="107" y="338"/>
         </scene>
         <!--Nav View Controller-->
         <scene sceneID="6Pq-Ws-zS5">
@@ -183,7 +185,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5L-0H-Pa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="1015"/>
+            <point key="canvasLocation" x="119" y="1015"/>
         </scene>
         <!--Promotions View Controller-->
         <scene sceneID="A28-64-5Rs">
@@ -207,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6d-aB-ylf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="2636"/>
+            <point key="canvasLocation" x="125" y="2457"/>
         </scene>
         <!--Profile Share View Controller-->
         <scene sceneID="6gt-HT-uPQ">
@@ -288,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5s5-33-c90" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="1651"/>
+            <point key="canvasLocation" x="1214" y="2457"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="xmX-iu-h1C">
@@ -307,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7s-Fg-efP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2192" y="1651"/>
+            <point key="canvasLocation" x="1730" y="2457"/>
         </scene>
         <!--Charges View Controller-->
         <scene sceneID="Gkg-NK-D4D">
@@ -326,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgo-r2-gEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="1651"/>
+            <point key="canvasLocation" x="2222" y="2457"/>
         </scene>
         <!--SignUpShare View Controller-->
         <scene sceneID="SeR-xG-b0P">
@@ -429,7 +431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohY-ab-PMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="2306"/>
+            <point key="canvasLocation" x="751" y="2457"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="2Ag-kh-6Qe">
@@ -584,7 +586,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1245" y="1034"/>
+            <point key="canvasLocation" x="1245" y="1015"/>
         </scene>
         <!--Car Profile View Controller-->
         <scene sceneID="NjU-qy-nYc">
@@ -632,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7Y-Xr-sEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="1028"/>
+            <point key="canvasLocation" x="1642" y="1015"/>
         </scene>
         <!--Sign Up Detail View Controller-->
         <scene sceneID="sQT-C3-CHd">
@@ -724,7 +726,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-97" y="140"/>
+            <point key="canvasLocation" x="-289" y="1020"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G1d-j1-72F">
@@ -747,7 +749,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHm-bN-VQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453" y="346"/>
+            <point key="canvasLocation" x="545" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PUt-ys-Vm7">
@@ -789,7 +791,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u47-hA-V39" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="1765"/>
+            <point key="canvasLocation" x="751" y="1737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u0y-MQ-M6H">
@@ -808,7 +810,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eI0-AP-TUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="1941"/>
+            <point key="canvasLocation" x="125" y="1779"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="edG-Pj-tOV">
@@ -828,7 +830,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHP-A6-Ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286" y="1651"/>
+            <point key="canvasLocation" x="1730" y="1737"/>
         </scene>
     </scenes>
     <resources>
