@@ -20,8 +20,11 @@
 @property UIImagePickerController *imagePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property NSArray *carArray;
+@property NSMutableArray *carArray;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 
 @end
 
@@ -37,12 +40,20 @@
     {
         PFFile *imageFile = [[PFUser currentUser]objectForKey:@"profilePhoto"];
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
-        {
-            UIImage *image = [UIImage imageWithData:data];
-            self.profileImageView.image = image;
-            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
-            self.profileImageView.clipsToBounds = YES;
-        }];
+         {
+             UIImage *image = [UIImage imageWithData:data];
+             self.profileImageView.image = image;
+             self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+             self.profileImageView.clipsToBounds = YES;
+         }];
+        PFObject *user = [PFUser currentUser];
+        self.title = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
+        self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", user[@"email"]];
+        self.mobileLabel.text = [NSString stringWithFormat:@"#: %@", user[@"phoneNumber"]];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+
+
     }
 
     _menuButton.target = self.revealViewController;
@@ -91,6 +102,17 @@
 {
     NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
     CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    if ([PFUser currentUser])
+    {
+        PFObject *user = [PFUser currentUser];
+        if ([user[@"car"] isEqualToString:@"Tesla Model S"])
+        {
+
+
+        }
+
+    }
+
     return cell;
 
 
@@ -154,14 +176,14 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
 
