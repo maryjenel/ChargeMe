@@ -42,9 +42,10 @@
 
     self.chargeStationsArray = [NSMutableArray new];
     self.searchBar.delegate = self;
-    NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=10", kApiKeyNrel];
+    NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=100", kApiKeyNrel];
     [self getAllChargingStations:jsonAddress];
 
+    // Initialize the location manager and upate the current user
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
@@ -60,7 +61,6 @@
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController)
     {
-
         [self.menuButton setTarget: self.revealViewController];
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -134,7 +134,8 @@
     if (self.currentLocation != nil) {
         if (self.currentLocation.verticalAccuracy < 300 && self.currentLocation.horizontalAccuracy < 300) {
             [self.locationManager stopUpdatingLocation];
-            NSLog(@"Current Location Found");
+            MKCoordinateRegion region = MKCoordinateRegionMake(self.currentLocation.coordinate, MKCoordinateSpanMake(0.5, 0.5));
+            self.mapView.region = region;
         }
     }
 }
