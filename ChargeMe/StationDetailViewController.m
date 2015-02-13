@@ -15,6 +15,7 @@
 @property(nonatomic, strong, readwrite) PayPalConfiguration *payPalConfig;
 @property BOOL acceptCreditCards;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
 
 @end
 
@@ -30,9 +31,13 @@
     _payPalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
     _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
 
-    //
+    // setup map
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
+
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.currentLocation.coordinate, MKCoordinateSpanMake(0.5, 0.5));
+    [self.mapView setRegion:region animated:YES];
+
     [self loadMap];
 }
 
@@ -86,22 +91,20 @@
     //       and simply set payment.amount to your total charge.
 
     // Optional: include multiple items
-    PayPalItem *item1 = [PayPalItem itemWithName:@"Los Santos Charging Station"
-                                    withQuantity:4
-                                       withPrice:[NSDecimalNumber decimalNumberWithString:@"39.99"]
+    NSDecimalNumber *charge = [NSDecimalNumber decimalNumberWithString:@"39.99"];
+    int hours = [self.hoursTextField.text intValue];
+    PayPalItem *item1 = [PayPalItem itemWithName:self.chargingStation.stationName
+                                    withQuantity:hours
+                                       withPrice:charge
                                     withCurrency:@"USD"
                                          withSku:@"CHS-00037"];
-    PayPalItem *item2 = [PayPalItem itemWithName:@"Las Vegas Charging Station"
-                                    withQuantity:1
-                                       withPrice:[NSDecimalNumber decimalNumberWithString:@"0.00"]
-                                    withCurrency:@"USD"
-                                         withSku:@"CHS-00066"];
-    NSArray *items = @[item1, item2];
+    NSArray *items = @[item1];
     NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
 
     // Optional: include payment details
-    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"5.99"];
-    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"2.50"];
+    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0.00"];
+    float taxValue = floorf(([charge floatValue] * (7.5/100) * 100) / 100);
+    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithFloat:taxValue];
     PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
                                                                                withShipping:shipping
                                                                                     withTax:tax];
