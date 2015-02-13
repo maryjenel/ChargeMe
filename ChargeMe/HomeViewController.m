@@ -13,6 +13,8 @@
 #import <ParseUI/ParseUI.h>
 #import "Crittercism.h"
 #import "SignUpViewController.h"
+
+// API Key for NREL
 #define kApiKeyNrel "sQUMD8G5IKWZtOOQeYatEHBFJR6YEf8DFRj9mJhe"
 
 
@@ -21,10 +23,12 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
 @property NSArray *stationsArray;
 @property NSMutableArray *chargeStationsArray;
 @property NSMutableArray *annotationsArray;
 @property MKPointAnnotation *reusablePoint;
+
 @property CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
 @end
@@ -34,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.chargeStationsArray = [NSMutableArray new];
     self.searchBar.delegate = self;
     NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=10", kApiKeyNrel];
@@ -45,8 +50,8 @@
     [self.locationManager startUpdatingLocation];
     self.mapView.showsUserLocation = YES;
 
-    _menuButton.target = self.revealViewController;
-    _menuButton.action = @selector(revealToggle:);
+    self.menuButton.target = self.revealViewController;
+    self.menuButton.action = @selector(revealToggle:);
 
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
@@ -81,19 +86,19 @@
         NSArray *mapItems = response.mapItems;
 
         //        NSMutableArray *temporaryArray = [NSMutableArray new];
-
-        for (MKMapItem *mapItem in mapItems)
-        {
-            MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.05, 0.05));
-            self.mapView.region = region;
-        }
-        //        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"metersAway" ascending:true];
-        //        NSArray *sortedArray = [temporaryArray sortedArrayUsingDescriptors:@[sortDescriptor]];
-        //        self.pizzeriasArray = [NSMutableArray arrayWithArray:sortedArray];
-        //        [self.tableView reloadData];
-        //        [self createSourceAndDestination];
-        
+        MKMapItem *mapItem = mapItems.firstObject;
+        MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.5, 0.5));
+        self.mapView.region = region;
     }];
+}
+
+/**
+ *  Filter By Public Private and Home
+ *
+ *  @param sender Chosen item from the Segmented control
+ */
+- (IBAction)onSegmentedControlButtonPressed:(UISegmentedControl *)sender
+{
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -204,8 +209,6 @@
     //    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.09, 0.09));
 }
 
-
-
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -215,8 +218,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 -(BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
 {
