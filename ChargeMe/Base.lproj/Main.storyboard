@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -686,17 +686,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="285-jq-xIk">
-                                <rect key="frame" x="16" y="246" width="264" height="30"/>
+                                <rect key="frame" x="145" y="123" width="151" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IQR-d0-OAW">
-                                <rect key="frame" x="16" y="301" width="264" height="30"/>
+                                <rect key="frame" x="28" y="195" width="264" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fps-IU-NGx">
+                                <rect key="frame" x="145" y="93" width="151" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="dq8-XZ-XmM">
+                                <rect key="frame" x="16" y="59" width="116" height="128"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ox1-Pf-Uc9" appends="YES" id="6sy-Za-Az9"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PM4-uc-VaZ">
+                                <rect key="frame" x="28" y="225" width="264" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-NJ-ajp">
-                                <rect key="frame" x="225" y="521" width="55" height="30"/>
+                                <rect key="frame" x="114" y="269" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -704,42 +721,11 @@
                                     <action selector="onSignUpButtonPressed:" destination="tUr-M2-IZP" eventType="touchUpInside" id="ntd-ja-zi8"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fps-IU-NGx">
-                                <rect key="frame" x="16" y="192" width="264" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXP-I5-4Mt">
-                                <rect key="frame" x="16" y="370" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelS" translatesAutoresizingMaskIntoConstraints="NO" id="GAG-iW-j8I">
-                                <rect key="frame" x="11" y="399" width="135" height="112"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="yWj-lS-hDh" appends="YES" id="ZJz-hp-aQK"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TeslaModelX" translatesAutoresizingMaskIntoConstraints="NO" id="7gz-Ow-J7O">
-                                <rect key="frame" x="178" y="399" width="126" height="112"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="SJ9-53-75s" appends="YES" id="gu2-8c-hl0"/>
-                                </connections>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="dq8-XZ-XmM">
-                                <rect key="frame" x="60" y="14" width="176" height="128"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ox1-Pf-Uc9" appends="YES" id="6sy-Za-Az9"/>
-                                </connections>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="carTypeText" destination="PM4-uc-VaZ" id="Rj6-tp-hL1"/>
                         <outlet property="firstNameTextField" destination="Fps-IU-NGx" id="JjH-xh-4pG"/>
                         <outlet property="lastNameTextField" destination="285-jq-xIk" id="QzE-eL-CWF"/>
                         <outlet property="phoneNumberTextField" destination="IQR-d0-OAW" id="3MA-CM-Tog"/>
@@ -750,16 +736,6 @@
                 <tapGestureRecognizer id="Ox1-Pf-Uc9">
                     <connections>
                         <action selector="onProfileImageTapped:" destination="tUr-M2-IZP" id="dot-iB-wZ4"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="yWj-lS-hDh">
-                    <connections>
-                        <action selector="onTeslaModelSTapped:" destination="tUr-M2-IZP" id="gmU-EG-UXa"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="SJ9-53-75s">
-                    <connections>
-                        <action selector="onTeslaModelXTapped:" destination="tUr-M2-IZP" id="DL2-eE-bqB"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

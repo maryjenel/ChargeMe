@@ -11,12 +11,15 @@
 #import "LoginViewController.h"
 
 
-@interface SignUpDetailViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface SignUpDetailViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property UIImagePickerController *imagePicker;
+@property (weak, nonatomic) IBOutlet UITextField *carTypeText;
+@property UIPickerView *pickerView;
+@property NSArray *carArray;
 
 
 @end
@@ -27,7 +30,14 @@
 {
     [super viewDidLoad];
     self.imagePicker = [[UIImagePickerController alloc]init];
+    self.pickerView = [[UIPickerView alloc]init];
     self.imagePicker.delegate = self;
+    self.pickerView.dataSource = self;
+    self.pickerView.delegate = self;
+    self.carTypeText.inputView = self.pickerView;
+
+    self.carArray = @[@"Tesla Model S",@"Tesla Model X"];
+
     if ([PFUser currentUser])
     {
         PFFile *imageFile = [[PFUser currentUser]objectForKey:@"profilePhoto"];
@@ -39,6 +49,23 @@
              self.profileImage.clipsToBounds = YES;
          }];
     }
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.carArray.count;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return  1;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.carArray[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.carTypeText.text = self.carArray[row];
+    [self.carTypeText resignFirstResponder];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -65,18 +92,15 @@
     [self presentViewController:self.imagePicker animated:YES completion:nil];
 }
 
-- (IBAction)onTeslaModelSTapped:(UITapGestureRecognizer *)sender {
-}
 
-- (IBAction)onTeslaModelXTapped:(UITapGestureRecognizer *)sender {
-}
 - (IBAction)onSignUpButtonPressed:(UIButton *)sender
-{
+{ //saves all data to parse.
 
     PFUser *user = [PFUser currentUser];
     user[@"firstName"] = self.firstNameTextField.text;
     user[@"lastName"] = self.lastNameTextField.text;
     user[@"phoneNumber"] = self.phoneNumberTextField.text;
+    user[@"car"] = self.carTypeText.text;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!error) {
@@ -87,5 +111,7 @@
     [self presentViewController:loginVC animated:NO completion:nil];
     
 }
+
+
 
 @end
