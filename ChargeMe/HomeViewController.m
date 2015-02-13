@@ -97,6 +97,13 @@
     }];
 }
 
+// Navigate to current user location when location button is tapped
+- (IBAction)onCurrentLocationButtonTapped:(UIButton *)sender
+{
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.currentLocation.coordinate, MKCoordinateSpanMake(1, 1));
+    [self.mapView setRegion:region animated:YES];
+}
+
 /**
  *  Filter By Public Private and Home
  *
@@ -198,6 +205,9 @@
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    // Lets the mapView display the blue dot & circle animation
+    if (annotation == mapView.userLocation) return nil;
+
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
     //    pin.image = [UIImage imageNamed:@"mobilemakers"];
     pin.canShowCallout = YES;
@@ -207,9 +217,14 @@
 }
 
 // Segue to station detail view controller when callout accessory button is tapped
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     [self performSegueWithIdentifier:@"callOutSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"%@", sender);
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user

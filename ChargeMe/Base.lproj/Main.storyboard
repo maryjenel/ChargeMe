@@ -39,6 +39,17 @@
                                     <action selector="onSegmentedControlButtonPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="jre-xY-WWP"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-ta-h02">
+                                <rect key="frame" x="262" y="118" width="42" height="39"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="CurrentLocationButton">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCurrentLocationButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2MV-bx-37U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -860,6 +871,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CurrentLocationButton" width="40" height="40"/>
         <image name="TeslaModelS" width="1261" height="469"/>
         <image name="TeslaModelX" width="530" height="300"/>
         <image name="car" width="30" height="30"/>
