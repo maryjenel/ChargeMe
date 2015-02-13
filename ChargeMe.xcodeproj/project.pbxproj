@@ -7,7 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1834554A1A8E7B050041C640 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */; };
+		1834554C1A8E7B640041C640 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */; };
 		1847AA2F1A8DAA000013F9D1 /* StationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847AA2E1A8DAA000013F9D1 /* StationDetailViewController.m */; };
+		1855593E1A8E76CE00CCDC1C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185559391A8E76CE00CCDC1C /* Parse.framework */; };
+		1855593F1A8E76CE00CCDC1C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1855593A1A8E76CE00CCDC1C /* ParseCrashReporting.framework */; };
+		185559401A8E76CE00CCDC1C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1855593B1A8E76CE00CCDC1C /* ParseFacebookUtils.framework */; };
+		185559411A8E76CE00CCDC1C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1855593C1A8E76CE00CCDC1C /* ParseUI.framework */; };
+		1887E6001A8E745400136FFC /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1887E5F81A8E745400136FFC /* libPayPalMobile.a */; };
+		1887E6051A8E754C00136FFC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1887E6021A8E754C00136FFC /* FacebookSDK.framework */; };
+		1887E6061A8E754C00136FFC /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1887E6031A8E754C00136FFC /* FBAudienceNetwork.framework */; };
+		18CBAEF11A8E632F00762576 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF01A8E632F00762576 /* AVFoundation.framework */; };
+		18CBAEF31A8E633F00762576 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF21A8E633F00762576 /* CoreMedia.framework */; };
+		18CBAEF51A8E634600762576 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF41A8E634600762576 /* MessageUI.framework */; };
+		18CBAEF71A8E636E00762576 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF61A8E636E00762576 /* libz.dylib */; };
+		18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF81A8E688000762576 /* libxml2.dylib */; };
 		626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626FD7EB1A8D6D000087911F /* MapKit.framework */; };
 		626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7EE1A8D6F590087911F /* ChargingStation.m */; };
 		626FD7F21A8D6F760087911F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7F11A8D6F760087911F /* CustomAnnotation.m */; };
@@ -36,11 +50,6 @@
 		627B3E9C1A8AB09600B3438A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E9B1A8AB09600B3438A /* UIKit.framework */; };
 		627B3E9E1A8AB09C00B3438A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E9D1A8AB09C00B3438A /* Foundation.framework */; };
 		627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3EAC1A8AB41100B3438A /* LoginViewController.m */; };
-		627B3EB81A8BC9D900B3438A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3EB31A8BC9D900B3438A /* Bolts.framework */; };
-		627B3EB91A8BC9D900B3438A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3EB41A8BC9D900B3438A /* Parse.framework */; };
-		627B3EBA1A8BC9D900B3438A /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3EB51A8BC9D900B3438A /* ParseCrashReporting.framework */; };
-		627B3EBB1A8BC9D900B3438A /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3EB61A8BC9D900B3438A /* ParseFacebookUtils.framework */; };
-		627B3EBC1A8BC9D900B3438A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3EB71A8BC9D900B3438A /* ParseUI.framework */; };
 		627B3ECC1A8BDBB200B3438A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ECB1A8BDBB200B3438A /* SWRevealViewController.m */; };
 		627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ECE1A8BE04B00B3438A /* NavViewController.m */; };
 		627B3ED21A8BF28900B3438A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED11A8BF28900B3438A /* ProfileViewController.m */; };
@@ -65,8 +74,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		1847AA2D1A8DAA000013F9D1 /* StationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationDetailViewController.h; sourceTree = "<group>"; };
 		1847AA2E1A8DAA000013F9D1 /* StationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationDetailViewController.m; sourceTree = "<group>"; };
+		185559391A8E76CE00CCDC1C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		1855593A1A8E76CE00CCDC1C /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		1855593B1A8E76CE00CCDC1C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		1855593C1A8E76CE00CCDC1C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		1887E5F01A8E745400136FFC /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		1887E5F11A8E745400136FFC /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		1887E5F21A8E745400136FFC /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		1887E5F31A8E745400136FFC /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		1887E5F41A8E745400136FFC /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		1887E5F51A8E745400136FFC /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		1887E5F61A8E745400136FFC /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		1887E5F71A8E745400136FFC /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		1887E5F81A8E745400136FFC /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
+		1887E5F91A8E745400136FFC /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
+		1887E5FA1A8E745400136FFC /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
+		1887E5FB1A8E745400136FFC /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
+		1887E5FC1A8E745400136FFC /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalOAuthScopes.h; sourceTree = "<group>"; };
+		1887E5FD1A8E745400136FFC /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		1887E5FE1A8E745400136FFC /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		1887E5FF1A8E745400136FFC /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		1887E6021A8E754C00136FFC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		1887E6031A8E754C00136FFC /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		18CBAEF01A8E632F00762576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		18CBAEF21A8E633F00762576 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		18CBAEF41A8E634600762576 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		18CBAEF61A8E636E00762576 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		18CBAEF81A8E688000762576 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		18CBAEFA1A8E68E700762576 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		626FD7EB1A8D6D000087911F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		626FD7ED1A8D6F590087911F /* ChargingStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingStation.h; sourceTree = "<group>"; };
 		626FD7EE1A8D6F590087911F /* ChargingStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingStation.m; sourceTree = "<group>"; };
@@ -104,11 +143,6 @@
 		627B3E9D1A8AB09C00B3438A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		627B3EAB1A8AB41100B3438A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		627B3EAC1A8AB41100B3438A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		627B3EB31A8BC9D900B3438A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		627B3EB41A8BC9D900B3438A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		627B3EB51A8BC9D900B3438A /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		627B3EB61A8BC9D900B3438A /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		627B3EB71A8BC9D900B3438A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		627B3ECA1A8BDBB200B3438A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		627B3ECB1A8BDBB200B3438A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		627B3ECD1A8BE04B00B3438A /* NavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavViewController.h; sourceTree = "<group>"; };
@@ -139,28 +173,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1834554C1A8E7B640041C640 /* libsqlite3.0.dylib in Frameworks */,
+				1834554A1A8E7B050041C640 /* libstdc++.6.0.9.dylib in Frameworks */,
+				627B3E961A8AB08400B3438A /* Social.framework in Frameworks */,
+				1855593F1A8E76CE00CCDC1C /* ParseCrashReporting.framework in Frameworks */,
+				185559401A8E76CE00CCDC1C /* ParseFacebookUtils.framework in Frameworks */,
+				18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */,
+				18CBAEF71A8E636E00762576 /* libz.dylib in Frameworks */,
+				185559411A8E76CE00CCDC1C /* ParseUI.framework in Frameworks */,
+				627B3E9A1A8AB09100B3438A /* SystemConfiguration.framework in Frameworks */,
+				627B3E901A8AB07400B3438A /* MobileCoreServices.framework in Frameworks */,
+				18CBAEF51A8E634600762576 /* MessageUI.framework in Frameworks */,
+				18CBAEF31A8E633F00762576 /* CoreMedia.framework in Frameworks */,
 				627B3E8A1A8AB05700B3438A /* CoreLocation.framework in Frameworks */,
+				18CBAEF11A8E632F00762576 /* AVFoundation.framework in Frameworks */,
 				626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */,
 				627B3E9E1A8AB09C00B3438A /* Foundation.framework in Frameworks */,
+				1855593E1A8E76CE00CCDC1C /* Parse.framework in Frameworks */,
+				1887E6051A8E754C00136FFC /* FacebookSDK.framework in Frameworks */,
 				627B3E9C1A8AB09600B3438A /* UIKit.framework in Frameworks */,
-				627B3E9A1A8AB09100B3438A /* SystemConfiguration.framework in Frameworks */,
 				627B3E981A8AB08900B3438A /* StoreKit.framework in Frameworks */,
-				627B3E961A8AB08400B3438A /* Social.framework in Frameworks */,
 				627B3E941A8AB07F00B3438A /* Security.framework in Frameworks */,
 				627B3E921A8AB07900B3438A /* QuartzCore.framework in Frameworks */,
-				627B3E901A8AB07400B3438A /* MobileCoreServices.framework in Frameworks */,
+				1887E6061A8E754C00136FFC /* FBAudienceNetwork.framework in Frameworks */,
 				627B3E8E1A8AB06E00B3438A /* libz.1.1.3.dylib in Frameworks */,
 				62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */,
-				627B3EBC1A8BC9D900B3438A /* ParseUI.framework in Frameworks */,
+				1887E6001A8E745400136FFC /* libPayPalMobile.a in Frameworks */,
 				627B3E8C1A8AB06800B3438A /* libsqlite3.dylib in Frameworks */,
-				627B3EBA1A8BC9D900B3438A /* ParseCrashReporting.framework in Frameworks */,
-				627B3EB91A8BC9D900B3438A /* Parse.framework in Frameworks */,
 				627B3E881A8AB05100B3438A /* CoreGraphics.framework in Frameworks */,
-				627B3EB81A8BC9D900B3438A /* Bolts.framework in Frameworks */,
 				627B3E861A8AB04500B3438A /* CFNetwork.framework in Frameworks */,
 				627B3E841A8AB04100B3438A /* AdSupport.framework in Frameworks */,
 				627B3E821A8AB03C00B3438A /* Accounts.framework in Frameworks */,
-				627B3EBB1A8BC9D900B3438A /* ParseFacebookUtils.framework in Frameworks */,
 				627B3E801A8AB03700B3438A /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,9 +218,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		185559371A8E768D00CCDC1C /* ParseGroup */ = {
+			isa = PBXGroup;
+			children = (
+				185559391A8E76CE00CCDC1C /* Parse.framework */,
+				1855593A1A8E76CE00CCDC1C /* ParseCrashReporting.framework */,
+				1855593B1A8E76CE00CCDC1C /* ParseFacebookUtils.framework */,
+				1855593C1A8E76CE00CCDC1C /* ParseUI.framework */,
+			);
+			name = ParseGroup;
+			sourceTree = "<group>";
+		};
+		1887E5EF1A8E745400136FFC /* PayPalMobile */ = {
+			isa = PBXGroup;
+			children = (
+				1887E5F01A8E745400136FFC /* CardIO.h */,
+				1887E5F11A8E745400136FFC /* CardIOCreditCardInfo.h */,
+				1887E5F21A8E745400136FFC /* CardIODetectionMode.h */,
+				1887E5F31A8E745400136FFC /* CardIOPaymentViewController.h */,
+				1887E5F41A8E745400136FFC /* CardIOPaymentViewControllerDelegate.h */,
+				1887E5F51A8E745400136FFC /* CardIOUtilities.h */,
+				1887E5F61A8E745400136FFC /* CardIOView.h */,
+				1887E5F71A8E745400136FFC /* CardIOViewDelegate.h */,
+				1887E5F81A8E745400136FFC /* libPayPalMobile.a */,
+				1887E5F91A8E745400136FFC /* PayPalConfiguration.h */,
+				1887E5FA1A8E745400136FFC /* PayPalFuturePaymentViewController.h */,
+				1887E5FB1A8E745400136FFC /* PayPalMobile.h */,
+				1887E5FC1A8E745400136FFC /* PayPalOAuthScopes.h */,
+				1887E5FD1A8E745400136FFC /* PayPalPayment.h */,
+				1887E5FE1A8E745400136FFC /* PayPalPaymentViewController.h */,
+				1887E5FF1A8E745400136FFC /* PayPalProfileSharingViewController.h */,
+			);
+			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
 		627B3E3B1A89623500B3438A = {
 			isa = PBXGroup;
 			children = (
+				1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */,
+				183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */,
 				627B3E9F1A8AB0D400B3438A /* frameworks */,
 				627B3E461A89623500B3438A /* ChargeMe */,
 				627B3E631A89623500B3438A /* ChargeMeTests */,
@@ -240,9 +319,18 @@
 		627B3E9F1A8AB0D400B3438A /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185559371A8E768D00CCDC1C /* ParseGroup */,
+				1887E6021A8E754C00136FFC /* FacebookSDK.framework */,
+				1887E6031A8E754C00136FFC /* FBAudienceNetwork.framework */,
+				18CBAEFA1A8E68E700762576 /* libxml2.2.dylib */,
+				18CBAEF81A8E688000762576 /* libxml2.dylib */,
+				18CBAEF61A8E636E00762576 /* libz.dylib */,
+				18CBAEF41A8E634600762576 /* MessageUI.framework */,
+				18CBAEF21A8E633F00762576 /* CoreMedia.framework */,
+				18CBAEF01A8E632F00762576 /* AVFoundation.framework */,
+				1887E5EF1A8E745400136FFC /* PayPalMobile */,
 				626FD7EB1A8D6D000087911F /* MapKit.framework */,
 				62850D6C1A8D1FB50076739F /* CrittercismSDK */,
-				627B3EB21A8BC9D900B3438A /* parseFramework */,
 				627B3E9D1A8AB09C00B3438A /* Foundation.framework */,
 				627B3E9B1A8AB09600B3438A /* UIKit.framework */,
 				627B3E991A8AB09100B3438A /* SystemConfiguration.framework */,
@@ -261,18 +349,6 @@
 				627B3E931A8AB07F00B3438A /* Security.framework */,
 			);
 			name = frameworks;
-			sourceTree = "<group>";
-		};
-		627B3EB21A8BC9D900B3438A /* parseFramework */ = {
-			isa = PBXGroup;
-			children = (
-				627B3EB31A8BC9D900B3438A /* Bolts.framework */,
-				627B3EB41A8BC9D900B3438A /* Parse.framework */,
-				627B3EB51A8BC9D900B3438A /* ParseCrashReporting.framework */,
-				627B3EB61A8BC9D900B3438A /* ParseFacebookUtils.framework */,
-				627B3EB71A8BC9D900B3438A /* ParseUI.framework */,
-			);
-			path = parseFramework;
 			sourceTree = "<group>";
 		};
 		627B3EC81A8BDBB200B3438A /* SlideOutMenu-Beginning */ = {
@@ -415,6 +491,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 627B3E3B1A89623500B3438A;
 			productRefGroup = 627B3E451A89623500B3438A /* Products */;
@@ -594,13 +671,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/parseFramework",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CrittercismSDK",
+					"$(PROJECT_DIR)/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -613,13 +696,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/parseFramework",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CrittercismSDK",
+					"$(PROJECT_DIR)/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

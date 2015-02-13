@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Crittercism.h"
+#import "PayPalMobile.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
     [Parse setApplicationId:@"UwVCdD4fKU0zLNy5mvQA0KEYjy4xvCSHD14GNuGB" clientKey:@"aZcrYZX8M3EnjirC6ozy5g0Sq22S5c6GrhCAXcCv"];
 
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
+                                                           PayPalEnvironmentSandbox : @"AZj8hmOwNwZXHeytNRHLkuOsjljhh-8OEUEf__XSpICT_sBcLTtvtxwN8XyFlb1yn-I1uY6lIyYLIJRP"}];
 
 
     return YES;
