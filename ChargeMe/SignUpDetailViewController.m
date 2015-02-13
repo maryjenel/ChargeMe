@@ -9,6 +9,7 @@
 #import "SignUpDetailViewController.h"
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
+#import "NavViewController.h"
 
 
 @interface SignUpDetailViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
@@ -103,12 +104,18 @@
     user[@"car"] = self.carTypeText.text;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
-         if (!error) {
-             [user saveInBackground];
+         if (!error)
+         {
+             UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
+             NavViewController *sudvc = [st instantiateViewControllerWithIdentifier:@"NavViewController"];
+             [sudvc setModalPresentationStyle:UIModalPresentationFullScreen]; // remember to change presentation to push or show... not modal
+
+             [self presentViewController:sudvc animated:YES completion:nil];
+
          }
      }];
-    LoginViewController *loginVC = [LoginViewController new];
-    [self presentViewController:loginVC animated:NO completion:nil];
+
+    
     
 }
 

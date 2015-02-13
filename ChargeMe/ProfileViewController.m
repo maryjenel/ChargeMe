@@ -35,7 +35,32 @@
     [super viewDidLoad];
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.delegate = self;
-    self.carArray = @[@"TeslaModelS",@"TeslaModelX"];
+    self.carArray = [NSMutableArray new];
+    _menuButton.target = self.revealViewController;
+    _menuButton.action = @selector(revealToggle:);
+
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self grabbingUserInformation];
+
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController)
+    {
+
+        [self.menuButton setTarget: self.revealViewController];
+        [self.menuButton setAction: @selector(revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    [self grabbingUserInformation];
+
+}
+
+-(void)grabbingUserInformation
+{
     if ([PFUser currentUser])
     {
         PFFile *imageFile = [[PFUser currentUser]objectForKey:@"profilePhoto"];
@@ -55,23 +80,7 @@
 
 
     }
-
-    _menuButton.target = self.revealViewController;
-    _menuButton.action = @selector(revealToggle:);
-
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-
-
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if (revealViewController)
-    {
-
-        [self.menuButton setTarget: self.revealViewController];
-        [self.menuButton setAction: @selector(revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
 }
-
 
 - (IBAction)onProfilePictureTapped:(UITapGestureRecognizer *)sender
 {
@@ -100,15 +109,23 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
-    CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+  //  NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
+    CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     if ([PFUser currentUser])
     {
         PFObject *user = [PFUser currentUser];
         if ([user[@"car"] isEqualToString:@"Tesla Model S"])
         {
+            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
+            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelS"];
+            [self.carArray addObject:customCell];
 
-
+        }
+        else if([user[@"car"] isEqualToString:@"Tesla Model X"])
+        {
+            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
+            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelX"];
+            [self.carArray addObject:customCell];
         }
 
     }
@@ -148,8 +165,8 @@
         SignUpViewController *signUpViewController = [[SignUpViewController alloc]init];
         [signUpViewController setDelegate:self];
 
-        [loginViewController setSignUpController:signUpViewController];
-        [self presentViewController:loginViewController animated:YES completion:nil];
+       [loginViewController setSignUpController:signUpViewController];
+    [self presentViewController:loginViewController animated:YES completion:nil];
     }
 }
 
