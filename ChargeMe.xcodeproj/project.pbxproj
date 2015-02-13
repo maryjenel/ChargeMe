@@ -537,7 +537,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/maryjenelmyers/Downloads/parse-library-1-3",
 					"$(PROJECT_DIR)/parseFramework",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
@@ -552,7 +551,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/maryjenelmyers/Downloads/parse-library-1-3",
 					"$(PROJECT_DIR)/parseFramework",
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
