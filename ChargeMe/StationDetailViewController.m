@@ -8,11 +8,13 @@
 
 #import "StationDetailViewController.h"
 #import "PayPalPaymentViewController.h"
+#import "CustomAnnotation.h"
 
-@interface StationDetailViewController () <PayPalPaymentDelegate>
+@interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate>
 
 @property(nonatomic, strong, readwrite) PayPalConfiguration *payPalConfig;
 @property BOOL acceptCreditCards;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -24,14 +26,59 @@
     // Set up payPalConfig
     _payPalConfig = [[PayPalConfiguration alloc] init];
     _payPalConfig.acceptCreditCards = YES;
-    _payPalConfig.merchantName = @"Awesome Shirts, Inc.";
+    _payPalConfig.merchantName = self.chargingStation.stationName;
     _payPalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
     _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
+
+    //
+    self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
+    [self loadMap];
+}
+
+- (void)loadMap
+{
+    CLLocationDegrees longitude;
+
+    if (self.chargingStation.longitude < 0)
+    {
+        longitude = self.chargingStation.longitude;
+    }
+    else
+    {
+        longitude = -self.chargingStation.longitude;
+    }
+
+    CLLocationDegrees latitude = self.chargingStation.latitude;
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+
+    CustomAnnotation *annotation = [CustomAnnotation new];
+    annotation.chargingStation = self.chargingStation;
+    annotation.title = self.chargingStation.stationAddress;
+    annotation.subtitle = self.chargingStation.stationName;
+    annotation.coordinate = coordinate;
+
+    [self.mapView addAnnotation:annotation];
+}
+
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    // Lets the mapView display the blue dot & circle animation
+    if (annotation == mapView.userLocation) return nil;
+
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+    pin.canShowCallout = YES;
+
+//    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    return pin;
 }
 
 #pragma mark PayPalPaymentDelegate methods
 
-- (IBAction)pay:(UIButton *)sender {
+- (IBAction)onCheckInButtonPressed:(UIBarButtonItem *)sender
+{
     // Note: For purposes of illustration, this example shows a payment that includes
     //       both payment details (subtotal, shipping, tax) and multiple items.
     //       You would only specify these if appropriate to your situation.

@@ -219,12 +219,17 @@
 // Segue to station detail view controller when callout accessory button is tapped
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    [self performSegueWithIdentifier:@"callOutSegue" sender:self];
+    [self performSegueWithIdentifier:@"callOutSegue" sender:view.annotation];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"%@", sender);
+    if ([segue.identifier isEqualToString:@"callOutSegue"]) {
+        CustomAnnotation *annotation = (CustomAnnotation *)sender;
+        StationDetailViewController *sdvc = segue.destinationViewController;
+        sdvc.chargingStation = annotation.chargingStation;
+        sdvc.currentLocation = self.currentLocation;
+    }
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user

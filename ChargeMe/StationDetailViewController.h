@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "PayPalMobile.h"
+#import "ChargingStation.h"
 
 @interface StationDetailViewController : UIViewController
+
+@property ChargingStation *chargingStation;
+@property CLLocation *currentLocation;
 
 @end
