@@ -13,6 +13,7 @@
 #import <ParseUI/ParseUI.h>
 #import "Crittercism.h"
 #import "SignUpViewController.h"
+#import "StationDetailViewController.h"
 
 // API Key for NREL
 #define kApiKeyNrel "sQUMD8G5IKWZtOOQeYatEHBFJR6YEf8DFRj9mJhe"
@@ -64,7 +65,6 @@
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -73,6 +73,11 @@
     [self.searchBar resignFirstResponder];
 }
 
+/**
+ *  Find all charging stations with searched text
+ *
+ *  @param searchText A string to search
+ */
 -(void)findStationsNearby:(NSString *)searchText
 
 {
@@ -201,12 +206,10 @@
     return pin;
 }
 
+// Segue to station detail view controller when callout accessory button is tapped
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    //    CustomAnnotation *customAnnotation = view.annotation;
-    //    MKLocalSearchRequest *request = [MKLocalSearchRequest new];
-    //    request.naturalLanguageQuery = @"chargingStations";
-    //    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.09, 0.09));
+    [self performSegueWithIdentifier:@"callOutSegue" sender:self];
 }
 
 -(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
