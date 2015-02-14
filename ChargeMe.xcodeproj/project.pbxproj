@@ -25,6 +25,8 @@
 		626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626FD7EB1A8D6D000087911F /* MapKit.framework */; };
 		626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7EE1A8D6F590087911F /* ChargingStation.m */; };
 		626FD7F21A8D6F760087911F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7F11A8D6F760087911F /* CustomAnnotation.m */; };
+		626FD7F51A8EE6370087911F /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7F41A8EE6370087911F /* Car.m */; };
+		626FD7F81A8EE7B50087911F /* CarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7F71A8EE7B50087911F /* CarDetailViewController.m */; };
 		627B3E4A1A89623500B3438A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E491A89623500B3438A /* main.m */; };
 		627B3E4D1A89623500B3438A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E4C1A89623500B3438A /* AppDelegate.m */; };
 		627B3E501A89623500B3438A /* ChargeMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E4E1A89623500B3438A /* ChargeMe.xcdatamodeld */; };
@@ -111,6 +113,10 @@
 		626FD7EE1A8D6F590087911F /* ChargingStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingStation.m; sourceTree = "<group>"; };
 		626FD7F01A8D6F760087911F /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		626FD7F11A8D6F760087911F /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		626FD7F31A8EE6370087911F /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		626FD7F41A8EE6370087911F /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		626FD7F61A8EE7B50087911F /* CarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailViewController.h; sourceTree = "<group>"; };
+		626FD7F71A8EE7B50087911F /* CarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailViewController.m; sourceTree = "<group>"; };
 		627B3E441A89623500B3438A /* ChargeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChargeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		627B3E481A89623500B3438A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		627B3E491A89623500B3438A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -371,26 +377,28 @@
 		627B3EDC1A8C059B00B3438A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				627B3ECD1A8BE04B00B3438A /* NavViewController.h */,
+				627B3ECE1A8BE04B00B3438A /* NavViewController.m */,
 				627B3E511A89623500B3438A /* HomeViewController.h */,
 				627B3E521A89623500B3438A /* HomeViewController.m */,
 				627B3EAB1A8AB41100B3438A /* LoginViewController.h */,
 				627B3EAC1A8AB41100B3438A /* LoginViewController.m */,
 				627B3ED61A8C03FF00B3438A /* ShareViewController.h */,
 				627B3ED71A8C03FF00B3438A /* ShareViewController.m */,
-				627B3ED31A8C03F300B3438A /* PromotionsViewController.h */,
 				62850D7A1A8D4E170076739F /* SignUpDetailViewController.h */,
 				62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */,
 				62850D771A8D25AA0076739F /* SignUpViewController.h */,
 				62850D781A8D25AA0076739F /* SignUpViewController.m */,
 				627B3ED41A8C03F300B3438A /* PromotionsViewController.m */,
+				627B3ED31A8C03F300B3438A /* PromotionsViewController.h */,
 				62850D691A8C1AB40076739F /* ProfileShareViewController.h */,
 				62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */,
 				627B3ED01A8BF28900B3438A /* ProfileViewController.h */,
 				627B3ED11A8BF28900B3438A /* ProfileViewController.m */,
 				1847AA2D1A8DAA000013F9D1 /* StationDetailViewController.h */,
 				1847AA2E1A8DAA000013F9D1 /* StationDetailViewController.m */,
-				627B3ECD1A8BE04B00B3438A /* NavViewController.h */,
-				627B3ECE1A8BE04B00B3438A /* NavViewController.m */,
+				626FD7F61A8EE7B50087911F /* CarDetailViewController.h */,
+				626FD7F71A8EE7B50087911F /* CarDetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -412,6 +420,8 @@
 				627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */,
 				626FD7F01A8D6F760087911F /* CustomAnnotation.h */,
 				626FD7F11A8D6F760087911F /* CustomAnnotation.m */,
+				626FD7F31A8EE6370087911F /* Car.h */,
+				626FD7F41A8EE6370087911F /* Car.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -530,7 +540,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				626FD7F51A8EE6370087911F /* Car.m in Sources */,
 				627B3E501A89623500B3438A /* ChargeMe.xcdatamodeld in Sources */,
+				626FD7F81A8EE7B50087911F /* CarDetailViewController.m in Sources */,
 				627B3E4D1A89623500B3438A /* AppDelegate.m in Sources */,
 				627B3ED21A8BF28900B3438A /* ProfileViewController.m in Sources */,
 				1847AA2F1A8DAA000013F9D1 /* StationDetailViewController.m in Sources */,

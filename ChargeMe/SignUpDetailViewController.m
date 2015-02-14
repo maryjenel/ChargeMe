@@ -101,11 +101,16 @@
     user[@"firstName"] = self.firstNameTextField.text;
     user[@"lastName"] = self.lastNameTextField.text;
     user[@"phoneNumber"] = self.phoneNumberTextField.text;
-    user[@"car"] = self.carTypeText.text;
+
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!error)
          {
+             PFObject * carObject = [PFObject objectWithClassName:@"Car"];
+             carObject[@"user"] = [PFUser currentUser];
+             carObject[@"carType"] = self.carTypeText.text;
+             [carObject saveInBackground];
+             
              UIStoryboard *st = [UIStoryboard storyboardWithName:[[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"] bundle:[NSBundle mainBundle]];
              NavViewController *sudvc = [st instantiateViewControllerWithIdentifier:@"NavViewController"];
              [sudvc setModalPresentationStyle:UIModalPresentationFullScreen]; // remember to change presentation to push or show... not modal

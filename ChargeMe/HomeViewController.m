@@ -14,6 +14,7 @@
 #import "Crittercism.h"
 #import "SignUpViewController.h"
 #import "StationDetailViewController.h"
+#import "LoginViewController.h"
 
 // API Key for NREL
 #define kApiKeyNrel "sQUMD8G5IKWZtOOQeYatEHBFJR6YEf8DFRj9mJhe"
@@ -39,7 +40,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (![PFUser currentUser])
+    {
 
+        LoginViewController *loginViewController = [[LoginViewController alloc]init];
+        [loginViewController setDelegate:self];
+
+        SignUpViewController *signUpViewController = [[SignUpViewController alloc]init];
+        [signUpViewController setDelegate:self];
+
+        [loginViewController setSignUpController:signUpViewController];
+
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
     self.chargeStationsArray = [NSMutableArray new];
     self.searchBar.delegate = self;
     NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=100", kApiKeyNrel];

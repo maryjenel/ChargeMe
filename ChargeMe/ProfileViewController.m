@@ -14,6 +14,8 @@
 #import "LoginViewController.h"
 #import "Crittercism.h"
 #import "SignUpViewController.h"
+#import "CarDetailViewController.h"
+
 
 @interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CrittercismDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -49,6 +51,8 @@
         [self.menuButton setTarget: self.revealViewController];
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+        [self getUserCar];
+
     }
 }
 
@@ -56,6 +60,7 @@
 {
 
     [self grabbingUserInformation];
+    [self getUserCar];
 
 }
 
@@ -106,30 +111,46 @@
          }
      }];
 }
+-(void)getUserCar
+{
+    {
+        PFQuery *query = [PFQuery queryWithClassName:@"Car"];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) //
+         {   Car *car = [Car new];
+            for (PFObject *object  in objects)
+            {
+                if ([object[@"carType"] isEqualToString:@"Tesla Model S"])
+                {
+                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelS"];
+                    car.carImage = teslaImage;
+                    car.carName = @"Tesla Model S";
+                    [self.carArray addObject:car];
+
+                }
+                else if ([object[@"carType"] isEqualToString:@"Tesla Model X"])
+
+                {
+                    UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelX"];
+                    car.carImage = teslaImage;
+                    car.carName = @"Tesla Model X";
+                    [self.carArray addObject:car];
+
+                }
+
+            }
+            [self.collectionView reloadData];
+        }];
+    }
+}
+
+
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  //  NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
     CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    if ([PFUser currentUser])
-    {
-        PFObject *user = [PFUser currentUser];
-        if ([user[@"car"] isEqualToString:@"Tesla Model S"])
-        {
-            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
-            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelS"];
-            [self.carArray addObject:customCell];
-
-        }
-        else if([user[@"car"] isEqualToString:@"Tesla Model X"])
-        {
-            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
-            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelX"];
-            [self.carArray addObject:customCell];
-        }
-
-    }
-
+    Car *car = [self.carArray objectAtIndex:indexPath.row];
+    cell.CarImageCell.image = car.carImage;
     return cell;
 
 
@@ -153,8 +174,6 @@
 {
     return self.carArray.count;
 }
-
-
 
 
 -(void)userLogin
@@ -201,6 +220,12 @@
  // Pass the selected object to the new view controller.
  }
  */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    CarDetailViewController *vc = segue.destinationViewController;
+    Car *car = [self.carArray objectAtIndex:[self.collectionView indexPathForCell:sender].row];
+    vc.car = car;
+}
 
 @end
 
