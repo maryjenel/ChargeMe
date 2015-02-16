@@ -29,6 +29,8 @@
 @property NSMutableArray *chargeStationsArray;
 @property NSMutableArray *annotationsArray;
 @property MKPointAnnotation *reusablePoint;
+@property NSMutableArray *publicChargeStationsArray;
+@property NSMutableArray *privateChargeStationsArray;
 
 @property CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
@@ -41,6 +43,9 @@
     [super viewDidLoad];
 
     self.chargeStationsArray = [NSMutableArray new];
+    self.publicChargeStationsArray = [NSMutableArray new];
+    self.privateChargeStationsArray = [NSMutableArray new];
+    
     self.searchBar.delegate = self;
     NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=100", kApiKeyNrel];
     [self getAllChargingStations:jsonAddress];
@@ -109,8 +114,57 @@
  *
  *  @param sender Chosen item from the Segmented control
  */
+
 - (IBAction)onSegmentedControlButtonPressed:(UISegmentedControl *)sender
 {
+    NSInteger selectedIndex = sender.selectedSegmentIndex;
+    long selectedLong = selectedIndex;
+    if (selectedLong == 0)
+        
+    {
+        self.publicChargeStationsArray = [self filterForGroups:selectedLong];
+        [self pinEachChargingStation:selectedLong];
+    }
+    if (selectedLong == 1)
+        
+    {
+        self.privateChargeStationsArray = [self filterForGroups:selectedLong];
+        [self pinEachChargingStation:selectedLong];
+    }
+    if (sender.selectedSegmentIndex == 2)
+    {
+        [self filterForGroups:selectedLong];
+        [self pinEachChargingStation:selectedLong];
+        //        [self getAllChargingStations:self.jsonAddress];
+    }
+}
+
+//filtering public/private + all for map
+-(NSMutableArray *)filterForGroups:(long)value
+{
+    NSMutableArray *publicArray = [NSMutableArray new];
+    NSMutableArray *privateArray = [NSMutableArray new];
+    if (value == 0) {
+        for (ChargingStation *station in self.chargeStationsArray)
+        {
+            if([station.groupAccessCode hasPrefix:@"Public"])
+            {
+                [publicArray addObject:station];
+            }
+        }
+        return publicArray;
+    }
+    else if (value == 1) {
+        for (ChargingStation *station in self.chargeStationsArray)
+        {
+            if([station.groupAccessCode hasPrefix:@"Private"])
+            {
+                [privateArray addObject:station];
+            }
+        }
+        return privateArray;
+    }
+    return self.chargeStationsArray;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -140,9 +194,26 @@
     }
 }
 
--(void)pinEachChargingStation//how to place pins
+
+//pin charging stations by first removing annotations and then adds them on map
+-(void)pinEachChargingStation: (long)filterType
 {
-    for (ChargingStation *chargingStation in self.chargeStationsArray)
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    NSMutableArray *temporaryArray = [NSMutableArray new];
+    switch (filterType) {
+        case 0:
+            temporaryArray = self.publicChargeStationsArray;
+            break;
+            
+        case 1:
+            temporaryArray = self.privateChargeStationsArray;
+            break;
+            
+        default:
+            temporaryArray = self.chargeStationsArray;
+            break;
+    }
+    for (ChargingStation *chargingStation in temporaryArray)
     {
         CLLocationDegrees longitude;
 
@@ -171,6 +242,72 @@
     [self.mapView showAnnotations:self.annotationsArray animated:YES];
 }
 
+//-(void)pinEachPublicChargingStation
+//{
+//    for (ChargingStation *chargingStation in self.publicChargeStationsArray)
+//    {
+//        CLLocationDegrees longitude;
+//        
+//        if (chargingStation.longitude < 0)
+//        {
+//            longitude = chargingStation.longitude;
+//        }
+//        else
+//        {
+//            longitude = -chargingStation.longitude;
+//        }
+//        
+//        CLLocationDegrees latitude = chargingStation.latitude;
+//        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+//        
+//        CustomAnnotation *annotation = [CustomAnnotation new];
+//        annotation.chargingStation = chargingStation;
+//        annotation.title = chargingStation.stationAddress;
+//        annotation.subtitle = chargingStation.stationName;
+//        annotation.coordinate = coordinate;
+//        
+//        [self.annotationsArray addObject:annotation];
+//        [self.mapView addAnnotation:annotation];
+//        
+//    }
+//    //    [self.tableView reloadData];
+//    [self.mapView showAnnotations:self.annotationsArray animated:YES];
+//}
+//
+//-(void)pinEachPrivateChargingStation
+//{
+//    for (ChargingStation *chargingStation in self.privateChargeStationsArray)
+//    {
+//        CLLocationDegrees longitude;
+//        
+//        if (chargingStation.longitude < 0)
+//        {
+//            longitude = chargingStation.longitude;
+//        }
+//        else
+//        {
+//            longitude = -chargingStation.longitude;
+//        }
+//        
+//        CLLocationDegrees latitude = chargingStation.latitude;
+//        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+//        
+//        CustomAnnotation *annotation = [CustomAnnotation new];
+//        annotation.chargingStation = chargingStation;
+//        annotation.title = chargingStation.stationAddress;
+//        annotation.subtitle = chargingStation.stationName;
+//        annotation.coordinate = coordinate;
+//        
+//        [self.annotationsArray addObject:annotation];
+//        [self.mapView addAnnotation:annotation];
+//        
+//    }
+//    //    [self.tableView reloadData];
+//    [self.mapView showAnnotations:self.annotationsArray animated:YES];
+//}
+
+
+//getting charging station info from government energy json
 - (void)getAllChargingStations:(NSString *)jsonAddress
 {
     NSURL *url = [NSURL URLWithString:jsonAddress];
@@ -199,7 +336,7 @@
 
              [self.chargeStationsArray addObject:chargingStation];
          }
-         [self pinEachChargingStation];
+         [self pinEachChargingStation:2];
      }];
 
 }
