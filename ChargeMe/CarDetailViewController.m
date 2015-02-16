@@ -25,6 +25,10 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
+- (IBAction)onConnectCarButtonPressed:(UIButton *)sender
+{
+    
+}
 
 
 

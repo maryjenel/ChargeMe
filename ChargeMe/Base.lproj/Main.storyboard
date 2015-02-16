@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LNR-PG-mys">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LNR-PG-mys">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="E4n-9n-lwq"/>
@@ -27,15 +27,15 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
                                 <rect key="frame" x="28" y="509" width="276" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Public"/>
                                     <segment title="Private"/>
-                                    <segment title="Home"/>
+                                    <segment title="All"/>
                                 </segments>
-                                <color key="tintColor" red="1" green="0.58077199835526316" blue="0.39180715460526316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="onSegmentedControlButtonPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="jre-xY-WWP"/>
                                 </connections>
@@ -53,6 +53,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LNR-PG-mys" secondAttribute="trailing" constant="-16" id="Zby-rM-YVi"/>
+                            <constraint firstItem="LNR-PG-mys" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bzS-j0-wtM"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="LNR-PG-mys" secondAttribute="bottom" id="g2D-KD-Olx"/>
+                            <constraint firstItem="LNR-PG-mys" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="w2J-nA-CqK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XCW-P5-rp3">
                         <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="Qxv-Fq-JHj"/>
@@ -647,6 +653,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fx4-FL-rKc">
                                 <rect key="frame" x="32" y="150" width="266" height="202"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQG-ll-8My">
+                                <rect key="frame" x="32" y="502" width="114" height="30"/>
+                                <state key="normal" title="connect with car">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConnectCarButtonPressed:" destination="1UU-cy-ACi" eventType="touchUpInside" id="RA6-jM-rg0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

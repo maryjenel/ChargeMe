@@ -107,8 +107,6 @@
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
 
         NSArray *mapItems = response.mapItems;
-
-        //        NSMutableArray *temporaryArray = [NSMutableArray new];
         MKMapItem *mapItem = mapItems.firstObject;
         MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.5, 0.5));
         self.mapView.region = region;
@@ -130,8 +128,7 @@
 
 - (IBAction)onSegmentedControlButtonPressed:(UISegmentedControl *)sender
 {
-    NSInteger selectedIndex = sender.selectedSegmentIndex;
-    long selectedLong = selectedIndex;
+    long selectedLong = sender.selectedSegmentIndex;
     if (selectedLong == 0)
         
     {
@@ -148,7 +145,6 @@
     {
         [self filterForGroups:selectedLong];
         [self pinEachChargingStation:selectedLong];
-        //        [self getAllChargingStations:self.jsonAddress];
     }
 }
 
@@ -190,7 +186,6 @@
         [loginViewController setDelegate:self];
         SignUpViewController *signUpViewController = [[SignUpViewController alloc]init];
         [signUpViewController setDelegate:self];
-      //  [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
         [loginViewController setSignUpController:signUpViewController];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
@@ -247,6 +242,7 @@
         annotation.title = chargingStation.stationAddress;
         annotation.subtitle = chargingStation.stationName;
         annotation.coordinate = coordinate;
+        annotation.filterType = filterType;
 
         [self.annotationsArray addObject:annotation];
         [self.mapView addAnnotation:annotation];
@@ -254,70 +250,6 @@
     //    [self.tableView reloadData];
     [self.mapView showAnnotations:self.annotationsArray animated:YES];
 }
-
-//-(void)pinEachPublicChargingStation
-//{
-//    for (ChargingStation *chargingStation in self.publicChargeStationsArray)
-//    {
-//        CLLocationDegrees longitude;
-//        
-//        if (chargingStation.longitude < 0)
-//        {
-//            longitude = chargingStation.longitude;
-//        }
-//        else
-//        {
-//            longitude = -chargingStation.longitude;
-//        }
-//        
-//        CLLocationDegrees latitude = chargingStation.latitude;
-//        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-//        
-//        CustomAnnotation *annotation = [CustomAnnotation new];
-//        annotation.chargingStation = chargingStation;
-//        annotation.title = chargingStation.stationAddress;
-//        annotation.subtitle = chargingStation.stationName;
-//        annotation.coordinate = coordinate;
-//        
-//        [self.annotationsArray addObject:annotation];
-//        [self.mapView addAnnotation:annotation];
-//        
-//    }
-//    //    [self.tableView reloadData];
-//    [self.mapView showAnnotations:self.annotationsArray animated:YES];
-//}
-//
-//-(void)pinEachPrivateChargingStation
-//{
-//    for (ChargingStation *chargingStation in self.privateChargeStationsArray)
-//    {
-//        CLLocationDegrees longitude;
-//        
-//        if (chargingStation.longitude < 0)
-//        {
-//            longitude = chargingStation.longitude;
-//        }
-//        else
-//        {
-//            longitude = -chargingStation.longitude;
-//        }
-//        
-//        CLLocationDegrees latitude = chargingStation.latitude;
-//        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-//        
-//        CustomAnnotation *annotation = [CustomAnnotation new];
-//        annotation.chargingStation = chargingStation;
-//        annotation.title = chargingStation.stationAddress;
-//        annotation.subtitle = chargingStation.stationName;
-//        annotation.coordinate = coordinate;
-//        
-//        [self.annotationsArray addObject:annotation];
-//        [self.mapView addAnnotation:annotation];
-//        
-//    }
-//    //    [self.tableView reloadData];
-//    [self.mapView showAnnotations:self.annotationsArray animated:YES];
-//}
 
 
 //getting charging station info from government energy json
@@ -360,7 +292,19 @@
     if (annotation == mapView.userLocation) return nil;
 
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
-    //    pin.image = [UIImage imageNamed:@"mobilemakers"];
+    CustomAnnotation *customAnnotation = annotation;
+    switch (customAnnotation.filterType) {
+        case 0:
+            pin.pinColor = MKPinAnnotationColorGreen;
+            break;
+        case 1:
+            pin.pinColor = MKPinAnnotationColorPurple;
+            break;
+
+        default:
+            pin.pinColor = MKPinAnnotationColorRed;
+            break;
+    }
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
