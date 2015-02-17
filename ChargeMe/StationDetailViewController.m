@@ -9,6 +9,8 @@
 #import "StationDetailViewController.h"
 #import "PayPalPaymentViewController.h"
 #import "CustomAnnotation.h"
+#import <Parse/Parse.h>
+#import "Bookmark.h"
 
 @interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate>
 
@@ -39,6 +41,7 @@
     [self.mapView setRegion:region animated:YES];
 
     [self loadMap];
+    
 }
 
 - (void)loadMap
@@ -78,6 +81,16 @@
 //    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
     return pin;
+}
+- (IBAction)onAddToFavoritesButtonPressed:(id)sender {
+    
+    PFObject *user = [PFUser currentUser];
+//        PFRelation *relation = [user relationForKey:@"station_name"];
+//        [user saveInBackground];
+    PFObject *bookmark = [PFObject objectWithClassName:@"Bookmarks"];
+    bookmark[@"station"] = @"My New Post";
+    bookmark[@"user"] = user;
+    [bookmark saveInBackground];
 }
 
 #pragma mark PayPalPaymentDelegate methods
