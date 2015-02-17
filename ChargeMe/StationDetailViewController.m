@@ -91,7 +91,7 @@
 //        PFRelation *relation = [user relationForKey:@"station_name"];
 //        [user saveInBackground];
     PFObject *bookmark = [PFObject objectWithClassName:@"Bookmarks"];
-    bookmark[@"station"] = @"My New Post";
+//    bookmark[@"station"] = @"My New Post";
     bookmark[@"user"] = user;
     [bookmark saveInBackground];
 }
@@ -100,12 +100,6 @@
 
 - (IBAction)onCheckInButtonPressed:(UIBarButtonItem *)sender
 {
-    // Note: For purposes of illustration, this example shows a payment that includes
-    //       both payment details (subtotal, shipping, tax) and multiple items.
-    //       You would only specify these if appropriate to your situation.
-    //       Otherwise, you can leave payment.items and/or payment.paymentDetails nil,
-    //       and simply set payment.amount to your total charge.
-
     // Optional: include multiple items
     NSDecimalNumber *charge = [NSDecimalNumber decimalNumberWithString:@"39.99"];
     int hours = [self.hoursTextField.text intValue];
