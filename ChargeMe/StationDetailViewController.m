@@ -37,7 +37,10 @@
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
 
-    MKCoordinateRegion region = MKCoordinateRegionMake(self.currentLocation.coordinate, MKCoordinateSpanMake(0.5, 0.5));
+    CLLocationDegrees latitude = self.chargingStation.latitude;
+    CLLocationDegrees longitude = self.chargingStation.longitude;
+
+    MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude, longitude), MKCoordinateSpanMake(0.5, 0.5));
     [self.mapView setRegion:region animated:YES];
 
     [self loadMap];

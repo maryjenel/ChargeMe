@@ -13,5 +13,6 @@
 
 @interface CustomAnnotation : MKPointAnnotation
 @property ChargingStation *chargingStation;
+@property long filterType;
 
 @end

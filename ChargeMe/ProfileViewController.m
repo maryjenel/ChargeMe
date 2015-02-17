@@ -14,6 +14,8 @@
 #import "LoginViewController.h"
 #import "Crittercism.h"
 #import "SignUpViewController.h"
+#import "CarDetailViewController.h"
+
 
 @interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CrittercismDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -49,6 +51,12 @@
         [self.menuButton setTarget: self.revealViewController];
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+        if (self.carArray.count == 0)
+        {
+            [self getUserCar];
+        }
+
+
     }
 }
 
@@ -56,6 +64,7 @@
 {
 
     [self grabbingUserInformation];
+
 
 }
 
@@ -106,30 +115,77 @@
          }
      }];
 }
+-(void)getUserCar
+{
+    {
+        PFQuery *query = [PFQuery queryWithClassName:@"Car"];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) //
+         {   Car *car = [Car new];
+            for (PFObject *object  in objects)
+            {
+                if ([object[@"carType"] isEqualToString:@"Tesla Model S"])
+                {
+                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelS"];  // UPGRADE: save photos on parse and download
+                    car.carImage = teslaImage;
+                    car.carName = @"Tesla Model S";
+                    car.outletTypeArray = @[@"Tesla (Model S)", @"Quick Charge (CHAdeMO)",@"Tesla SuperCharger"];
+                    [self.carArray addObject:car];
+
+                }
+                else if ([object[@"carType"] isEqualToString:@"Nissan Leaf"])
+
+                {
+                    //user chooses Ford Focus Electric car. shows image, and outlet Types.
+
+                    UIImage *nissanImage = [UIImage imageNamed:@"NissanLeaf"];
+                    car.carImage = nissanImage;
+                    car.carName = @"Nissan Leaf";
+                    car.outletTypeArray = @[@"DC Combo/CHAdeMO", @"DC Combo/CHAdeMO/AC"];
+                    [self.carArray addObject:car];
+                }
+                //user chooses Ford Focus Electric car. shows image, and outlet Types.
+                else if ([object[@"carType"] isEqualToString:@"Ford Focus Electric"])
+                {
+                    UIImage *fordImage = [UIImage imageNamed:@"Ford"];
+                    car.carImage = fordImage;
+                    car.carName = @"Ford Focus Electric";
+                    car.outletTypeArray = @[@"DC Combo", @"DC Combo/CHAdeMO", @"DC Combo/CHAdeMO/AC"];
+                    [self.carArray addObject:car];
+                }
+                //user chooses Toyota car. shows image, and outlet Types.
+
+                else if ([object[@"carType"] isEqualToString:@"Toyota Prius"])
+                {
+                    UIImage *prius = [UIImage imageNamed:@"Prius"];
+                    car.carImage = prius;
+                    car.carName = @"Toyota Prius";
+                    car.outletTypeArray = @[@"DC Combo/CHAdeMO", @"DC Combo/CHAdeMO/AC"];
+                    [self.carArray addObject:car];
+                }
+                //user chooses Mitsubishi. shows image, and outlet Types.
+
+                else if ([object[@"carType"] isEqualToString:@"Mitsubishi i-MiEV"])
+                {
+                    car.carImage = [UIImage imageNamed:@"mitsubishi"];
+                    car.carName =@"Mitsubishi i-MiEV";
+                    car.outletTypeArray = @[@"DC Combo/CHAdeMO", @"DC Combo/CHAdeMO/AC"];
+                    [self.carArray addObject:car];
+                }
+                
+            }
+            [self.collectionView reloadData];
+        }];
+    }
+}
+
+
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  //  NSString *cellIdentifier = [self.carArray objectAtIndex:indexPath.row];
     CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    if ([PFUser currentUser])
-    {
-        PFObject *user = [PFUser currentUser];
-        if ([user[@"car"] isEqualToString:@"Tesla Model S"])
-        {
-            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
-            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelS"];
-            [self.carArray addObject:customCell];
-
-        }
-        else if([user[@"car"] isEqualToString:@"Tesla Model X"])
-        {
-            CustomProfileCollectionViewCell *customCell = [CustomProfileCollectionViewCell new];
-            customCell.CarImageCell.image = [UIImage imageNamed:@"TeslaModelX"];
-            [self.carArray addObject:customCell];
-        }
-
-    }
-
+    Car *car = [self.carArray objectAtIndex:indexPath.row];
+    cell.CarImageCell.image = car.carImage;
     return cell;
 
 
@@ -153,8 +209,6 @@
 {
     return self.carArray.count;
 }
-
-
 
 
 -(void)userLogin
@@ -201,6 +255,12 @@
  // Pass the selected object to the new view controller.
  }
  */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    CarDetailViewController *vc = segue.destinationViewController;
+    Car *car = [self.carArray objectAtIndex:[self.collectionView indexPathForCell:sender].row];
+    vc.car = car;
+}
 
 @end
 
