@@ -37,7 +37,7 @@
     self.pickerView.delegate = self;
     self.carTypeText.inputView = self.pickerView;
 
-    self.carArray = @[@"Tesla Model S",@"Tesla Model X"];
+    self.carArray = @[@"Tesla Model S", @"Nissan Leaf", @"Ford Focus Electric", @"Toyota Prius", @"Mitsubishi i-MiEV"];
 
     if ([PFUser currentUser])
     {

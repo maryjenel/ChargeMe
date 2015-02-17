@@ -13,5 +13,6 @@
 
 @property UIImage *carImage;
 @property NSString *carName;
+@property NSArray *outletTypeArray;
 
 @end

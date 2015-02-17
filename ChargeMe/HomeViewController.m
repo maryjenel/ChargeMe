@@ -70,10 +70,10 @@
     [self.locationManager startUpdatingLocation];
     self.mapView.showsUserLocation = YES;
 
-    self.menuButton.target = self.revealViewController;
-    self.menuButton.action = @selector(revealToggle:);
-
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    self.menuButton.target = self.revealViewController;
+//    self.menuButton.action = @selector(revealToggle:);
+//
+//    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
     
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -81,7 +81,7 @@
     {
         [self.menuButton setTarget: self.revealViewController];
         [self.menuButton setAction: @selector(revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+        [self.view addGestureRecognizer:self .revealViewController.panGestureRecognizer];
     }
 }
 
