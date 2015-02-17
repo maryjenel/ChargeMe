@@ -148,6 +148,72 @@
     }
 }
 
+- (NSMutableArray *)filterForLevelOfCharger:(long)value
+
+{
+    NSMutableArray *level1ChargeArray = [NSMutableArray new];
+    NSMutableArray *level2ChargeArray = [NSMutableArray new];
+    NSMutableArray *level3ChargeArray = [NSMutableArray new];
+    
+    if (value == 0) {
+        
+        for (ChargingStation *level1ChargerStation in self.chargeStationsArray)
+            
+        {
+            
+            if ([level1ChargerStation.connectorType hasPrefix:@"NEMA520"])
+                
+            {
+                
+                [level1ChargeArray addObject:level1ChargerStation];
+                
+            }
+            
+        }
+        
+        if (value == 1)
+            
+        {
+            
+            for (ChargingStation *level2ChargerStation in self.chargeStationsArray)
+                
+            {
+                
+                if ([level2ChargerStation.connectorType hasPrefix:@"J1772"])
+                    
+                {
+                    
+                    [level2ChargeArray addObject:level2ChargerStation];
+                    
+                }
+                
+            }
+            
+            if (value ==2)
+                
+            {
+                
+                for (ChargingStation *level3ChargerStation in self.chargeStationsArray)
+                    
+                {
+                    
+                    if ([level3ChargerStation.connectorType hasPrefix:@"CHADEMO"] |[level3ChargerStation.connectorType hasPrefix:@"J1772COMBO"]| [level3ChargerStation.connectorType hasPrefix:@"TESLA"])
+                        
+                    {
+                        
+                        [level3ChargeArray addObject:level3ChargerStation];
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+    }
+    return self.chargeStationsArray;
+}
+
 //filtering public/private + all for map
 -(NSMutableArray *)filterForGroups:(long)value
 {

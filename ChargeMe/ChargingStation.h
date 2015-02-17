@@ -24,6 +24,7 @@
 @property NSString *level2Charge;
 @property NSString *groupAccessCode;
 @property NSString *otherCharge;
+@property NSString *connectorType;
 @property CLLocation *location;
 
 @end
