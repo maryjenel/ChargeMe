@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18061CFC1A93DF950013B79E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18061CFB1A93DF950013B79E /* TabBarViewController.m */; };
 		1834554A1A8E7B050041C640 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */; };
 		1834554C1A8E7B640041C640 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */; };
 		1847AA2F1A8DAA000013F9D1 /* StationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847AA2E1A8DAA000013F9D1 /* StationDetailViewController.m */; };
@@ -77,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18061CFA1A93DF950013B79E /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		18061CFB1A93DF950013B79E /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		1847AA2D1A8DAA000013F9D1 /* StationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationDetailViewController.h; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				1847AA2E1A8DAA000013F9D1 /* StationDetailViewController.m */,
 				626FD7F61A8EE7B50087911F /* CarDetailViewController.h */,
 				626FD7F71A8EE7B50087911F /* CarDetailViewController.m */,
+				18061CFA1A93DF950013B79E /* TabBarViewController.h */,
+				18061CFB1A93DF950013B79E /* TabBarViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
 				627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */,
 				627B3E4A1A89623500B3438A /* main.m in Sources */,
+				18061CFC1A93DF950013B79E /* TabBarViewController.m in Sources */,
 				62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */,
 				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
 				627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */,

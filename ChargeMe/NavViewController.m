@@ -22,7 +22,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuItems = @[@"Map",@"Profile",@"ShareACharge",@"Promotions"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    PFObject *user = [PFUser currentUser];
+    if ([user[@"userType"] isEqualToString:@"EVOwner"])
+    {
+        menuItems = @[@"Map",@"Profile",@"ShareACharger",@"Promotions"];
+    }
+    else if ([user[@"userType"] isEqualToString:@"StationOwner"])
+    {
+        menuItems = @[@"Map",@"Profile",@"ManageChargers",@"Promotions"];
+    }
+    [self.tableView reloadData];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -42,6 +55,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     return cell;
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

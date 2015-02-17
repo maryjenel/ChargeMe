@@ -205,12 +205,12 @@
                                     <segue destination="tHf-OU-TFl" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="CRF-p2-mn6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShareACharge" textLabel="K8b-g6-X5j" imageView="R7I-3A-ElS" style="IBUITableViewCellStyleDefault" id="Wnh-wv-17U">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShareACharger" textLabel="K8b-g6-X5j" imageView="R7I-3A-ElS" style="IBUITableViewCellStyleDefault" id="Wnh-wv-17U">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wnh-wv-17U" id="S8b-Ky-z15">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Share A Charge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K8b-g6-X5j">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Share A Charger" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K8b-g6-X5j">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.29948750969999999" green="0.99286183900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -224,7 +224,29 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="HMT-AB-WUQ" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Ztq-8k-WeV"/>
+                                    <segue destination="1eA-23-WiC" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="4e6-uR-Cwo"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ManageChargers" textLabel="05c-W2-ksW" imageView="K6X-Ab-N4u" style="IBUITableViewCellStyleDefault" id="yQW-rs-Te4">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQW-rs-Te4" id="BF3-Ji-6ZQ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Manage Chargers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="05c-W2-ksW">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.29948750969999999" green="0.99286183900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="charge" id="K6X-Ab-N4u">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="g1Y-FD-zbM" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="JQ3-5P-gvs"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Promotions" textLabel="8SG-4x-QGR" imageView="z7f-yR-FLx" style="IBUITableViewCellStyleDefault" id="MNh-r1-od9">
@@ -258,7 +280,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5L-0H-Pa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="1015"/>
+            <point key="canvasLocation" x="107" y="1015"/>
         </scene>
         <!--Promotions View Controller-->
         <scene sceneID="A28-64-5Rs">
@@ -282,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6d-aB-ylf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="2457"/>
+            <point key="canvasLocation" x="107" y="2457"/>
         </scene>
         <!--Profile Share View Controller-->
         <scene sceneID="6gt-HT-uPQ">
@@ -339,16 +361,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-6W-WXm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="cZH-5Q-WAF">
-                                        <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="IPR-OS-geC"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mary Jenel Myers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-jv-Ms9">
-                                <rect key="frame" x="92" y="54" width="136" height="21"/>
+                                <rect key="frame" x="179" y="236" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -357,13 +371,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="smiley-smile" id="2Qf-oG-imY"/>
-                    <connections>
-                        <outlet property="menuButton" destination="IPR-OS-geC" id="ju9-tJ-ddl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5s5-33-c90" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214" y="2457"/>
+            <point key="canvasLocation" x="1251" y="2457"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="xmX-iu-h1C">
@@ -403,10 +414,10 @@
             </objects>
             <point key="canvasLocation" x="2222" y="2457"/>
         </scene>
-        <!--SignUpShare View Controller-->
+        <!--ShareACharger-->
         <scene sceneID="SeR-xG-b0P">
             <objects>
-                <viewController title="SignUpShare View Controller" id="MRM-Yf-bKl" customClass="ShareViewController" sceneMemberID="viewController">
+                <viewController title="ShareACharger" id="MRM-Yf-bKl" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nXd-2C-Jmm"/>
                         <viewControllerLayoutGuide type="bottom" id="EvL-7i-Q4G"/>
@@ -491,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohY-ab-PMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="577" y="2457"/>
+            <point key="canvasLocation" x="-282" y="2457"/>
         </scene>
         <!--Find Location On Map View Controller-->
         <scene sceneID="aCy-rW-H4d">
@@ -559,7 +570,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MK-Qs-LgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jna-oW-F7c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="751" y="3195"/>
+            <point key="canvasLocation" x="-282" y="3123"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="2Ag-kh-6Qe">
@@ -859,24 +870,21 @@
             <point key="canvasLocation" x="817" y="1015"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="3IV-0D-jzj">
+        <scene sceneID="7b4-9O-UiK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HMT-AB-WUQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o6n-3N-F68">
+                <navigationController id="g1Y-FD-zbM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kQk-aH-5xZ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhX-HE-W8g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="MRM-Yf-bKl" kind="relationship" relationship="rootViewController" id="PIN-Ez-6oH"/>
-                        <segue destination="MOj-Bx-X4F" kind="custom" identifier="ProfileShareSegue" customClass="SWRevealViewControllerSeguePushController" id="dWZ-8y-YAX"/>
+                        <segue destination="MOj-Bx-X4F" kind="relationship" relationship="rootViewController" id="Nnk-Rf-Uea"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u47-hA-V39" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Agh-Fl-QxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="577" y="1731"/>
+            <point key="canvasLocation" x="1251" y="1737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u0y-MQ-M6H">
@@ -895,19 +903,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eI0-AP-TUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="1731"/>
+            <point key="canvasLocation" x="107" y="1731"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="edG-Pj-tOV">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MOj-Bx-X4F" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MOj-Bx-X4F" customClass="TabBarViewController" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bto-7a-wzk">
+                        <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="E7e-lE-Zhp" userLabel="Menu"/>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="H9D-fW-fao">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="menuButton" destination="E7e-lE-Zhp" id="tF4-XQ-7JC"/>
                         <segue destination="HuT-1l-Wuu" kind="relationship" relationship="viewControllers" id="6Tx-4F-sdM"/>
                         <segue destination="INh-7L-9bR" kind="relationship" relationship="viewControllers" id="07o-1f-SE8"/>
                         <segue destination="Yy8-bQ-0cw" kind="relationship" relationship="viewControllers" id="HkO-nU-nVH"/>
@@ -916,6 +928,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHP-A6-Ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1730" y="1737"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UcI-RS-zbm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1eA-23-WiC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xu8-C3-xkQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tch-JV-yok">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MRM-Yf-bKl" kind="relationship" relationship="rootViewController" id="8QN-5Z-RaO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWz-yB-XN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-282" y="1731"/>
         </scene>
     </scenes>
     <resources>
@@ -935,6 +966,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Yb-4e-PXU"/>
+        <segue reference="G0T-N3-VAF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -37,7 +37,7 @@
     self.plugTypeTextField.inputView = self.pickerView;
 
 
-    self.plugTypes = @[@"Wall Outlet (120v)", @"EV Plug (J1772) Level 1", @"EV Plug (J1772) Level 2", @"Quick Charge (CHAdeMO)", @"Nema 14-50", @"Tesla (Model S)", @"Tesla SuperCharger", @"Quick Charge (SAE Comb0)"];
+    self.plugTypes = @[@"Wall Outlet (120v)", @"EV Plug (J1772) Level 1", @"EV Plug (J1772) Level 2", @"Quick Charge (CHAdeMO)", @"RV (Nema 14-50)", @"Tesla (Model S)", @"Tesla SuperCharger", @"Quick Charge (SAE Comb0)"];
 
     // Lets user use swipe to bring up menu
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -94,7 +94,7 @@
                      {
                          chargingStation[@"ev_level1_evse_num"] = self.numberOfPods.text;
                      }
-                     else if ([plugType isEqualToString:@"Nema 14-50"] | [plugType isEqualToString:@"Quick Charge (SAE Comb0)"])
+                     else if ([plugType isEqualToString:@"RV (Nema 14-50)"] | [plugType isEqualToString:@"Quick Charge (SAE Comb0)"])
                      {
                          chargingStation[@"ev_level2_evse_num"] = self.numberOfPods.text;
                      }
