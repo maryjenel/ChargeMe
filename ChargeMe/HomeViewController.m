@@ -440,5 +440,44 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     }
 }
 
+-(void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
+{
+    self.title = @"Listening..."; // title changes to listening.. when listening..
+}
+
+-(void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
+{
+    self.title = @"Done Listening...";//title changes to done listening when done listening...
+}
+-(void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
+{
+    long numOfResults = [results.results count];
+    if (numOfResults > 0)
+    {
+        //update the text of text field with best result from SpeechKit
+        self.searchBar.text = [results firstResult];
+    }
+    self.recordButton.selected = !self.recordButton.isSelected;
+
+    if (self.voiceSearch)
+    {
+        [self.voiceSearch cancel];
+    }
+}
+
+-(void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
+{
+    self.recordButton.selected = NO;
+    self.title = @"Connection error";
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                   message:[error
+                                                            localizedDescription]
+                                                  delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles: nil];
+
+    [alert show];
+}
+
 
 @end
