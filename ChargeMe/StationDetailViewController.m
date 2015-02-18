@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
 
 @property NSArray *commentsArray;
+@property PFObject *stationObject;
 
 @end
 
@@ -47,7 +48,35 @@
     [self.mapView setRegion:region animated:YES];
 
     [self loadMap];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+
+    // Get the same station from the parse store
+    PFQuery *query = [PFQuery queryWithClassName:@"Stations"];
+    [query whereKey:@"nrel_id" equalTo:self.chargingStation.nrel_id];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            if (objects.count) {
+                self.stationObject = [objects firstObject];
+                [self getAllComments];
+            }
+            else
+            {
+                [ChargingStation saveAPIDataToParse:self.chargingStation.nrel_id andCompletion:^(PFObject *chargingStationObject) {
+                    self.stationObject = chargingStationObject;
+                    [self getAllComments];
+                }];
+            }
+        }
+        else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)loadMap
@@ -104,13 +133,12 @@
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
     
     PFObject *user = [PFUser currentUser];
-//        PFRelation *relation = [user relationForKey:@"station_name"];
-//        [user saveInBackground];
     PFObject *bookmark = [PFObject objectWithClassName:@"Bookmarks"];
-//    bookmark[@"station"] = @"My New Post";
+    bookmark[@"station"] = self.stationObject;
     bookmark[@"user"] = user;
     [bookmark saveInBackground];
 }
+
 - (IBAction)onAddCommentButtonPressed:(id)sender {
     
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Add A Comment!" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -124,10 +152,17 @@
              UITextField *textField = alertcontroller.textFields.firstObject;
              PFObject *myComment = [PFObject objectWithClassName:@"Comment"];
              myComment[@"commentContext"] = textField.text;
-//                                     myComment[@"photo"] = self.photoObject;
+             myComment[@"station"] = self.stationObject;
              myComment[@"user"] = [PFUser currentUser];
-             [myComment saveInBackground];
-             [self getAllComments];
+             [myComment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                 if (succeeded) {
+                     [self getAllComments];
+                 }
+                 else
+                 {
+                     NSLog(@"Comment couldn't be saved: %@", error);
+                 }
+             }];
          }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
@@ -160,12 +195,8 @@
 #pragma mark Helper Methods
 
 - (void)getAllComments {
-    //PULL OBJECT "PHOTO
-    //SET A QUERY THOUGH THE OBJECT TO FIND THE COMMENT IT'S RELATED TO
-    //LOAD IT ON TABLE VIEW
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-//    [query whereKey:@"photo" equalTo:self.photoObject];
+    [query whereKey:@"station" equalTo:self.stationObject];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          self.commentsArray = objects;

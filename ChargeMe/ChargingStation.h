@@ -15,7 +15,7 @@
 @property double longitude;
 @property double latitude;
 @property double stationID;
-@property NSString *stationAddress;
+@property NSString *stationAddress;	
 @property NSString *stationName;
 @property NSString *stationPhone;
 @property NSString *city;
@@ -24,12 +24,18 @@
 @property NSString *level1Charge;
 @property NSString *level2Charge;
 @property NSString *groupAccessCode;
+@property NSString *ownerTypeCode;
+@property NSString *evConnectorTypes;
+@property NSString *evDCFastNum;
+@property NSString *evOtherEvse;
 @property NSString *otherCharge;
 @property NSString *connectorType;
 @property CLLocation *location;
 
-@property double id;
+@property NSNumber *nrel_id;
 
 + (void)addAPIDatatoParse;
++ (void)getChargingStationInfoForID:(NSNumber *)nrel_id andCompletion:(void(^)(ChargingStation *chargingStationInfo))completion;
++ (void)saveAPIDataToParse:(NSNumber *)nrel_id andCompletion:(void(^)(PFObject *chargingStationObject))completion;
 
 @end
