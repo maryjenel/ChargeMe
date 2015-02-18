@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h> 
+#import <Parse/Parse.h>
 
 @interface ChargingStation : NSObject
 
@@ -26,5 +27,9 @@
 @property NSString *otherCharge;
 @property NSString *connectorType;
 @property CLLocation *location;
+
+@property double id;
+
++ (void)addAPIDatatoParse;
 
 @end
