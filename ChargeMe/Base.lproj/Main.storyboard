@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,7 +24,7 @@
                                 </connections>
                             </mapView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="281" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
@@ -51,6 +51,15 @@
                                     <action selector="onCurrentLocationButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2MV-bx-37U"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFH-NB-z1e">
+                                <rect key="frame" x="281" y="71" width="30" height="30"/>
+                                <state key="normal" title="🎤">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRecordButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="U7n-rX-5NP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -66,6 +75,8 @@
                     <connections>
                         <outlet property="mapView" destination="LNR-PG-mys" id="Nav-Az-L6N"/>
                         <outlet property="menuButton" destination="Qxv-Fq-JHj" id="yfA-dl-3MU"/>
+                        <outlet property="onRecordButtonPressed" destination="oFH-NB-z1e" id="MwO-XE-BbI"/>
+                        <outlet property="recordButton" destination="oFH-NB-z1e" id="XBc-Uy-fY8"/>
                         <outlet property="searchBar" destination="I42-YO-A8f" id="JrS-yY-3Wo"/>
                         <segue destination="HCX-Oe-OXG" kind="push" identifier="callOutSegue" id="vm6-ug-eTe"/>
                     </connections>
@@ -137,7 +148,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-fa-Vfy">
-                                <rect key="frame" x="174" y="277" width="129.5" height="30"/>
+                                <rect key="frame" x="174" y="277" width="130" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1008,6 +1019,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="G0T-N3-VAF"/>
+        <segue reference="9Yb-4e-PXU"/>
     </inferredMetricsTieBreakers>
 </document>

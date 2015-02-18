@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <Parse/Parse.h>
+#import <SpeechKit/SpeechKit.h>
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -18,7 +19,12 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) CLLocationManager *customLocationManager;
+@property (strong, nonatomic) CLLocation *currentUserLocation;
 
+- (void)updateCurrentLocation;
+- (void)stopUpdatingCurrentLocation;
+- (void)setupSpeechKitConnection;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

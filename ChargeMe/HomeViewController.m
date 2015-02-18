@@ -15,16 +15,19 @@
 #import "SignUpViewController.h"
 #import "StationDetailViewController.h"
 #import "LoginViewController.h"
+#import <SpeechKit/SpeechKit.h>
+#import "AppDelegate.h"
 
 // API Key for NREL
 #define kApiKeyNrel "sQUMD8G5IKWZtOOQeYatEHBFJR6YEf8DFRj9mJhe"
 
 
-@interface HomeViewController ()<PFLogInViewControllerDelegate,PFSignUpViewControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate, UISearchBarDelegate>
+@interface HomeViewController ()<PFLogInViewControllerDelegate,PFSignUpViewControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate, UISearchBarDelegate, SpeechKitDelegate,SKRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *recordButton;
 
 @property NSArray *stationsArray;
 @property NSMutableArray *chargeStationsArray;
@@ -32,10 +35,14 @@
 @property MKPointAnnotation *reusablePoint;
 @property NSMutableArray *publicChargeStationsArray;
 @property NSMutableArray *privateChargeStationsArray;
-
+@property SKRecognizer *voiceSearch;
 @property CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
+@property (strong, nonatomic) AppDelegate *appDelegate;
+
 @end
+
+const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0x12, 0xc5, 0x3d, 0xff, 0x44, 0x8f, 0x84, 0x43, 0x10, 0x08, 0xd8, 0x2c, 0xb9, 0x42, 0x19, 0x78, 0x39, 0x4b, 0x4b, 0xa1, 0x4e, 0x24, 0xcf, 0x7b, 0xf9, 0x02, 0x73, 0x45, 0xf0, 0x43, 0x79, 0x02, 0x08, 0xb6, 0x01, 0x4c, 0x45, 0x86, 0x8f, 0x56, 0x8e, 0x68, 0x82, 0x47, 0xaa, 0x9b, 0xbf, 0xe3, 0xe6, 0x0b, 0x84, 0x34, 0x2f, 0x54, 0xb0, 0x28, 0x56, 0x23, 0x6d};
 
 @implementation HomeViewController
 - (IBAction)onbuttonP:(UIButton *)sender
@@ -73,12 +80,12 @@
     [self.locationManager startUpdatingLocation];
     self.mapView.showsUserLocation = YES;
 
-//    self.menuButton.target = self.revealViewController;
-//    self.menuButton.action = @selector(revealToggle:);
-//
-//    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    //updates current location after the view loads app always has users current location
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self.appDelegate updateCurrentLocation];
+    [self.appDelegate setupSpeechKitConnection];
 
-    
+    self.searchBar.returnKeyType = UIReturnKeySearch;
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController)
     {
@@ -399,5 +406,26 @@
     [[[UIAlertView alloc]initWithTitle:@"Missing Information!" message:@"Make sure you fill out all the information, please!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
     return NO;
 }
+- (IBAction)onRecordButtonPressed:(UIButton *)sender
+{
+    self.recordButton.selected = !self.recordButton.isSelected;
+
+    // This will initialize a new speech recognizer instance
+    if (self.recordButton.isSelected) {
+        self.voiceSearch = [[SKRecognizer alloc] initWithType:SKSearchRecognizerType
+                                                    detection:SKShortEndOfSpeechDetection
+                                                     language:@"en_US"
+                                                     delegate:self];
+    }
+
+    // This will stop existing speech recognizer processes
+    else {
+        if (self.voiceSearch) {
+            [self.voiceSearch stopRecording];
+            [self.voiceSearch cancel];
+        }
+    }
+}
+
 
 @end
