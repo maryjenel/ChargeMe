@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5s5-33-c90" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1251" y="2457"/>
+            <point key="canvasLocation" x="1730" y="3157"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="xmX-iu-h1C">
@@ -464,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgo-r2-gEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="2457"/>
+            <point key="canvasLocation" x="1730" y="1747"/>
         </scene>
         <!--ShareACharger-->
         <scene sceneID="SeR-xG-b0P">
@@ -550,6 +550,7 @@
                         <outlet property="numberOfPods" destination="JkY-EK-Wlu" id="fb0-oj-5Zm"/>
                         <outlet property="pickLocation" destination="feF-Li-2t9" id="8nv-o2-lhO"/>
                         <outlet property="plugTypeTextField" destination="HSn-dP-4jn" id="WX7-wa-T8p"/>
+                        <segue destination="MOj-Bx-X4F" kind="push" identifier="ViewChargingStationsSegue" id="Vam-uh-2dO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohY-ab-PMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -985,7 +986,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHP-A6-Ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="1737"/>
+            <point key="canvasLocation" x="1245" y="2457"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UcI-RS-zbm">
@@ -1025,6 +1026,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="G0T-N3-VAF"/>
+        <segue reference="Vam-uh-2dO"/>
         <segue reference="0WW-no-sv0"/>
     </inferredMetricsTieBreakers>
 </document>
