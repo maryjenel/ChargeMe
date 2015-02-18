@@ -8,6 +8,7 @@
 
 #import "TabBarViewController.h"
 #import "SWRevealViewController.h"
+#import "ShareViewController.h"
 
 @interface TabBarViewController ()
 
@@ -36,9 +37,15 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)onAddChargerButtonTapped:(UIBarButtonItem *)sender
+{
+    [self performSegueWithIdentifier:@"AddMoreChargersSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ShareViewController *svc = segue.destinationViewController;
+    svc.menuHidden = YES;
 }
 
 @end

@@ -51,6 +51,16 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+
+    // Hide menu if called from other controller besides side menu
+    if (self.menuHidden) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
 // Retreieves the address from the modal view that appears
 - (IBAction)unwindFromFindLocationOnMap:(UIStoryboardSegue *)segue
 {

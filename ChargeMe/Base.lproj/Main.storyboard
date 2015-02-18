@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -469,7 +469,7 @@
         <!--ShareACharger-->
         <scene sceneID="SeR-xG-b0P">
             <objects>
-                <viewController title="ShareACharger" id="MRM-Yf-bKl" customClass="ShareViewController" sceneMemberID="viewController">
+                <viewController title="ShareACharger" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MRM-Yf-bKl" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nXd-2C-Jmm"/>
                         <viewControllerLayoutGuide type="bottom" id="EvL-7i-Q4G"/>
@@ -554,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohY-ab-PMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="2457"/>
+            <point key="canvasLocation" x="508" y="2457"/>
         </scene>
         <!--Find Location On Map View Controller-->
         <scene sceneID="aCy-rW-H4d">
@@ -622,7 +622,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MK-Qs-LgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jna-oW-F7c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="3123"/>
+            <point key="canvasLocation" x="508" y="3195"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="2Ag-kh-6Qe">
@@ -964,6 +964,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bto-7a-wzk">
                         <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="E7e-lE-Zhp" userLabel="Menu"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AtN-ZN-MaM">
+                            <connections>
+                                <action selector="onAddChargerButtonTapped:" destination="MOj-Bx-X4F" id="grS-8W-c22"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="H9D-fW-fao">
@@ -975,6 +980,7 @@
                         <segue destination="HuT-1l-Wuu" kind="relationship" relationship="viewControllers" id="6Tx-4F-sdM"/>
                         <segue destination="INh-7L-9bR" kind="relationship" relationship="viewControllers" id="07o-1f-SE8"/>
                         <segue destination="Yy8-bQ-0cw" kind="relationship" relationship="viewControllers" id="HkO-nU-nVH"/>
+                        <segue destination="MRM-Yf-bKl" kind="push" identifier="AddMoreChargersSegue" id="0WW-no-sv0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHP-A6-Ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -998,7 +1004,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWz-yB-XN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="1731"/>
+            <point key="canvasLocation" x="508" y="1731"/>
         </scene>
     </scenes>
     <resources>
@@ -1018,6 +1024,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Yb-4e-PXU"/>
+        <segue reference="G0T-N3-VAF"/>
+        <segue reference="0WW-no-sv0"/>
     </inferredMetricsTieBreakers>
 </document>
