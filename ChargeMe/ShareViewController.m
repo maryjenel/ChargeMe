@@ -73,9 +73,9 @@
              PFObject *user = [PFUser currentUser];
              PFObject *chargingStation = [PFObject objectWithClassName:@"Stations"];
              chargingStation[@"stationName"] = placemark.name;
-             chargingStation[@"latitude"] = [NSString stringWithFormat:@"%f", self.chargingStationInfo.coordinate.latitude];
-             chargingStation[@"longitude"] = [NSString stringWithFormat:@"%f", self.chargingStationInfo.coordinate.longitude];
-             chargingStation[@"streetAddress"] = self.chargingStationInfo.subtitle;
+             chargingStation[@"latitude"] = [NSNumber numberWithDouble:self.chargingStationInfo.coordinate.latitude];
+             chargingStation[@"longitude"] = [NSNumber numberWithDouble:self.chargingStationInfo.coordinate.longitude];
+             chargingStation[@"stationAddress"] = self.chargingStationInfo.subtitle;
              chargingStation[@"zipCode"] = placemark.addressDictionary[@"ZIP"];
              chargingStation[@"state"] = placemark.addressDictionary[@"State"];
              chargingStation[@"city"] = placemark.addressDictionary[@"City"];
@@ -83,6 +83,7 @@
              chargingStation[@"stationPhoneNumber"] = user[@"phoneNumber"];
              chargingStation[@"groups_with_access_code"] = @"Private";
              chargingStation[@"owner"] = user;
+             chargingStation[@"owner_type_code"] = @"P";
              chargingStation[@"cost"] = self.costTextField.text;
              // Enumerate the plugtypes and find the one that was entered
              for (NSString *plugType in self.plugTypes) {
@@ -92,14 +93,14 @@
                      chargingStation[@"plugType"] = plugType;
                      if ([plugType isEqualToString:@"Wall Outlet (120v)"] | [plugType isEqualToString:@"EV Plug (J1772) Level 1"])
                      {
-                         chargingStation[@"ev_level1_evse_num"] = self.numberOfPods.text;
+                         chargingStation[@"ev_level1_evse_num"] = [NSNumber numberWithInt:[self.numberOfPods.text intValue]];
                      }
                      else if ([plugType isEqualToString:@"RV (Nema 14-50)"] | [plugType isEqualToString:@"Quick Charge (SAE Comb0)"])
                      {
-                         chargingStation[@"ev_level2_evse_num"] = self.numberOfPods.text;
+                         chargingStation[@"ev_level2_evse_num"] = [NSNumber numberWithInt:[self.numberOfPods.text intValue]];
                      }
                      else {
-                         chargingStation[@"ev_dc_fast_num"] = self.numberOfPods.text;
+                         chargingStation[@"ev_dc_fast_num"] = [NSNumber numberWithInt:[self.numberOfPods.text intValue]];
                          chargingStation[@"ev_other_evse"] = self.numberOfPods.text;
                      }
                  }
