@@ -11,7 +11,6 @@
 #import "CustomAnnotation.h"
 #import "ChargingStation.h"
 @interface HomeViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *onRecordButtonPressed;
 
 
 @end

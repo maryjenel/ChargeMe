@@ -136,4 +136,37 @@
     }
 }
 
+- (void)setupSpeechKitConnection {
+    [SpeechKit setupWithID:@"NMDPTRIAL_maryjenel20150217181502"
+                      host:@"sandbox.nmdp.nuancemobility.net"
+                      port:443
+                    useSSL:NO
+                  delegate:nil];
+
+    // Set earcons to play. sets distinctive sound that represents specific events
+    SKEarcon* earconStart	= [SKEarcon earconWithName:@"earcon_listening.wav"];
+    SKEarcon* earconStop	= [SKEarcon earconWithName:@"earcon_done_listening.wav"];
+    SKEarcon* earconCancel	= [SKEarcon earconWithName:@"earcon_cancel.wav"];
+
+    [SpeechKit setEarcon:earconStart forType:SKStartRecordingEarconType];
+    [SpeechKit setEarcon:earconStop forType:SKStopRecordingEarconType];
+    [SpeechKit setEarcon:earconCancel forType:SKCancelRecordingEarconType];
+}
+// Update user's current location
+-(void)updateCurrentLocation {
+    [self.customLocationManager startUpdatingLocation];
+}
+
+-(void)stopUpdatingCurrentLocation {
+    [self.customLocationManager stopUpdatingHeading];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    self.currentUserLocation = newLocation;
+
+    [self.customLocationManager stopUpdatingLocation];
+    self.currentUserLocation = [[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude
+                                                          longitude:newLocation.coordinate.longitude];
+}
+
 @end
