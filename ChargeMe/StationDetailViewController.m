@@ -12,12 +12,15 @@
 #import <Parse/Parse.h>
 #import "Bookmark.h"
 
-@interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate>
+@interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong, readwrite) PayPalConfiguration *payPalConfig;
 @property BOOL acceptCreditCards;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
+
+@property NSArray *commentsArray;
 
 @end
 
@@ -108,7 +111,67 @@
     bookmark[@"user"] = user;
     [bookmark saveInBackground];
 }
+- (IBAction)onAddCommentButtonPressed:(id)sender {
+    
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Add A Comment!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         nil;
+     }];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+         {
+             UITextField *textField = alertcontroller.textFields.firstObject;
+             PFObject *myComment = [PFObject objectWithClassName:@"Comment"];
+             myComment[@"commentContext"] = textField.text;
+//                                     myComment[@"photo"] = self.photoObject;
+             myComment[@"user"] = [PFUser currentUser];
+             [myComment saveInBackground];
+             [self getAllComments];
+         }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertcontroller addAction:okayAction];
+    [alertcontroller addAction:cancelAction];
+    
+    [self presentViewController:alertcontroller animated:YES completion:^{
+        nil;
+    }];
 
+}
+
+#pragma mark Tableview Methods
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.commentsArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    PFObject *comment = self.commentsArray[indexPath.row];
+    cell.textLabel.text = comment[@"commentContext"];
+    
+    return cell;
+}
+
+#pragma mark Helper Methods
+
+- (void)getAllComments {
+    //PULL OBJECT "PHOTO
+    //SET A QUERY THOUGH THE OBJECT TO FIND THE COMMENT IT'S RELATED TO
+    //LOAD IT ON TABLE VIEW
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+//    [query whereKey:@"photo" equalTo:self.photoObject];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         self.commentsArray = objects;
+         [self.tableView reloadData];
+     }];
+}
 #pragma mark PayPalPaymentDelegate methods
 
 - (IBAction)onCheckInButtonPressed:(UIBarButtonItem *)sender

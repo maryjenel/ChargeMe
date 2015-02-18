@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -92,11 +92,6 @@
                                     <constraint firstAttribute="height" constant="200" id="OKc-1I-1Mv"/>
                                 </constraints>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-fa-Vfy">
-                                <rect key="frame" x="130" y="277" width="174" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aT3-Hz-hv9">
                                 <rect key="frame" x="16" y="276" width="30" height="30"/>
                                 <state key="normal" title="❤️">
@@ -106,12 +101,58 @@
                                     <action selector="onAddToFavoritesButtonPressed:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="ATa-Hc-nxP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-MX-avP">
+                                <rect key="frame" x="16" y="314" width="121" height="30"/>
+                                <state key="normal" title="Directions to here">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButtonPressedDirectionsFromCurrentLocation:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="gDU-p8-3yV"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="U07-RU-V28">
+                                <rect key="frame" x="0.0" y="352" width="320" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Bmk-Y0-dFP">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bmk-Y0-dFP" id="Im3-OD-anE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HCX-Oe-OXG" id="n4J-xH-T2Q"/>
+                                    <outlet property="delegate" destination="HCX-Oe-OXG" id="ng7-Dc-aMz"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp3-gY-8xd">
+                                <rect key="frame" x="236" y="314" width="68" height="30"/>
+                                <state key="normal" title="Comment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddCommentButtonPressed:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="hdR-LZ-Jc3"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-fa-Vfy">
+                                <rect key="frame" x="174" y="277" width="129.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZHC-U2-eqn" firstAttribute="top" secondItem="U07-RU-V28" secondAttribute="bottom" id="6yy-0S-Sme"/>
                             <constraint firstItem="3rr-vz-Caj" firstAttribute="top" secondItem="bVE-Jw-7HN" secondAttribute="bottom" id="8MB-w2-51h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U07-RU-V28" secondAttribute="trailing" constant="-16" id="BZo-VZ-xsD"/>
+                            <constraint firstItem="U07-RU-V28" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" constant="-16" id="SSx-bN-IXi"/>
+                            <constraint firstItem="ZHC-U2-eqn" firstAttribute="top" secondItem="4Lo-MX-avP" secondAttribute="bottom" constant="224" id="b2a-H5-Sba"/>
+                            <constraint firstItem="4Lo-MX-avP" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" id="bfT-hY-ljp"/>
                             <constraint firstItem="3rr-vz-Caj" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" constant="-16" id="dFj-eP-rnD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3rr-vz-Caj" secondAttribute="trailing" constant="-16" id="s4T-1h-Acm"/>
+                            <constraint firstItem="U07-RU-V28" firstAttribute="top" secondItem="4Lo-MX-avP" secondAttribute="bottom" constant="8" id="zIu-Cw-Rjh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="V2O-LC-U9g">
@@ -124,6 +165,7 @@
                     <connections>
                         <outlet property="hoursTextField" destination="zXP-fa-Vfy" id="ahh-4Z-xZF"/>
                         <outlet property="mapView" destination="3rr-vz-Caj" id="ULo-yw-z2o"/>
+                        <outlet property="tableView" destination="U07-RU-V28" id="eOU-wV-TZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RD2-eb-JFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
