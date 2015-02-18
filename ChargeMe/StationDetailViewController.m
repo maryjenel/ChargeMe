@@ -85,6 +85,19 @@
 
     return pin;
 }
+- (IBAction)onButtonPressedDirectionsFromCurrentLocation:(id)sender
+{
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.chargingStation.latitude, self.chargingStation.longitude);
+    MKPlacemark* place = [[MKPlacemark alloc] initWithCoordinate: coordinate addressDictionary: nil];
+    MKMapItem* destination = [[MKMapItem alloc] initWithPlacemark: place];
+    destination.name = self.chargingStation.stationName;
+    NSArray* items = [[NSArray alloc] initWithObjects: destination, nil];
+    NSDictionary* options = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             MKLaunchOptionsDirectionsModeDriving,
+                             MKLaunchOptionsDirectionsModeKey, nil];
+    [MKMapItem openMapsWithItems: items launchOptions: options];
+}
+
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
     
     PFObject *user = [PFUser currentUser];
