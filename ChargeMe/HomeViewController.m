@@ -45,13 +45,16 @@
 const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0x12, 0xc5, 0x3d, 0xff, 0x44, 0x8f, 0x84, 0x43, 0x10, 0x08, 0xd8, 0x2c, 0xb9, 0x42, 0x19, 0x78, 0x39, 0x4b, 0x4b, 0xa1, 0x4e, 0x24, 0xcf, 0x7b, 0xf9, 0x02, 0x73, 0x45, 0xf0, 0x43, 0x79, 0x02, 0x08, 0xb6, 0x01, 0x4c, 0x45, 0x86, 0x8f, 0x56, 0x8e, 0x68, 0x82, 0x47, 0xaa, 0x9b, 0xbf, 0xe3, 0xe6, 0x0b, 0x84, 0x34, 0x2f, 0x54, 0xb0, 0x28, 0x56, 0x23, 0x6d};
 
 @implementation HomeViewController
+- (IBAction)onbuttonP:(UIButton *)sender
+{
+    [ChargingStation addAPIDatatoParse];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if (![PFUser currentUser])
     {
-
         LoginViewController *loginViewController = [[LoginViewController alloc]init];
         [loginViewController setDelegate:self];
 
@@ -163,59 +166,32 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     NSMutableArray *level3ChargeArray = [NSMutableArray new];
     
     if (value == 0) {
-        
         for (ChargingStation *level1ChargerStation in self.chargeStationsArray)
-            
         {
-            
             if ([level1ChargerStation.connectorType hasPrefix:@"NEMA520"])
-                
             {
-                
                 [level1ChargeArray addObject:level1ChargerStation];
-                
             }
-            
         }
-        
         if (value == 1)
-            
         {
-            
             for (ChargingStation *level2ChargerStation in self.chargeStationsArray)
-                
             {
-                
                 if ([level2ChargerStation.connectorType hasPrefix:@"J1772"])
-                    
                 {
-                    
                     [level2ChargeArray addObject:level2ChargerStation];
-                    
                 }
-                
             }
-            
             if (value ==2)
-                
             {
-                
                 for (ChargingStation *level3ChargerStation in self.chargeStationsArray)
-                    
                 {
-                    
                     if ([level3ChargerStation.connectorType hasPrefix:@"CHADEMO"] |[level3ChargerStation.connectorType hasPrefix:@"J1772COMBO"]| [level3ChargerStation.connectorType hasPrefix:@"TESLA"])
-                        
                     {
-                        
                         [level3ChargeArray addObject:level3ChargerStation];
-                        
                     }
-                    
                 }
-                
             }
-            
         }
     }
     return self.chargeStationsArray;
@@ -332,29 +308,40 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
      {
-         NSDictionary *resultsDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-         self.stationsArray = [resultsDictionary objectForKey:@"fuel_stations"];
+         if (data) {
+             NSDictionary *resultsDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             self.stationsArray = [resultsDictionary objectForKey:@"fuel_stations"];
 
-         for (NSDictionary *chargingStationDictionary in self.stationsArray)
-         {
-             ChargingStation *chargingStation = [ChargingStation new];
-             chargingStation.latitude = [chargingStationDictionary[@"latitude"] doubleValue];
-             chargingStation.longitude = [chargingStationDictionary[@"longitude"] doubleValue];
-             chargingStation.stationName = chargingStationDictionary[@"station_name"];
-             chargingStation.stationAddress = chargingStationDictionary[@"street_address"];
-             chargingStation.stationPhone = chargingStationDictionary[@"station_phone"];
-             chargingStation.city = chargingStationDictionary[@"city"];
-             chargingStation.state = chargingStationDictionary[@"state"];
-             chargingStation.level1Charge = chargingStationDictionary[@"ev_level1_evse_num"];
-             chargingStation.level2Charge = chargingStationDictionary[@"ev_level2_evse_num"];
-             chargingStation.groupAccessCode = chargingStationDictionary[@"groups_with_access_code"];
-             chargingStation.otherCharge = chargingStationDictionary[@"ev_other_evse"];
+             for (NSDictionary *chargingStationDictionary in self.stationsArray)
+             {
+                 ChargingStation *chargingStation = [ChargingStation new];
+                 chargingStation.latitude = [chargingStationDictionary[@"latitude"] doubleValue];
+                 chargingStation.longitude = [chargingStationDictionary[@"longitude"] doubleValue];
+                 chargingStation.stationName = chargingStationDictionary[@"station_name"];
+                 chargingStation.stationAddress = chargingStationDictionary[@"street_address"];
+                 chargingStation.stationPhone = chargingStationDictionary[@"station_phone"];
+                 chargingStation.city = chargingStationDictionary[@"city"];
+                 chargingStation.state = chargingStationDictionary[@"state"];
+                 chargingStation.level1Charge = chargingStationDictionary[@"ev_level1_evse_num"];
+                 chargingStation.level2Charge = chargingStationDictionary[@"ev_level2_evse_num"];
+                 chargingStation.evDCFastNum = chargingStationDictionary[@"ev_dc_fast_num"];
+                 chargingStation.evOtherEvse = chargingStationDictionary[@"ev_other_evse"];
+                 chargingStation.groupAccessCode = chargingStationDictionary[@"groups_with_access_code"];
+                 chargingStation.ownerTypeCode = chargingStationDictionary[@"owner_type_code"];
+                 chargingStation.otherCharge = chargingStationDictionary[@"ev_other_evse"];
+                 chargingStation.zipCode = [chargingStationDictionary[@"zip"] doubleValue];
+                 chargingStation.nrel_id = chargingStationDictionary[@"id"];
 
-             chargingStation.location = [resultsDictionary objectForKey:@""];
-
-             [self.chargeStationsArray addObject:chargingStation];
+                 [self.chargeStationsArray addObject:chargingStation];
+             }
+             [self pinEachChargingStation:2];
          }
-         [self pinEachChargingStation:2];
+         else
+         {
+             UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:[NSString stringWithFormat:@"%@", [connectionError localizedDescription]] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+             [errorAlertView show];
+         }
+
      }];
 
 }
