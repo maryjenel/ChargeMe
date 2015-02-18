@@ -75,8 +75,7 @@
                     <connections>
                         <outlet property="mapView" destination="LNR-PG-mys" id="Nav-Az-L6N"/>
                         <outlet property="menuButton" destination="Qxv-Fq-JHj" id="yfA-dl-3MU"/>
-                        <outlet property="onRecordButtonPressed" destination="oFH-NB-z1e" id="MwO-XE-BbI"/>
-                        <outlet property="recordButton" destination="oFH-NB-z1e" id="XBc-Uy-fY8"/>
+                        <outlet property="recordButton" destination="oFH-NB-z1e" id="pht-tK-aH7"/>
                         <outlet property="searchBar" destination="I42-YO-A8f" id="JrS-yY-3Wo"/>
                         <segue destination="HCX-Oe-OXG" kind="push" identifier="callOutSegue" id="vm6-ug-eTe"/>
                     </connections>

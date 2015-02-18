@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIButton *recordButton;
+
 
 @property NSArray *stationsArray;
 @property NSMutableArray *chargeStationsArray;
@@ -406,12 +406,16 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     [[[UIAlertView alloc]initWithTitle:@"Missing Information!" message:@"Make sure you fill out all the information, please!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil]show];
     return NO;
 }
-- (IBAction)onRecordButtonPressed:(UIButton *)sender
+
+
+#pragma mark VOICE ACTIVATION
+
+-(IBAction)onRecordButtonPressed:(UIButton *)sender
 {
-    self.recordButton.selected = !self.recordButton.isSelected;
+    sender.selected = !sender.isSelected;
 
     // This will initialize a new speech recognizer instance
-    if (self.recordButton.isSelected) {
+    if (sender.isSelected) {
         self.voiceSearch = [[SKRecognizer alloc] initWithType:SKSearchRecognizerType
                                                     detection:SKShortEndOfSpeechDetection
                                                      language:@"en_US"

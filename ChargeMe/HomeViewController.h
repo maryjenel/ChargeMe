@@ -12,6 +12,8 @@
 #import "ChargingStation.h"
 @interface HomeViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *recordButton;
+- (IBAction)onRecordButtonPressed:(UIButton *)sender;
 
 @end
 
