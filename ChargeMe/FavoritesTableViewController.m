@@ -52,11 +52,12 @@
                 [query whereKey:@"objectId" equalTo:station.objectId];
                 [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
                 {
-                    self.stationsArray = [objects mutableCopy];
+                    for (PFObject *stationObject in objects) {
+                        [self.stationsArray addObject:stationObject];
+                    }
                     [self.tableView reloadData];
                 }];
             }
-            [self.tableView reloadData];
         }
         else
         {
@@ -87,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteStations" forIndexPath:indexPath];
 
-    PFObject *stationInfo = self.stationsArray[0];
+    PFObject *stationInfo = self.stationsArray[indexPath.row];
     cell.textLabel.text = stationInfo[@"stationName"];
     cell.detailTextLabel.text = stationInfo[@"stationAddress"];
     return cell;
