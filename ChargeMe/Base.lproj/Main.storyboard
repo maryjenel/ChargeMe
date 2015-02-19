@@ -970,7 +970,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteStations" textLabel="xg9-1T-EHl" detailTextLabel="PTu-4t-P7l" style="IBUITableViewCellStyleSubtitle" id="ryv-Y3-Jtr">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FavoriteStations" textLabel="xg9-1T-EHl" detailTextLabel="PTu-4t-P7l" style="IBUITableViewCellStyleSubtitle" id="ryv-Y3-Jtr">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryv-Y3-Jtr" id="NIQ-VE-VSp">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -989,6 +989,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HCX-Oe-OXG" kind="push" identifier="FavoriteStationSegue" id="Vhy-oY-Bgb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1117,8 +1120,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Vam-uh-2dO"/>
         <segue reference="8QN-5Z-RaO"/>
         <segue reference="G0T-N3-VAF"/>
-        <segue reference="Vam-uh-2dO"/>
+        <segue reference="Vhy-oY-Bgb"/>
     </inferredMetricsTieBreakers>
 </document>

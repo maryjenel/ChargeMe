@@ -8,6 +8,8 @@
 
 #import "FavoritesTableViewController.h"
 #import "SWRevealViewController.h"
+#import "StationDetailViewController.h"
+#import "ChargingStation.h"
 
 @interface FavoritesTableViewController ()
 
@@ -44,6 +46,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Favorites"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self.stationsArray removeAllObjects];
         if (!error) {
             for (PFObject *favoriteObject in objects) {
                 PFObject *station = favoriteObject[@"station"];
@@ -92,6 +95,16 @@
     cell.textLabel.text = stationInfo[@"stationName"];
     cell.detailTextLabel.text = stationInfo[@"stationAddress"];
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"FavoriteStationSegue"]) {
+        PFObject *station = self.stationsArray[self.tableView.indexPathForSelectedRow.row];
+        ChargingStation *chargingStation = [[ChargingStation alloc] initWithChargingStationPFObject:station];
+        StationDetailViewController *sdvc = segue.destinationViewController;
+        sdvc.chargingStation = chargingStation; 
+    }
 }
 
 @end

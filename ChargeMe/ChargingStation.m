@@ -13,6 +13,30 @@
 
 @implementation ChargingStation
 
+- (instancetype)initWithChargingStationPFObject:(PFObject *)charingStationObject
+{
+    self = [super init];
+    if (self) {
+        self.latitude = [charingStationObject[@"latitude"] doubleValue];
+        self.longitude = [charingStationObject[@"longitude"] doubleValue];
+        self.stationName = charingStationObject[@"station_name"];
+        self.stationAddress = charingStationObject[@"street_address"];
+        self.stationPhone = charingStationObject[@"station_phone"];
+        self.city = charingStationObject[@"city"];
+        self.state = charingStationObject[@"state"];
+        self.level1Charge = charingStationObject[@"ev_level1_evse_num"];
+        self.level2Charge = charingStationObject[@"ev_level2_evse_num"];
+        self.evDCFastNum = charingStationObject[@"ev_dc_fast_num"];
+        self.evOtherEvse = charingStationObject[@"ev_other_evse"];
+        self.groupAccessCode = charingStationObject[@"groups_with_access_code"];
+        self.ownerTypeCode = charingStationObject[@"owner_type_code"];
+        self.otherCharge = charingStationObject[@"ev_other_evse"];
+        self.zipCode = [charingStationObject[@"zip"] doubleValue];
+        self.nrel_id = charingStationObject[@"nrel_id"];
+    }
+    return self;
+}
+
 + (void)addAPIDatatoParse
 {
     NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=200", kApiKeyNrel];
