@@ -133,10 +133,10 @@
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
     
     PFObject *user = [PFUser currentUser];
-    PFObject *bookmark = [PFObject objectWithClassName:@"Bookmarks"];
-    bookmark[@"station"] = self.stationObject;
-    bookmark[@"user"] = user;
-    [bookmark saveInBackground];
+    PFObject *favorite = [PFObject objectWithClassName:@"Favorites"];
+    favorite[@"station"] = self.stationObject;
+    favorite[@"user"] = user;
+    [favorite saveInBackground];
 }
 
 - (IBAction)onAddCommentButtonPressed:(id)sender {

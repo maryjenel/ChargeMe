@@ -29,11 +29,11 @@
     PFObject *user = [PFUser currentUser];
     if ([user[@"userType"] isEqualToString:@"EVOwner"])
     {
-        menuItems = @[@"Map",@"Profile",@"ShareACharger",@"Promotions"];
+        menuItems = @[@"Map",@"Profile",@"ShareACharger", @"Favorites", @"Promotions"];
     }
     else if ([user[@"userType"] isEqualToString:@"StationOwner"])
     {
-        menuItems = @[@"Map",@"Profile",@"ManageChargers",@"Promotions"];
+        menuItems = @[@"Map",@"Profile",@"ManageChargers", @"Favorites", @"Promotions"];
     }
     [self.tableView reloadData];
 }
