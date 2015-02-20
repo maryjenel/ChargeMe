@@ -13,26 +13,26 @@
 
 @implementation ChargingStation
 
-- (instancetype)initWithChargingStationPFObject:(PFObject *)charingStationObject
+- (instancetype)initWithChargingStationPFObject:(PFObject *)chargingStationObject
 {
     self = [super init];
     if (self) {
-        self.latitude = [charingStationObject[@"latitude"] doubleValue];
-        self.longitude = [charingStationObject[@"longitude"] doubleValue];
-        self.stationName = charingStationObject[@"station_name"];
-        self.stationAddress = charingStationObject[@"street_address"];
-        self.stationPhone = charingStationObject[@"station_phone"];
-        self.city = charingStationObject[@"city"];
-        self.state = charingStationObject[@"state"];
-        self.level1Charge = charingStationObject[@"ev_level1_evse_num"];
-        self.level2Charge = charingStationObject[@"ev_level2_evse_num"];
-        self.evDCFastNum = charingStationObject[@"ev_dc_fast_num"];
-        self.evOtherEvse = charingStationObject[@"ev_other_evse"];
-        self.groupAccessCode = charingStationObject[@"groups_with_access_code"];
-        self.ownerTypeCode = charingStationObject[@"owner_type_code"];
-        self.otherCharge = charingStationObject[@"ev_other_evse"];
-        self.zipCode = [charingStationObject[@"zip"] doubleValue];
-        self.nrel_id = charingStationObject[@"nrel_id"];
+        self.latitude = [chargingStationObject[@"latitude"] doubleValue];
+        self.longitude = [chargingStationObject[@"longitude"] doubleValue];
+        self.stationName = chargingStationObject[@"stationName"];
+        self.stationAddress = chargingStationObject[@"stationAddress"];
+        self.stationPhone = chargingStationObject[@"stationPhoneNumber"];
+        self.city = chargingStationObject[@"city"];
+        self.state = chargingStationObject[@"state"];
+        self.level1Charge = chargingStationObject[@"ev_level1_evse_num"];
+        self.level2Charge = chargingStationObject[@"ev_level2_evse_num"];
+        self.evDCFastNum = chargingStationObject[@"ev_dc_fast_num"];
+        self.evOtherEvse = chargingStationObject[@"ev_other_evse"];
+        self.groupAccessCode = chargingStationObject[@"groups_with_access_code"];
+        self.ownerTypeCode = chargingStationObject[@"owner_type_code"];
+        self.otherCharge = chargingStationObject[@"ev_other_evse"];
+        self.zipCode = [chargingStationObject[@"zipCode"] doubleValue];
+        self.nrel_id = chargingStationObject[@"nrel_id"];
     }
     return self;
 }

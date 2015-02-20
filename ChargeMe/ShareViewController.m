@@ -96,6 +96,7 @@
              chargingStation[@"owner"] = user;
              chargingStation[@"owner_type_code"] = @"P";
              chargingStation[@"cost"] = self.costTextField.text;
+             chargingStation[@"nrel_id"] = [NSNumber numberWithInt:46333420];
              // Enumerate the plugtypes and find the one that was entered
              for (NSString *plugType in self.plugTypes) {
                  // Check if the plug type that was entered exists
