@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
+@property int hours;
 
 @property NSArray *commentsArray;
 @property PFObject *stationObject;
@@ -215,9 +216,9 @@
     else {
         // Optional: include multiple items
         NSDecimalNumber *charge = [NSDecimalNumber decimalNumberWithString:@"39.99"];
-        int hours = [self.hoursTextField.text intValue];
+        self.hours = [self.hoursTextField.text intValue];
         PayPalItem *item1 = [PayPalItem itemWithName:self.chargingStation.stationName
-                                        withQuantity:hours
+                                        withQuantity:self.hours
                                            withPrice:charge
                                         withCurrency:@"USD"
                                              withSku:@"CHS-00037"];
@@ -237,7 +238,7 @@
         PayPalPayment *payment = [[PayPalPayment alloc] init];
         payment.amount = total;
         payment.currencyCode = @"USD";
-        payment.shortDescription = @"Charging Station Costs";
+        payment.shortDescription = self.chargingStation.stationName;
         payment.items = items;  // if not including multiple items, then leave payment.items as nil
         payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
 
@@ -271,6 +272,21 @@
     payment[@"station"] = self.stationObject;
     [payment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"Saving Pament Info Successfull");
+        if (succeeded) {
+            PFObject *checkIn = [PFObject objectWithClassName:@"CheckIn"];
+            checkIn[@"user"] = [PFUser currentUser];
+            NSDate *currentDate = [NSDate date];
+            checkIn[@"checkInDate"] = currentDate;
+
+            NSTimeInterval secondsInSpecifiedHours = self.hours * 3600;
+            checkIn[@"checkOutDate"] = [currentDate dateByAddingTimeInterval:secondsInSpecifiedHours];
+            checkIn[@"payment"] = payment;
+            [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"Check In Completed");
+                }
+            }];
+        }
     }];
 
     [self dismissViewControllerAnimated:YES completion:nil];
