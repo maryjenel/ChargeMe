@@ -22,7 +22,7 @@
 #define kApiKeyNrel "sQUMD8G5IKWZtOOQeYatEHBFJR6YEf8DFRj9mJhe"
 
 
-@interface HomeViewController ()<PFLogInViewControllerDelegate,PFSignUpViewControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate, UISearchBarDelegate, SpeechKitDelegate,SKRecognizerDelegate>
+@interface HomeViewController ()<PFLogInViewControllerDelegate,PFSignUpViewControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate, UISearchBarDelegate, SpeechKitDelegate,SKRecognizerDelegate, SKVocalizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -38,6 +38,8 @@
 @property SKRecognizer *voiceSearch;
 @property CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
+@property SKVocalizer *vocalizer;
+@property BOOL isSpeaking;
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
@@ -109,18 +111,34 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
 -(void)findStationsNearby:(NSString *)searchText
 
 {
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
+    {
     MKLocalSearchRequest *request = [MKLocalSearchRequest new];
     request.naturalLanguageQuery = searchText;
     request.region = MKCoordinateRegionMake(self.currentLocation.coordinate, MKCoordinateSpanMake(0.05, 0.05));
 
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
+        {
 
         NSArray *mapItems = response.mapItems;
         MKMapItem *mapItem = mapItems.firstObject;
-        MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.5, 0.5));
+        MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.05, 0.05));
         self.mapView.region = region;
-    }];
+        }];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location is Disabled"
+                                                        message:@"Enable it in settings and try again"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+    }
+
+
 }
 
 // Navigate to current user location when location button is tapped
@@ -296,7 +314,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
         [self.annotationsArray addObject:annotation];
         [self.mapView addAnnotation:annotation];
     }
-    //    [self.tableView reloadData];
+
     [self.mapView showAnnotations:self.annotationsArray animated:YES];
 }
 
@@ -443,6 +461,10 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
             [self.voiceSearch cancel];
         }
     }
+    if (self.isSpeaking) {
+        [self.vocalizer cancel];
+        self.isSpeaking = false;
+    }
 }
 
 -(void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
@@ -453,6 +475,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
 -(void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
 {
     self.title = @"Done Listening...";//title changes to done listening when done listening...
+    [self findStationsNearby:self.searchBar.text];
 }
 -(void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
@@ -484,5 +507,24 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     [alert show];
 }
 
+- (void)vocalizer:(SKVocalizer *)vocalizer willBeginSpeakingString:(NSString *)text {
+    self.isSpeaking = YES;
+}
 
+- (void)vocalizer:(SKVocalizer *)vocalizer didFinishSpeakingString:(NSString *)text withError:(NSError *)error {
+    if (error !=nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+        if (self.isSpeaking) {
+            [self.vocalizer cancel];
+        }
+    }
+    
+    self.isSpeaking = false;
+}
 @end
