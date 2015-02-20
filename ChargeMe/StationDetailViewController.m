@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
+@property int hours;
 
 @property NSArray *commentsArray;
 @property PFObject *stationObject;
@@ -131,12 +132,13 @@
 }
 
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
-    
     PFObject *user = [PFUser currentUser];
-    PFObject *bookmark = [PFObject objectWithClassName:@"Bookmarks"];
-    bookmark[@"station"] = self.stationObject;
-    bookmark[@"user"] = user;
-    [bookmark saveInBackground];
+    PFObject *favorite = [PFObject objectWithClassName:@"Favorites"];
+    favorite[@"station"] = self.stationObject;
+    favorite[@"user"] = user;
+    [favorite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"Favorited the station %@", self.stationObject[@"station_name"]);
+    }];
 }
 
 - (IBAction)onAddCommentButtonPressed:(id)sender {
@@ -207,52 +209,86 @@
 
 - (IBAction)onCheckInButtonPressed:(UIBarButtonItem *)sender
 {
-    // Optional: include multiple items
-    NSDecimalNumber *charge = [NSDecimalNumber decimalNumberWithString:@"39.99"];
-    int hours = [self.hoursTextField.text intValue];
-    PayPalItem *item1 = [PayPalItem itemWithName:self.chargingStation.stationName
-                                    withQuantity:hours
-                                       withPrice:charge
-                                    withCurrency:@"USD"
-                                         withSku:@"CHS-00037"];
-    NSArray *items = @[item1];
-    NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
-
-    // Optional: include payment details
-    NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0.00"];
-    float taxValue = floorf(([charge floatValue] * (7.5/100) * 100) / 100);
-    NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithFloat:taxValue];
-    PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
-                                                                               withShipping:shipping
-                                                                                    withTax:tax];
-
-    NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
-
-    PayPalPayment *payment = [[PayPalPayment alloc] init];
-    payment.amount = total;
-    payment.currencyCode = @"USD";
-    payment.shortDescription = @"Charging Station Costs";
-    payment.items = items;  // if not including multiple items, then leave payment.items as nil
-    payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
-
-    if (!payment.processable) {
-        // This particular payment will always be processable. If, for
-        // example, the amount was negative or the shortDescription was
-        // empty, this payment wouldn't be processable, and you'd want
-        // to handle that here.
+    if ([self.hoursTextField.text isEqualToString:@""]) {
+        UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Empty Fields" message:@"Please specify how long you'll be statying" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [errorAlertView show];
     }
+    else {
+        // Optional: include multiple items
+        NSDecimalNumber *charge = [NSDecimalNumber decimalNumberWithString:@"39.99"];
+        self.hours = [self.hoursTextField.text intValue];
+        PayPalItem *item1 = [PayPalItem itemWithName:self.chargingStation.stationName
+                                        withQuantity:self.hours
+                                           withPrice:charge
+                                        withCurrency:@"USD"
+                                             withSku:@"CHS-00037"];
+        NSArray *items = @[item1];
+        NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
 
-    // Update payPalConfig reaccepting credit cards.
-    self.payPalConfig.acceptCreditCards = self.acceptCreditCards;
+        // Optional: include payment details
+        NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"0.00"];
+        float taxValue = floorf(([charge floatValue] * (7.5/100) * 100) / 100);
+        NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithFloat:taxValue];
+        PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
+                                                                                   withShipping:shipping
+                                                                                        withTax:tax];
 
-    PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:self.payPalConfig delegate:self];
-    [self presentViewController:paymentViewController animated:YES completion:nil];
+        NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
+
+        PayPalPayment *payment = [[PayPalPayment alloc] init];
+        payment.amount = total;
+        payment.currencyCode = @"USD";
+        payment.shortDescription = self.chargingStation.stationName;
+        payment.items = items;  // if not including multiple items, then leave payment.items as nil
+        payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
+
+        if (!payment.processable) {
+            // This particular payment will always be processable. If, for
+            // example, the amount was negative or the shortDescription was
+            // empty, this payment wouldn't be processable, and you'd want
+            // to handle that here.
+        }
+
+        // Update payPalConfig reaccepting credit cards.
+        self.payPalConfig.acceptCreditCards = self.acceptCreditCards;
+
+        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment configuration:self.payPalConfig delegate:self];
+        [self presentViewController:paymentViewController animated:YES completion:nil];
+    }
 }
 
 - (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
     NSLog(@"PayPal Payment Success! %@", [completedPayment description]);
 
-    //    [self sendCompletedPaymentToServer:completedPayment]; // Payment was processed successfully; send to server for verification and fulfillment
+    //    [self sendCompletedPaymentToServer:completedPayment];
+    // Payment was processed successfully; send to server for verification and fulfillment
+
+    // Store the payment information onto parse with userinfo and station info
+    PFObject *payment = [PFObject objectWithClassName:@"Payments"];
+    payment[@"user"] = [PFUser currentUser];
+    payment[@"amountPaid"] = completedPayment.amount;
+    payment[@"currencyCode"] = completedPayment.currencyCode;
+    payment[@"shortDescription"] = completedPayment.shortDescription;
+    payment[@"station"] = self.stationObject;
+    [payment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"Saving Pament Info Successfull");
+        if (succeeded) {
+            PFObject *checkIn = [PFObject objectWithClassName:@"CheckIn"];
+            checkIn[@"user"] = [PFUser currentUser];
+            NSDate *currentDate = [NSDate date];
+            checkIn[@"checkInDate"] = currentDate;
+
+            NSTimeInterval secondsInSpecifiedHours = self.hours * 3600;
+            checkIn[@"checkOutDate"] = [currentDate dateByAddingTimeInterval:secondsInSpecifiedHours];
+            checkIn[@"payment"] = payment;
+            [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"Check In Completed");
+                }
+            }];
+        }
+    }];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

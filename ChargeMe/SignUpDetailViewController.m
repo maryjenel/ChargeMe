@@ -101,6 +101,7 @@
     user[@"firstName"] = self.firstNameTextField.text;
     user[@"lastName"] = self.lastNameTextField.text;
     user[@"phoneNumber"] = self.phoneNumberTextField.text;
+    user[@"userType"] = @"EVOwner";
 
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {

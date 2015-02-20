@@ -34,6 +34,8 @@
 
 @property NSNumber *nrel_id;
 
+- (instancetype)initWithChargingStationPFObject:(PFObject *)charingStationObject;
+
 + (void)addAPIDatatoParse;
 + (void)getChargingStationInfoForID:(NSNumber *)nrel_id andCompletion:(void(^)(ChargingStation *chargingStationInfo))completion;
 + (void)saveAPIDataToParse:(NSNumber *)nrel_id andCompletion:(void(^)(PFObject *chargingStationObject))completion;
