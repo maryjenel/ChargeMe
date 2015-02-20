@@ -270,8 +270,13 @@
     payment[@"currencyCode"] = completedPayment.currencyCode;
     payment[@"shortDescription"] = completedPayment.shortDescription;
     payment[@"station"] = self.stationObject;
+    if (self.stationObject[@"owner"]) {
+        payment[@"stationOwner"] = self.stationObject[@"owner"];
+    }
     [payment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"Saving Pament Info Successfull");
+
+        // If payment is successful, checkin user
         if (succeeded) {
             PFObject *checkIn = [PFObject objectWithClassName:@"CheckIn"];
             checkIn[@"user"] = [PFUser currentUser];
@@ -281,6 +286,8 @@
             NSTimeInterval secondsInSpecifiedHours = self.hours * 3600;
             checkIn[@"checkOutDate"] = [currentDate dateByAddingTimeInterval:secondsInSpecifiedHours];
             checkIn[@"payment"] = payment;
+            checkIn[@"station"] = self.stationObject;
+            checkIn[@"stationOwner"] = self.stationObject[@"owner"];
             [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"Check In Completed");

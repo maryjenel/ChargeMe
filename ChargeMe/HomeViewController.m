@@ -334,6 +334,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
 
                  [self.chargeStationsArray addObject:chargingStation];
              }
+
              [self pinEachChargingStation:2];
          }
          else
@@ -344,6 +345,19 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
 
      }];
 
+    // Load all stations added by chargeme user
+    PFQuery *query = [PFQuery queryWithClassName:@"Stations"];
+    [query whereKey:@"nrel_id" equalTo:[NSNumber numberWithInt:46333420]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error) {
+             for (PFObject *stationObject in objects) {
+                 ChargingStation *chargingStation = [[ChargingStation alloc] initWithChargingStationPFObject:stationObject];
+                 [self.chargeStationsArray addObject:chargingStation];
+             }
+             [self pinEachChargingStation:2];
+         }
+     }];
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation

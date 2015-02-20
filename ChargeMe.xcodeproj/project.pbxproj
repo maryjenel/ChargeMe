@@ -25,6 +25,8 @@
 		18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF81A8E688000762576 /* libxml2.dylib */; };
 		18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */; };
 		18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */; };
+		18E6E4341A970D0700FA4174 /* CurrentUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */; };
+		18E6E4371A970E7E00FA4174 /* OwnerPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4361A970E7E00FA4174 /* OwnerPaymentsViewController.m */; };
 		18F0676D1A92A7CE0070B346 /* FindLocationOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0676C1A92A7CE0070B346 /* FindLocationOnMapViewController.m */; };
 		626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626FD7EB1A8D6D000087911F /* MapKit.framework */; };
 		626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7EE1A8D6F590087911F /* ChargingStation.m */; };
@@ -62,7 +64,6 @@
 		627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED41A8C03F300B3438A /* PromotionsViewController.m */; };
 		627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED71A8C03FF00B3438A /* ShareViewController.m */; };
 		627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */; };
-		62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */; };
 		62850D721A8D1FB50076739F /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 62850D701A8D1FB50076739F /* dsym_upload.sh */; };
 		62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */; };
 		62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D781A8D25AA0076739F /* SignUpViewController.m */; };
@@ -122,6 +123,10 @@
 		18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
 		18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
+		18E6E4321A970D0700FA4174 /* CurrentUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserViewController.h; sourceTree = "<group>"; };
+		18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserViewController.m; sourceTree = "<group>"; };
+		18E6E4351A970E7E00FA4174 /* OwnerPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnerPaymentsViewController.h; sourceTree = "<group>"; };
+		18E6E4361A970E7E00FA4174 /* OwnerPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnerPaymentsViewController.m; sourceTree = "<group>"; };
 		18F0676B1A92A7CE0070B346 /* FindLocationOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindLocationOnMapViewController.h; sourceTree = "<group>"; };
 		18F0676C1A92A7CE0070B346 /* FindLocationOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindLocationOnMapViewController.m; sourceTree = "<group>"; };
 		626FD7EB1A8D6D000087911F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -177,8 +182,6 @@
 		627B3ED71A8C03FF00B3438A /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		627B3ED91A8C059100B3438A /* CustomProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProfileCollectionViewCell.h; sourceTree = "<group>"; };
 		627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProfileCollectionViewCell.m; sourceTree = "<group>"; };
-		62850D691A8C1AB40076739F /* ProfileShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileShareViewController.h; sourceTree = "<group>"; };
-		62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileShareViewController.m; sourceTree = "<group>"; };
 		62850D6D1A8D1FB50076739F /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
 		62850D6E1A8D1FB50076739F /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		62850D6F1A8D1FB50076739F /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
@@ -418,8 +421,6 @@
 				62850D781A8D25AA0076739F /* SignUpViewController.m */,
 				627B3ED41A8C03F300B3438A /* PromotionsViewController.m */,
 				627B3ED31A8C03F300B3438A /* PromotionsViewController.h */,
-				62850D691A8C1AB40076739F /* ProfileShareViewController.h */,
-				62850D6A1A8C1AB40076739F /* ProfileShareViewController.m */,
 				627B3ED01A8BF28900B3438A /* ProfileViewController.h */,
 				627B3ED11A8BF28900B3438A /* ProfileViewController.m */,
 				1847AA2D1A8DAA000013F9D1 /* StationDetailViewController.h */,
@@ -432,6 +433,10 @@
 				18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */,
 				18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */,
 				18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */,
+				18E6E4321A970D0700FA4174 /* CurrentUserViewController.h */,
+				18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */,
+				18E6E4351A970E7E00FA4174 /* OwnerPaymentsViewController.h */,
+				18E6E4361A970E7E00FA4174 /* OwnerPaymentsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -594,11 +599,12 @@
 				627B3E4A1A89623500B3438A /* main.m in Sources */,
 				18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */,
 				18061CFC1A93DF950013B79E /* TabBarViewController.m in Sources */,
-				62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */,
 				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
+				18E6E4371A970E7E00FA4174 /* OwnerPaymentsViewController.m in Sources */,
 				627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */,
 				626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */,
 				18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */,
+				18E6E4341A970D0700FA4174 /* CurrentUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

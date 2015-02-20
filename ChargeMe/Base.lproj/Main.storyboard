@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="107" y="2457"/>
         </scene>
-        <!--Profile Share View Controller-->
+        <!--Current User View Controller-->
         <scene sceneID="6gt-HT-uPQ">
             <objects>
-                <viewController title="Profile Share View Controller" id="HuT-1l-Wuu" customClass="ProfileShareViewController" sceneMemberID="viewController">
+                <viewController title="Current User View Controller" id="HuT-1l-Wuu" customClass="CurrentUserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kJY-99-oBt"/>
                         <viewControllerLayoutGuide type="bottom" id="F4l-QX-PIj"/>
@@ -399,19 +399,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Customer: Seaver Kyaw" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6F-ZC-Sec">
-                                <rect key="frame" x="16" y="112" width="299" height="21"/>
+                                <rect key="frame" x="21" y="326" width="299" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seaver has been there for 2 hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5r-6m-ZLd">
-                                <rect key="frame" x="16" y="156" width="260" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cost: $10 an Hour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4o-U2-zia">
-                                <rect key="frame" x="16" y="207" width="212" height="21"/>
+                                <rect key="frame" x="22" y="351" width="260" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -423,7 +417,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-x9-GeL">
-                                <rect key="frame" x="215" y="288" width="69" height="30"/>
+                                <rect key="frame" x="233" y="456" width="69" height="30"/>
                                 <state key="normal" title="Go Offline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -435,22 +429,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123 Happy Place Happyville, CA 941014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqW-rV-TI1">
-                                <rect key="frame" x="5" y="83" width="311" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mary Jenel Myers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-jv-Ms9">
-                                <rect key="frame" x="179" y="236" width="136" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-ob-Ofz">
+                                <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="rvY-Wi-F2N"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChargingStationsCell" textLabel="I4o-8V-HW2" style="IBUITableViewCellStyleDefault" id="ZEG-aL-4fT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEG-aL-4fT" id="esr-q5-ktO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I4o-8V-HW2">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HuT-1l-Wuu" id="BP2-8L-8aR"/>
+                                    <outlet property="delegate" destination="HuT-1l-Wuu" id="7Vb-Ol-Sye"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BCH-ob-Ofz" firstAttribute="leading" secondItem="5pL-i2-alU" secondAttribute="leadingMargin" constant="-16" id="46E-vi-53M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BCH-ob-Ofz" secondAttribute="trailing" constant="-16" id="AiL-Rc-Fia"/>
+                            <constraint firstItem="BCH-ob-Ofz" firstAttribute="top" secondItem="kJY-99-oBt" secondAttribute="bottom" id="O8h-Ot-d0e"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="smiley-smile" id="2Qf-oG-imY"/>
+                    <connections>
+                        <outlet property="tableView" destination="BCH-ob-Ofz" id="1br-P4-Tpg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5s5-33-c90" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -513,10 +531,10 @@
             </objects>
             <point key="canvasLocation" x="1678" y="2457"/>
         </scene>
-        <!--Charges View Controller-->
+        <!--Payments View Controller-->
         <scene sceneID="Gkg-NK-D4D">
             <objects>
-                <viewController title="Charges View Controller" id="Yy8-bQ-0cw" sceneMemberID="viewController">
+                <viewController title="Payments View Controller" id="Yy8-bQ-0cw" customClass="OwnerPaymentsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dp6-rw-YuZ"/>
                         <viewControllerLayoutGuide type="bottom" id="H6n-6G-BKh"/>
@@ -524,9 +542,37 @@
                     <view key="view" contentMode="scaleToFill" id="cNm-jd-fbV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Nw-k0-2wL">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentsCell" id="wOZ-jS-2FX">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wOZ-jS-2FX" id="sWt-Ux-6sd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Yy8-bQ-0cw" id="Tra-5w-9hd"/>
+                                    <outlet property="delegate" destination="Yy8-bQ-0cw" id="j43-pf-XEN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Nw-k0-2wL" secondAttribute="trailing" constant="-16" id="8I3-TB-LM1"/>
+                            <constraint firstItem="H6n-6G-BKh" firstAttribute="top" secondItem="2Nw-k0-2wL" secondAttribute="bottom" id="Ijn-d9-d5u"/>
+                            <constraint firstItem="2Nw-k0-2wL" firstAttribute="top" secondItem="Dp6-rw-YuZ" secondAttribute="bottom" id="ar6-Ov-rFf"/>
+                            <constraint firstItem="2Nw-k0-2wL" firstAttribute="leading" secondItem="cNm-jd-fbV" secondAttribute="leadingMargin" constant="-16" id="xEa-DW-1fX"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Charges" image="dollar-sign" id="3J9-IU-h1T"/>
+                    <tabBarItem key="tabBarItem" title="Payments" image="dollar-sign" id="3J9-IU-h1T"/>
+                    <connections>
+                        <outlet property="tableView" destination="2Nw-k0-2wL" id="3ik-s9-XCv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgo-r2-gEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
