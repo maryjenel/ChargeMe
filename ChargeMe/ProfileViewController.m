@@ -124,12 +124,12 @@
          {   Car *car = [Car new];
             for (PFObject *object  in objects)
             {
-                if ([object[@"carType"] isEqualToString:@"Tesla Model S"])
+                if ([object[@"carType"] isEqualToString:@"Tesla Model X"])
                 {
-                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelS"];  // UPGRADE: save photos on parse and download
+                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelX"];  // UPGRADE: save photos on parse and download
                     car.carImage = teslaImage;
-                    car.carName = @"Tesla Model S";
-                    car.outletTypeArray = @[@"Tesla (Model S)", @"Quick Charge (CHAdeMO)",@"Tesla SuperCharger"];
+                    car.carName = @"Tesla Model X";
+                    car.outletTypeArray = @[@"Tesla (Model X)", @"Quick Charge (CHAdeMO)",@"Tesla SuperCharger"];
                     [self.carArray addObject:car];
 
                 }
