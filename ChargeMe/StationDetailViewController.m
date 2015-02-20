@@ -62,7 +62,19 @@
         if (!error)
         {
             if (objects.count) {
-                self.stationObject = [objects firstObject];
+                // Check if the charging station is not one created by an owner in parse
+                if ([self.chargingStation.nrel_id doubleValue] != 46333420) {
+                    self.stationObject = [objects firstObject];
+                }
+                else
+                {
+                    // Find the station object with the object id
+                    for (PFObject *stationObject in objects) {
+                        if ([stationObject.objectId isEqualToString:self.chargingStation.object_id]) {
+                            self.stationObject = stationObject;
+                        }
+                    }
+                }
                 [self getAllComments];
             }
             else

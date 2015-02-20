@@ -33,6 +33,7 @@
 @property CLLocation *location;
 
 @property NSNumber *nrel_id;
+@property NSString *object_id;
 
 - (instancetype)initWithChargingStationPFObject:(PFObject *)charingStationObject;
 

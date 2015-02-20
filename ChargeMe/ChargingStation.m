@@ -33,6 +33,7 @@
         self.otherCharge = chargingStationObject[@"ev_other_evse"];
         self.zipCode = [chargingStationObject[@"zipCode"] doubleValue];
         self.nrel_id = chargingStationObject[@"nrel_id"];
+        self.object_id = chargingStationObject.objectId;
     }
     return self;
 }
