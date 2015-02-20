@@ -24,6 +24,7 @@
 		18CBAEF71A8E636E00762576 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF61A8E636E00762576 /* libz.dylib */; };
 		18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF81A8E688000762576 /* libxml2.dylib */; };
 		18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */; };
+		18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */; };
 		18F0676D1A92A7CE0070B346 /* FindLocationOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0676C1A92A7CE0070B346 /* FindLocationOnMapViewController.m */; };
 		626FD7EC1A8D6D000087911F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626FD7EB1A8D6D000087911F /* MapKit.framework */; };
 		626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 626FD7EE1A8D6F590087911F /* ChargingStation.m */; };
@@ -66,7 +67,6 @@
 		62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */; };
 		62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D781A8D25AA0076739F /* SignUpViewController.m */; };
 		62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */; };
-		62CEC8E71A942E49003DC5B9 /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62CEC8E61A942E48003DC5B9 /* SpeechKit.framework */; };
 		62CEC8EB1A942E7B003DC5B9 /* earcon_cancel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8E81A942E7B003DC5B9 /* earcon_cancel.wav */; };
 		62CEC8EC1A942E7B003DC5B9 /* earcon_done_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8E91A942E7B003DC5B9 /* earcon_done_listening.wav */; };
 		62CEC8ED1A942E7B003DC5B9 /* earcon_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8EA1A942E7B003DC5B9 /* earcon_listening.wav */; };
@@ -120,6 +120,8 @@
 		18CBAEFA1A8E68E700762576 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		18D01B491A955000006DA8B1 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
 		18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
+		18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
+		18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
 		18F0676B1A92A7CE0070B346 /* FindLocationOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindLocationOnMapViewController.h; sourceTree = "<group>"; };
 		18F0676C1A92A7CE0070B346 /* FindLocationOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindLocationOnMapViewController.m; sourceTree = "<group>"; };
 		626FD7EB1A8D6D000087911F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -186,7 +188,6 @@
 		62850D781A8D25AA0076739F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		62850D7A1A8D4E170076739F /* SignUpDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpDetailViewController.h; sourceTree = "<group>"; };
 		62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpDetailViewController.m; sourceTree = "<group>"; };
-		62CEC8E61A942E48003DC5B9 /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = "../../Downloads/DragonMobileSDK_1.4-2.12/SpeechKit.framework"; sourceTree = "<group>"; };
 		62CEC8E81A942E7B003DC5B9 /* earcon_cancel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_cancel.wav; sourceTree = "<group>"; };
 		62CEC8E91A942E7B003DC5B9 /* earcon_done_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_done_listening.wav; sourceTree = "<group>"; };
 		62CEC8EA1A942E7B003DC5B9 /* earcon_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_listening.wav; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62CEC8E71A942E49003DC5B9 /* SpeechKit.framework in Frameworks */,
 				1834554C1A8E7B640041C640 /* libsqlite3.0.dylib in Frameworks */,
 				1834554A1A8E7B050041C640 /* libstdc++.6.0.9.dylib in Frameworks */,
 				627B3E961A8AB08400B3438A /* Social.framework in Frameworks */,
@@ -348,7 +348,6 @@
 			isa = PBXGroup;
 			children = (
 				62CEC8EE1A942E94003DC5B9 /* SpeechKit.framework */,
-				62CEC8E61A942E48003DC5B9 /* SpeechKit.framework */,
 				1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */,
 				183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */,
 				185559371A8E768D00CCDC1C /* ParseFramework */,
@@ -431,6 +430,8 @@
 				18061CFB1A93DF950013B79E /* TabBarViewController.m */,
 				18D01B491A955000006DA8B1 /* FavoritesTableViewController.h */,
 				18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */,
+				18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */,
+				18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -591,6 +592,7 @@
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
 				627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */,
 				627B3E4A1A89623500B3438A /* main.m in Sources */,
+				18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */,
 				18061CFC1A93DF950013B79E /* TabBarViewController.m in Sources */,
 				62850D6B1A8C1AB40076739F /* ProfileShareViewController.m in Sources */,
 				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
