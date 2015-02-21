@@ -24,6 +24,7 @@
 		18CBAEF71A8E636E00762576 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF61A8E636E00762576 /* libz.dylib */; };
 		18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF81A8E688000762576 /* libxml2.dylib */; };
 		18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */; };
+		18D64FFE1A97F3EB0079217E /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D64FFD1A97F3EB0079217E /* SpeechKit.framework */; };
 		18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */; };
 		18E6E4341A970D0700FA4174 /* CurrentUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */; };
 		18E6E4371A970E7E00FA4174 /* OwnerPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4361A970E7E00FA4174 /* OwnerPaymentsViewController.m */; };
@@ -121,6 +122,7 @@
 		18CBAEFA1A8E68E700762576 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		18D01B491A955000006DA8B1 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
 		18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
+		18D64FFD1A97F3EB0079217E /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = ../../../../../../../../Downloads/SpeechKit.framework; sourceTree = "<group>"; };
 		18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
 		18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
 		18E6E4321A970D0700FA4174 /* CurrentUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserViewController.h; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D64FFE1A97F3EB0079217E /* SpeechKit.framework in Frameworks */,
 				1834554C1A8E7B640041C640 /* libsqlite3.0.dylib in Frameworks */,
 				1834554A1A8E7B050041C640 /* libstdc++.6.0.9.dylib in Frameworks */,
 				627B3E961A8AB08400B3438A /* Social.framework in Frameworks */,
@@ -350,6 +353,7 @@
 		627B3E9F1A8AB0D400B3438A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18D64FFD1A97F3EB0079217E /* SpeechKit.framework */,
 				62CEC8EE1A942E94003DC5B9 /* SpeechKit.framework */,
 				1834554B1A8E7B640041C640 /* libsqlite3.0.dylib */,
 				183455491A8E7B050041C640 /* libstdc++.6.0.9.dylib */,
@@ -730,6 +734,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/tewodroswondimuAir/Downloads,
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -755,6 +760,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/tewodroswondimuAir/Downloads,
 				);
 				INFOPLIST_FILE = ChargeMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
