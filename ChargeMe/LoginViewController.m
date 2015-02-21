@@ -21,12 +21,44 @@
     self.logInView.backgroundColor = [UIColor blackColor];
     self.logInView.usernameField.backgroundColor = [UIColor grayColor];
     self.logInView.passwordField.backgroundColor = [UIColor grayColor];
+    [self.logInView.usernameField setHidden:YES];
+     [self.logInView.passwordField setHidden:YES];
 
 }
 
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    CGPoint oldUsernameCenter = self.logInView.usernameField.center;
+//    CGPoint neworigin;
+//    //moves the userfield center off the screen.
+//    neworigin.x = self.logInView.usernameField.center.x - self.view.bounds.size.width;
+//    self.logInView.usernameField.center = neworigin;
+//    neworigin.x = self.logInView.passwordField.center.x - self.view.bounds.size.width;
+//    self.logInView.passwordField.center = neworigin;
+//
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.logInView.usernameField.center = oldUsernameCenter;
+//
+//    }];
+//}
 -(void)viewDidAppear:(BOOL)animated
 {
-  //  [self.logInView.logo setFrame:CGRectMake(self.logInView.logo.center.x - self.view.bounds.size.width)];
+    CGPoint oldUsernameCenter = self.logInView.usernameField.center;
+    CGPoint oldPasswordCenter = self.logInView.passwordField.center;
+    CGPoint neworigin;
+    //moves the userfield center off the screen.
+    neworigin.x = self.logInView.usernameField.center.x - self.view.bounds.size.width;
+    self.logInView.usernameField.center = neworigin;
+    [self.logInView.usernameField setHidden:NO];
+    neworigin.x = self.logInView.passwordField.center.x - self.view.bounds.size.width;
+    self.logInView.passwordField.center = neworigin;
+     [self.logInView.passwordField setHidden:NO];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        self.logInView.usernameField.center = oldUsernameCenter;
+        self.logInView.passwordField.center = oldPasswordCenter;
+
+    }];
 }
 -(void)viewDidLayoutSubviews
 {
