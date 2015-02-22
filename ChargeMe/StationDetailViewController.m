@@ -22,6 +22,7 @@
 @property int hours;
 
 @property NSArray *commentsArray;
+@property NSMutableArray *messagesArray;
 @property PFObject *stationObject;
 
 @end
@@ -30,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.messagesArray = [NSMutableArray new];
     // Set up payPalConfig
     _payPalConfig = [[PayPalConfiguration alloc] init];
     _payPalConfig.acceptCreditCards = YES;
@@ -142,6 +143,42 @@
                              MKLaunchOptionsDirectionsModeKey, nil];
     [MKMapItem openMapsWithItems: items launchOptions: options];
 }
+- (IBAction)onMessageButtonPressed:(id)sender {
+    
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Send a Message" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         nil;
+     }];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                 {
+                                     UITextField *textField = alertcontroller.textFields.firstObject;
+                                     PFObject *myMessage = [PFObject objectWithClassName:@"Message"];
+                                     myMessage[@"content"] = textField.text;
+                                     myMessage[@"author"] = [PFUser currentUser];
+//                                     myMessage[@"recipient"] = self.chargingStation.
+                                     [myMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                         if (succeeded) {
+                                             [self getAllMessages];
+                                         }
+                                         else
+                                         {
+                                             NSLog(@"Message couldn't be saved: %@", error);
+                                         }
+                                     }];
+                                 }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertcontroller addAction:okayAction];
+    [alertcontroller addAction:cancelAction];
+    
+    [self presentViewController:alertcontroller animated:YES completion:^{
+        nil;
+    }];
+   
+}
 
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
     PFObject *user = [PFUser currentUser];
@@ -210,6 +247,15 @@
 
 - (void)getAllComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query whereKey:@"station" equalTo:self.stationObject];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         self.commentsArray = objects;
+         [self.tableView reloadData];
+     }];
+}
+- (void)getAllMessages {
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
     [query whereKey:@"station" equalTo:self.stationObject];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {

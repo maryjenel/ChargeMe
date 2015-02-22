@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tOY-6l-aw9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -147,10 +147,19 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-fa-Vfy">
-                                <rect key="frame" x="174" y="277" width="130" height="30"/>
+                                <rect key="frame" x="174" y="277" width="129.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRy-vZ-D1t">
+                                <rect key="frame" x="70" y="277" width="30" height="30"/>
+                                <state key="normal" title="📩">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onMessageButtonPressed:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="sfs-bj-1Dk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -159,8 +168,11 @@
                             <constraint firstItem="3rr-vz-Caj" firstAttribute="top" secondItem="bVE-Jw-7HN" secondAttribute="bottom" id="8MB-w2-51h"/>
                             <constraint firstItem="gp3-gY-8xd" firstAttribute="top" secondItem="zXP-fa-Vfy" secondAttribute="bottom" constant="7" id="Gdk-zQ-lbD"/>
                             <constraint firstItem="zXP-fa-Vfy" firstAttribute="top" secondItem="3rr-vz-Caj" secondAttribute="bottom" constant="13" id="JC0-nJ-Hq1"/>
+                            <constraint firstItem="4Lo-MX-avP" firstAttribute="top" secondItem="hRy-vZ-D1t" secondAttribute="bottom" constant="7" id="NYU-xW-XFE"/>
                             <constraint firstItem="4Lo-MX-avP" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" id="NZK-E9-uZh"/>
+                            <constraint firstItem="hRy-vZ-D1t" firstAttribute="top" secondItem="3rr-vz-Caj" secondAttribute="bottom" constant="13" id="Rtg-56-H6B"/>
                             <constraint firstItem="3rr-vz-Caj" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" constant="-16" id="dFj-eP-rnD"/>
+                            <constraint firstItem="hRy-vZ-D1t" firstAttribute="leading" secondItem="aT3-Hz-hv9" secondAttribute="trailing" constant="24" id="e2D-NR-0cp"/>
                             <constraint firstItem="aT3-Hz-hv9" firstAttribute="top" secondItem="3rr-vz-Caj" secondAttribute="bottom" constant="12" id="hTA-HP-YHF"/>
                             <constraint firstItem="4Lo-MX-avP" firstAttribute="top" secondItem="aT3-Hz-hv9" secondAttribute="bottom" constant="8" id="kcI-Ox-tVI"/>
                             <constraint firstItem="aT3-Hz-hv9" firstAttribute="leading" secondItem="i6M-bZ-8kx" secondAttribute="leadingMargin" id="lL0-1O-uUc"/>
