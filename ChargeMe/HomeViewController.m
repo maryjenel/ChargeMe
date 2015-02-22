@@ -350,7 +350,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
                  chargingStation.zipCode = [chargingStationDictionary[@"zip"] doubleValue];
                  chargingStation.nrel_id = chargingStationDictionary[@"id"];
 
-//                 [self.chargeStationsArray addObject:chargingStation];
+                 [self.chargeStationsArray addObject:chargingStation];
              }
 
              [self pinEachChargingStation:2];

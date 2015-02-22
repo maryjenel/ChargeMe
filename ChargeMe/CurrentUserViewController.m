@@ -75,7 +75,7 @@
                 if (isCurrentUser) {
                     PFUser *user = checkInObject[@"user"];
                     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        self.customerName.text = object[@"firstName"];
+                        self.customerName.text = [NSString stringWithFormat:@"%@ %@", object[@"firstName"], object[@"lastName"]];
 
                         double sinceCheckIn = [checkInObject[@"checkOutDate"] timeIntervalSinceDate:[NSDate date]] / 3600;
                         self.hoursSince.text = [NSString stringWithFormat:@"%.2f hours since check in", sinceCheckIn];
