@@ -10,8 +10,7 @@
 
 @interface CustomProfileCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *CarImageCell;
-@property (weak, nonatomic) IBOutlet UILabel *paymentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteChargeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *TripHistoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *carTypeLabel;
+
 
 @end

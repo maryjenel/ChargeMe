@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property NSMutableArray *carArray;
+@property (weak, nonatomic) IBOutlet UILabel *carTypeLabel;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -124,12 +125,12 @@
          {   Car *car = [Car new];
             for (PFObject *object  in objects)
             {
-                if ([object[@"carType"] isEqualToString:@"Tesla Model X"])
+                if ([object[@"carType"] isEqualToString:@"Tesla Model S"])
                 {
-                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelX"];  // UPGRADE: save photos on parse and download
+                   UIImage *teslaImage = [UIImage imageNamed:@"TeslaModelS"];  // UPGRADE: save photos on parse and download
                     car.carImage = teslaImage;
-                    car.carName = @"Tesla Model X";
-                    car.outletTypeArray = @[@"Tesla (Model X)", @"Quick Charge (CHAdeMO)",@"Tesla SuperCharger"];
+                    car.carName = @"Tesla Model S";
+                    car.outletTypeArray = @[@"Tesla (Model S)", @"Quick Charge (CHAdeMO)",@"Tesla SuperCharger"];
                     [self.carArray addObject:car];
 
                 }
@@ -186,6 +187,7 @@
     CustomProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     Car *car = [self.carArray objectAtIndex:indexPath.row];
     cell.CarImageCell.image = car.carImage;
+    cell.carTypeLabel.text = car.carName;
     return cell;
 
 

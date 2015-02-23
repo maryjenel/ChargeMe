@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-fa-Vfy">
-                                <rect key="frame" x="174" y="277" width="129.5" height="30"/>
+                                <rect key="frame" x="174" y="277" width="130" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -828,22 +828,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-rX-3KU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="140"/>
+                                                    <rect key="frame" x="16" y="0.0" width="236" height="140"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-fe-XId">
-                                                    <rect key="frame" x="0.0" y="173" width="73" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite Charges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qp9-lW-DGv">
-                                                    <rect key="frame" x="0.0" y="201" width="131" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TripHistory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vql-2M-T6A">
-                                                    <rect key="frame" x="0.0" y="27" width="326" height="264"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CarType" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3o-bG-5n7">
+                                                    <rect key="frame" x="16" y="174" width="236" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -853,9 +841,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="CarImageCell" destination="aTN-rX-3KU" id="GKN-rr-t9R"/>
-                                            <outlet property="TripHistoryLabel" destination="vql-2M-T6A" id="UN6-Ee-6iL"/>
-                                            <outlet property="favoriteChargeLabel" destination="Qp9-lW-DGv" id="vFM-j6-toD"/>
-                                            <outlet property="paymentLabel" destination="Igf-fe-XId" id="53D-cy-HhP"/>
+                                            <outlet property="carTypeLabel" destination="I3o-bG-5n7" id="Ggg-vR-Sht"/>
                                             <segue destination="1UU-cy-ACi" kind="push" id="jn2-cZ-BAC"/>
                                         </connections>
                                     </collectionViewCell>
@@ -907,8 +893,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 hr 21min remaining" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKR-ix-lSZ">
-                                <rect key="frame" x="79" y="121" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 hr 21min remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKR-ix-lSZ">
+                                <rect key="frame" x="32" y="121" width="266" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -934,21 +920,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fx4-FL-rKc">
                                 <rect key="frame" x="32" y="150" width="266" height="202"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQG-ll-8My">
-                                <rect key="frame" x="32" y="502" width="114" height="30"/>
-                                <state key="normal" title="connect with car">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onConnectCarButtonPressed:" destination="1UU-cy-ACi" eventType="touchUpInside" id="RA6-jM-rg0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rl2-Qf-yYf"/>
                     <connections>
                         <outlet property="carImage" destination="fx4-FL-rKc" id="DcA-qe-Vfu"/>
+                        <outlet property="ifChargingLabel" destination="8VO-A6-YWf" id="jmC-6e-P2x"/>
+                        <outlet property="locationLabel" destination="fJP-xB-To0" id="Y4w-fg-49U"/>
+                        <outlet property="timeLabel" destination="UKR-ix-lSZ" id="3C2-Yu-ijA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7Y-Xr-sEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1245,9 +1225,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="G0T-N3-VAF"/>
         <segue reference="8QN-5Z-RaO"/>
+        <segue reference="G0T-N3-VAF"/>
         <segue reference="Nnk-Rf-Uea"/>
-        <segue reference="Vhy-oY-Bgb"/>
+        <segue reference="vm6-ug-eTe"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,21 +26,7 @@
 
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    CGPoint oldUsernameCenter = self.logInView.usernameField.center;
-//    CGPoint neworigin;
-//    //moves the userfield center off the screen.
-//    neworigin.x = self.logInView.usernameField.center.x - self.view.bounds.size.width;
-//    self.logInView.usernameField.center = neworigin;
-//    neworigin.x = self.logInView.passwordField.center.x - self.view.bounds.size.width;
-//    self.logInView.passwordField.center = neworigin;
-//
-//    [UIView animateWithDuration:0.3 animations:^{
-//        self.logInView.usernameField.center = oldUsernameCenter;
-//
-//    }];
-//}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     CGPoint oldUsernameCenter = self.logInView.usernameField.center;
@@ -54,8 +40,11 @@
     self.logInView.passwordField.center = neworigin;
      [self.logInView.passwordField setHidden:NO];
 
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         self.logInView.usernameField.center = oldUsernameCenter;
+
+    }];
+    [UIView animateWithDuration:0.3 animations:^{
         self.logInView.passwordField.center = oldPasswordCenter;
 
     }];
