@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
+
+@property UIView *loading;
+
 @property int hours;
 
 @property NSArray *commentsArray;
@@ -148,40 +151,39 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.chargingStation.stationPhone]]];
 }
 - (IBAction)onMessageButtonPressed:(id)sender {
-    
-    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Send a Message" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField)
-     {
-         nil;
-     }];
-    
-    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                 {
-                                     UITextField *textField = alertcontroller.textFields.firstObject;
-                                     PFObject *myMessage = [PFObject objectWithClassName:@"Message"];
-                                     myMessage[@"content"] = textField.text;
-                                     myMessage[@"author"] = [PFUser currentUser];
-//                                     myMessage[@"recipient"] = self.chargingStation.
-                                     [myMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                         if (succeeded) {
-                                             [self getAllMessages];
-                                         }
-                                         else
-                                         {
-                                             NSLog(@"Message couldn't be saved: %@", error);
-                                         }
-                                     }];
-                                 }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    
-    [alertcontroller addAction:okayAction];
-    [alertcontroller addAction:cancelAction];
-    
-    [self presentViewController:alertcontroller animated:YES completion:^{
-        nil;
-    }];
-   
+//    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Send a Message" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField)
+//     {
+//         nil;
+//     }];
+//    
+//    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+//                                 {
+//                                     UITextField *textField = alertcontroller.textFields.firstObject;
+//                                     PFObject *myMessage = [PFObject objectWithClassName:@"Message"];
+//                                     myMessage[@"content"] = textField.text;
+//                                     myMessage[@"author"] = [PFUser currentUser];
+////                                     myMessage[@"recipient"] = self.chargingStation.
+//                                     [myMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                                         if (succeeded) {
+//                                             [self getAllMessages];
+//                                         }
+//                                         else
+//                                         {
+//                                             NSLog(@"Message couldn't be saved: %@", error);
+//                                         }
+//                                     }];
+//                                 }];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+//    
+//    [alertcontroller addAction:okayAction];
+//    [alertcontroller addAction:cancelAction];
+//    
+//    [self presentViewController:alertcontroller animated:YES completion:^{
+//        nil;
+//    }];
+
 }
 
 - (IBAction)onAddToFavoritesButtonPressed:(id)sender {
@@ -267,6 +269,7 @@
          [self.tableView reloadData];
      }];
 }
+
 #pragma mark PayPalPaymentDelegate methods
 
 - (IBAction)onCheckInButtonPressed:(UIBarButtonItem *)sender
@@ -322,43 +325,58 @@
 - (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
     NSLog(@"PayPal Payment Success! %@", [completedPayment description]);
 
-    //    [self sendCompletedPaymentToServer:completedPayment];
     // Payment was processed successfully; send to server for verification and fulfillment
+    [self sendCompletedPaymentToServer:completedPayment];
+}
 
-    // Store the payment information onto parse with userinfo and station info
-    PFObject *payment = [PFObject objectWithClassName:@"Payments"];
-    payment[@"user"] = [PFUser currentUser];
-    payment[@"amountPaid"] = completedPayment.amount;
-    payment[@"currencyCode"] = completedPayment.currencyCode;
-    payment[@"shortDescription"] = completedPayment.shortDescription;
-    payment[@"station"] = self.stationObject;
-    if (self.stationObject[@"owner"]) {
-        payment[@"stationOwner"] = self.stationObject[@"owner"];
-    }
-    [payment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"Saving Pament Info Successfull");
+- (void)sendCompletedPaymentToServer:(PayPalPayment *)completedPayment {
+    NSLog(@"Here is your proof of payment:\n\n%@\n\nSend this to your server for confirmation and fulfillment.", completedPayment.confirmation);
+    NSDictionary *response = completedPayment.confirmation[@"response"];
 
-        // If payment is successful, checkin user
-        if (succeeded) {
-            PFObject *checkIn = [PFObject objectWithClassName:@"CheckIn"];
-            checkIn[@"user"] = [PFUser currentUser];
-            NSDate *currentDate = [NSDate date];
-            checkIn[@"checkInDate"] = currentDate;
-
-            NSTimeInterval secondsInSpecifiedHours = self.hours * 3600;
-            checkIn[@"checkOutDate"] = [currentDate dateByAddingTimeInterval:secondsInSpecifiedHours];
-            checkIn[@"payment"] = payment;
-            checkIn[@"station"] = self.stationObject;
-            checkIn[@"stationOwner"] = self.stationObject[@"owner"];
-            [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    NSLog(@"Check In Completed");
-                }
-            }];
+    // Check if the payment was approved
+    if ([response[@"state"] isEqualToString:@"approved"]) {
+        // Store the payment information onto parse with userinfo and station info
+        PFObject *payment = [PFObject objectWithClassName:@"Payments"];
+        payment[@"user"] = [PFUser currentUser];
+        payment[@"amountPaid"] = completedPayment.amount;
+        payment[@"currencyCode"] = completedPayment.currencyCode;
+        payment[@"shortDescription"] = completedPayment.shortDescription;
+        payment[@"station"] = self.stationObject;
+        if (self.stationObject[@"owner"]) {
+            payment[@"stationOwner"] = self.stationObject[@"owner"];
         }
-    }];
+        [payment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            NSLog(@"Saving Pament Info Successfull");
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+            // If payment is successful, checkin user
+            if (succeeded) {
+                PFObject *checkIn = [PFObject objectWithClassName:@"CheckIn"];
+                checkIn[@"user"] = [PFUser currentUser];
+                NSDate *currentDate = [NSDate date];
+                checkIn[@"checkInDate"] = currentDate;
+
+                NSTimeInterval secondsInSpecifiedHours = self.hours * 3600;
+                checkIn[@"checkOutDate"] = [currentDate dateByAddingTimeInterval:secondsInSpecifiedHours];
+                checkIn[@"payment"] = payment;
+                checkIn[@"station"] = self.stationObject;
+                if (self.stationObject[@"owner"]) {
+                    checkIn[@"stationOwner"] = self.stationObject[@"owner"];
+                }
+                [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"Check In Completed");
+                    }
+                }];
+            }
+        }];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Payment Failed" message:@"The payment you made failed. Plase check your paypal account" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [errorAlertView show];
+    }
 }
 
 - (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {

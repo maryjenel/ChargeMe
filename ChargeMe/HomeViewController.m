@@ -70,6 +70,10 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     self.chargeStationsArray = [NSMutableArray new];
     self.publicChargeStationsArray = [NSMutableArray new];
     self.privateChargeStationsArray = [NSMutableArray new];
+
+    //change background color to black & nav barr
+    self.view.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
     
     self.searchBar.delegate = self;
     NSString *jsonAddress = [NSString stringWithFormat:@"https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=%s&fuel_type=ELEC&state=CA&limit=100", kApiKeyNrel];

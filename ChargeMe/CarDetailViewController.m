@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ifChargingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *doneChargingButton;
 
 
 @end
@@ -29,6 +30,9 @@
     self.carImage.image = self.car.carImage; 
     self.title = [NSString stringWithFormat:@"%@", self.car.carName];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.ifChargingLabel setHidden:YES];
+    [self.locationLabel setHidden:YES];
+    [self.doneChargingButton setHidden:YES];
     [self findingTime];
 }
 
@@ -45,17 +49,35 @@
                 // If current user, fetch user details
 
 
-                BOOL isCurrentUser = [self date:[NSDate date] isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
+                BOOL isCurrentUser = [self date:[NSDate date]isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
+
+
                 if (isCurrentUser)
                 {
                     //comparing current date to date checked in.. ns date date is date right now... checkinobject is checkin date.
                     double sinceCheckIn = [[NSDate date] timeIntervalSinceDate:checkInObject[@"checkInDate"]] / 60;
                     self.timeLabel.text = [NSString stringWithFormat:@"%.2f minutes since you check in", sinceCheckIn];
+                    [self.locationLabel setHidden:NO];
+                    //create new PF object for station pointer
+                    PFObject *station = checkInObject[@"station"];
+                    //grabs all information from station pointer parse
+                    [station fetch];
+                    //sets the station Name to location label
+                    self.locationLabel.text = [NSString stringWithFormat:@"%@", station[@"stationName"]];
+                    [self.ifChargingLabel setHidden:NO];
+                    self.ifChargingLabel.text =@"Charging";
+                    [self.doneChargingButton setHidden:NO];
+                    
+
                 }
 
                 else
                 {
                     self.timeLabel.text = @"Please check in!";
+                    [self.ifChargingLabel setHidden:YES];
+                    [self.locationLabel setHidden:YES];
+                    [self.doneChargingButton setHidden:YES];
+                    
                 }
             }
         }
