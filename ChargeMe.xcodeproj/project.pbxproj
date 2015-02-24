@@ -62,13 +62,13 @@
 		627B3ECC1A8BDBB200B3438A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ECB1A8BDBB200B3438A /* SWRevealViewController.m */; };
 		627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ECE1A8BE04B00B3438A /* NavViewController.m */; };
 		627B3ED21A8BF28900B3438A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED11A8BF28900B3438A /* ProfileViewController.m */; };
-		627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED41A8C03F300B3438A /* PromotionsViewController.m */; };
 		627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3ED71A8C03FF00B3438A /* ShareViewController.m */; };
 		627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3EDA1A8C059100B3438A /* CustomProfileCollectionViewCell.m */; };
 		62850D721A8D1FB50076739F /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 62850D701A8D1FB50076739F /* dsym_upload.sh */; };
 		62850D731A8D1FB50076739F /* libCrittercism_v5_0_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62850D711A8D1FB50076739F /* libCrittercism_v5_0_7.a */; };
 		62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D781A8D25AA0076739F /* SignUpViewController.m */; };
 		62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */; };
+		62B8953D1A9C1D9300403999 /* PromotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8953C1A9C1D9300403999 /* PromotionsViewController.swift */; };
 		62CEC8EB1A942E7B003DC5B9 /* earcon_cancel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8E81A942E7B003DC5B9 /* earcon_cancel.wav */; };
 		62CEC8EC1A942E7B003DC5B9 /* earcon_done_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8E91A942E7B003DC5B9 /* earcon_done_listening.wav */; };
 		62CEC8ED1A942E7B003DC5B9 /* earcon_listening.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62CEC8EA1A942E7B003DC5B9 /* earcon_listening.wav */; };
@@ -178,8 +178,6 @@
 		627B3ECE1A8BE04B00B3438A /* NavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavViewController.m; sourceTree = "<group>"; };
 		627B3ED01A8BF28900B3438A /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		627B3ED11A8BF28900B3438A /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		627B3ED31A8C03F300B3438A /* PromotionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionsViewController.h; sourceTree = "<group>"; };
-		627B3ED41A8C03F300B3438A /* PromotionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionsViewController.m; sourceTree = "<group>"; };
 		627B3ED61A8C03FF00B3438A /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		627B3ED71A8C03FF00B3438A /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		627B3ED91A8C059100B3438A /* CustomProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProfileCollectionViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +191,8 @@
 		62850D781A8D25AA0076739F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		62850D7A1A8D4E170076739F /* SignUpDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpDetailViewController.h; sourceTree = "<group>"; };
 		62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpDetailViewController.m; sourceTree = "<group>"; };
+		62B8953B1A9C1D9200403999 /* ChargeMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChargeMe-Bridging-Header.h"; sourceTree = "<group>"; };
+		62B8953C1A9C1D9300403999 /* PromotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionsViewController.swift; sourceTree = "<group>"; };
 		62CEC8E81A942E7B003DC5B9 /* earcon_cancel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_cancel.wav; sourceTree = "<group>"; };
 		62CEC8E91A942E7B003DC5B9 /* earcon_done_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_done_listening.wav; sourceTree = "<group>"; };
 		62CEC8EA1A942E7B003DC5B9 /* earcon_listening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = earcon_listening.wav; sourceTree = "<group>"; };
@@ -409,6 +409,7 @@
 		627B3EDC1A8C059B00B3438A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				62B8953C1A9C1D9300403999 /* PromotionsViewController.swift */,
 				627B3ECD1A8BE04B00B3438A /* NavViewController.h */,
 				627B3ECE1A8BE04B00B3438A /* NavViewController.m */,
 				627B3E511A89623500B3438A /* HomeViewController.h */,
@@ -423,8 +424,6 @@
 				62850D7B1A8D4E170076739F /* SignUpDetailViewController.m */,
 				62850D771A8D25AA0076739F /* SignUpViewController.h */,
 				62850D781A8D25AA0076739F /* SignUpViewController.m */,
-				627B3ED41A8C03F300B3438A /* PromotionsViewController.m */,
-				627B3ED31A8C03F300B3438A /* PromotionsViewController.h */,
 				627B3ED01A8BF28900B3438A /* ProfileViewController.h */,
 				627B3ED11A8BF28900B3438A /* ProfileViewController.m */,
 				1847AA2D1A8DAA000013F9D1 /* StationDetailViewController.h */,
@@ -441,6 +440,7 @@
 				18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */,
 				18E6E4351A970E7E00FA4174 /* OwnerPaymentsViewController.h */,
 				18E6E4361A970E7E00FA4174 /* OwnerPaymentsViewController.m */,
+				62B8953B1A9C1D9200403999 /* ChargeMe-Bridging-Header.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -596,11 +596,11 @@
 				18F0676D1A92A7CE0070B346 /* FindLocationOnMapViewController.m in Sources */,
 				627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */,
 				627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */,
-				627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */,
 				62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */,
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
 				627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */,
 				627B3E4A1A89623500B3438A /* main.m in Sources */,
+				62B8953D1A9C1D9300403999 /* PromotionsViewController.swift in Sources */,
 				18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */,
 				18061CFC1A93DF950013B79E /* TabBarViewController.m in Sources */,
 				62850D791A8D25AA0076739F /* SignUpViewController.m in Sources */,
@@ -730,6 +730,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -748,6 +749,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChargeMe/ChargeMe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -755,6 +758,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -773,6 +777,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChargeMe/ChargeMe-Bridging-Header.h";
 			};
 			name = Release;
 		};

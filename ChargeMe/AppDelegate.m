@@ -137,7 +137,7 @@
 }
 
 - (void)setupSpeechKitConnection {
-    [SpeechKit setupWithID:@"NMDPTRIAL_maryjenel20150217181502"
+   [SpeechKit setupWithID:@"NMDPTRIAL_maryjenel20150217181502"
                       host:@"sandbox.nmdp.nuancemobility.net"
                       port:443
                     useSSL:NO

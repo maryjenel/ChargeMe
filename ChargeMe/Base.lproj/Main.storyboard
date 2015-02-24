@@ -400,7 +400,7 @@
         <!--Promotions View Controller-->
         <scene sceneID="A28-64-5Rs">
             <objects>
-                <viewController title="Promotions View Controller" id="OB8-ku-ULh" customClass="PromotionsViewController" sceneMemberID="viewController">
+                <viewController title="Promotions View Controller" id="OB8-ku-ULh" customClass="PromotionsViewController" customModule="ChargeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RuX-SO-Pa1"/>
                         <viewControllerLayoutGuide type="bottom" id="a7H-VW-Lhd"/>
@@ -408,6 +408,17 @@
                     <view key="view" contentMode="scaleToFill" id="tYw-Yw-dZy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChargeMeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FAx-kP-I0p">
+                                <rect key="frame" x="43" y="235" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sorry! No promotions available! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-hi-35I">
+                                <rect key="frame" x="37" y="117" width="246" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="5J4-4k-3XA">
@@ -415,9 +426,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="nRz-K5-i03" id="E3g-gv-4vv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6d-aB-ylf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1263,6 +1271,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ChargeMeLogo" width="1614" height="802"/>
         <image name="CurrentLocationButton" width="40" height="40"/>
         <image name="Heart" width="35" height="35"/>
         <image name="Map" width="35" height="35"/>
@@ -1281,9 +1290,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="0WW-no-sv0"/>
+        <segue reference="Vam-uh-2dO"/>
         <segue reference="G0T-N3-VAF"/>
         <segue reference="vm6-ug-eTe"/>
-        <segue reference="Nnk-Rf-Uea"/>
-        <segue reference="0WW-no-sv0"/>
     </inferredMetricsTieBreakers>
 </document>
