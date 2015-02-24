@@ -11,11 +11,13 @@ import UIKit
 
 class PromotionsViewController: UIViewController
 {
+    @IBOutlet weak var carImageView: UIImageView!
     override func viewDidLoad() {
+
         super.viewDidLoad()
-    let ovalShapeLayer: CAShapeLayer = CAShapeLayer()
-    let snailLauer: CALayer = CALayer()
-////    init(frame: CGRect, view: UIView)
+//    let ovalShapeLayer: CAShapeLayer = CAShapeLayer()
+//    let snailLauer: CALayer = CALayer()
+//    init(frame: CGRect, view: UIView)
 //    {
 //       super.init(frame: frame)
 //      self.view = view
