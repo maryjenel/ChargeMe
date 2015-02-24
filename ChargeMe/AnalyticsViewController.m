@@ -52,4 +52,24 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Find all the checkins that were made for the station selected on the table above
+    PFQuery *query = [PFQuery queryWithClassName:@"CheckIn"];
+    PFObject *station = self.stationsArray[indexPath.row];
+    [query whereKey:@"station" equalTo:station];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (PFObject *checkInObject in objects) {
+            PFObject *user = checkInObject[@"user"];
+            [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSString *fullName = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
+                PFObject *payment = checkInObject[@"payment"];
+                [payment fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    NSLog(@"%@ paid: %@", fullName, payment[@"amountPaid"]);
+                }];
+            }];
+        }
+    }];
+}
+
 @end
