@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 #import "PayPalMobile.h"
 #import "ChargingStation.h"
 

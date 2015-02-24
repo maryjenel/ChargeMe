@@ -601,8 +601,11 @@
 				18F0676D1A92A7CE0070B346 /* FindLocationOnMapViewController.m in Sources */,
 				627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */,
 				627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */,
+<<<<<<< HEAD
+=======
 				627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */,
 				18D468401A9C352100C554DF /* LittleBitsObject.m in Sources */,
+>>>>>>> devbranch
 				62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */,
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
 				627B3ED81A8C03FF00B3438A /* ShareViewController.m in Sources */,
