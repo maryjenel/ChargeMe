@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ifChargingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *doneChargingButton;
 
 
 @end
@@ -29,6 +30,9 @@
     self.carImage.image = self.car.carImage; 
     self.title = [NSString stringWithFormat:@"%@", self.car.carName];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.ifChargingLabel setHidden:YES];
+    [self.locationLabel setHidden:YES];
+    [self.doneChargingButton setHidden:YES];
     [self findingTime];
 }
 
@@ -46,16 +50,26 @@
 
 
                 BOOL isCurrentUser = [self date:[NSDate date] isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
+              //  PFQuery *stationQuery = [PFQuery queryWithClassName:@"station"];
+
+
                 if (isCurrentUser)
                 {
                     //comparing current date to date checked in.. ns date date is date right now... checkinobject is checkin date.
                     double sinceCheckIn = [[NSDate date] timeIntervalSinceDate:checkInObject[@"checkInDate"]] / 60;
                     self.timeLabel.text = [NSString stringWithFormat:@"%.2f minutes since you check in", sinceCheckIn];
+                    [self.locationLabel setHidden:NO];
+               //     self.locationLabel.text = addressString;
+
                 }
 
                 else
                 {
                     self.timeLabel.text = @"Please check in!";
+                    [self.ifChargingLabel setHidden:YES];
+                    [self.locationLabel setHidden:YES];
+                    [self.doneChargingButton setHidden:YES];
+                    
                 }
             }
         }
