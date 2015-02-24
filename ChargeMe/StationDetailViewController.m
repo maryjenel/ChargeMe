@@ -9,8 +9,11 @@
 #import "StationDetailViewController.h"
 #import "PayPalPaymentViewController.h"
 #import "CustomAnnotation.h"
-#import <Parse/Parse.h>
 #import "Bookmark.h"
+#import "LittleBitsObject.h"
+
+#define contentType @"application/json"
+#define accept @"application/vnd.littlebits.v2+json"
 
 @interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -20,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
 
-@property UIView *loading;
+@property NSDictionary *deviceInfo;
 
 @property int hours;
 
@@ -329,6 +332,35 @@
     [self sendCompletedPaymentToServer:completedPayment];
 }
 
+// Turns the charging station on
+- (void)turnChargingStationOnWithStation:(PFObject *)station {
+    // Find Devices that belong to the station
+    PFQuery *query = [PFQuery queryWithClassName:@"Devices"];
+    [query whereKey:@"station" equalTo:station];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error && objects.count) {
+            PFObject *deviceObject = [objects firstObject];
+            // Once successfully checked in, find the device information for little
+            [LittleBitsObject retrieveDeviceInfoWithDeviceID:deviceObject[@"deviceID"] authorizationAccessToken:deviceObject[@"accessToken"] theContentType:contentType acceptFormat:accept withCompletionBlock:^(NSDictionary *deviceInfo) {
+                self.deviceInfo = deviceInfo;
+
+                // Set HTTP Body, turns on the module in 50,000 microsecond
+                NSDictionary *dictionary = @{
+                                             @"percent": @100,
+                                             @"duration_ms": @10000
+                                             };
+                [LittleBitsObject turnDeviceOnWithDeviceInfo:self.deviceInfo authorizationAccessToken:deviceObject[@"accessToken"] theContentType:contentType acceptFormat:accept bodyDictionary:(NSDictionary *)dictionary];
+            }];
+        }
+        else
+        {
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Device not Connected" message:@"The device could not be turned on because it was not found. Please contact owner." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [errorAlertView show];
+        }
+
+    }];
+}
+
 - (void)sendCompletedPaymentToServer:(PayPalPayment *)completedPayment {
     NSLog(@"Here is your proof of payment:\n\n%@\n\nSend this to your server for confirmation and fulfillment.", completedPayment.confirmation);
     NSDictionary *response = completedPayment.confirmation[@"response"];
@@ -365,6 +397,8 @@
                 [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Check In Completed");
+
+                        [self turnChargingStationOnWithStation:self.stationObject];
                     }
                 }];
             }

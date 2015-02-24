@@ -124,11 +124,10 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
         {
-
-        NSArray *mapItems = response.mapItems;
-        MKMapItem *mapItem = mapItems.firstObject;
-        MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.05, 0.05));
-        self.mapView.region = region;
+            NSArray *mapItems = response.mapItems;
+            MKMapItem *mapItem = mapItems.firstObject;
+            MKCoordinateRegion region = MKCoordinateRegionMake(mapItem.placemark.location.coordinate, MKCoordinateSpanMake(0.005, 0.005));
+            [self.mapView setRegion:region animated:YES];
         }];
     }
     else
