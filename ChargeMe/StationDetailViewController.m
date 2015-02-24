@@ -9,8 +9,13 @@
 #import "StationDetailViewController.h"
 #import "PayPalPaymentViewController.h"
 #import "CustomAnnotation.h"
-#import <Parse/Parse.h>
 #import "Bookmark.h"
+#import "LittleBitsObject.h"
+
+#define deviceID @"00e04c02bd45"
+#define authorization @"Bearer 5b1ba64a9fa6102c1586ffb6d6104480909ba094c9b7800024660eb8b50f7187"
+#define contentType @"application/json"
+#define accept @"application/vnd.littlebits.v2+json"
 
 @interface StationDetailViewController () <PayPalPaymentDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -20,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *hoursTextField;
 
-@property UIView *loading;
+@property NSDictionary *deviceInfo;
 
 @property int hours;
 
@@ -325,6 +330,20 @@
     [self sendCompletedPaymentToServer:completedPayment];
 }
 
+- (void)turnChargingStationOn {
+    // Once successfully checked in, find the device information for little
+    [LittleBitsObject retrieveDeviceInfoWithDeviceID:deviceID authorizationAccessToken:authorization theContentType:contentType acceptFormat:accept withCompletionBlock:^(NSDictionary *deviceInfo) {
+        self.deviceInfo = deviceInfo;
+        
+        // Set HTTP Body, turns on the module in 50,000 microsecond
+        NSDictionary *dictionary = @{
+                                     @"percent": @100,
+                                     @"duration_ms": @5000
+                                     };
+        [LittleBitsObject turnDeviceOnWithDeviceInfo:self.deviceInfo authorizationAccessToken:authorization theContentType:contentType acceptFormat:accept bodyDictionary:(NSDictionary *)dictionary];
+    }];
+}
+
 - (void)sendCompletedPaymentToServer:(PayPalPayment *)completedPayment {
     NSLog(@"Here is your proof of payment:\n\n%@\n\nSend this to your server for confirmation and fulfillment.", completedPayment.confirmation);
     NSDictionary *response = completedPayment.confirmation[@"response"];
@@ -361,6 +380,8 @@
                 [checkIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Check In Completed");
+
+                        [self turnChargingStationOn];
                     }
                 }];
             }
