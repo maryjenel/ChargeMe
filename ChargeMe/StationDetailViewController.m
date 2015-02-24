@@ -12,8 +12,6 @@
 #import "Bookmark.h"
 #import "LittleBitsObject.h"
 
-#define deviceID @"00e04c02bd45"
-#define authorization @"Bearer 5b1ba64a9fa6102c1586ffb6d6104480909ba094c9b7800024660eb8b50f7187"
 #define contentType @"application/json"
 #define accept @"application/vnd.littlebits.v2+json"
 
@@ -330,17 +328,32 @@
     [self sendCompletedPaymentToServer:completedPayment];
 }
 
-- (void)turnChargingStationOn {
-    // Once successfully checked in, find the device information for little
-    [LittleBitsObject retrieveDeviceInfoWithDeviceID:deviceID authorizationAccessToken:authorization theContentType:contentType acceptFormat:accept withCompletionBlock:^(NSDictionary *deviceInfo) {
-        self.deviceInfo = deviceInfo;
-        
-        // Set HTTP Body, turns on the module in 50,000 microsecond
-        NSDictionary *dictionary = @{
-                                     @"percent": @100,
-                                     @"duration_ms": @5000
-                                     };
-        [LittleBitsObject turnDeviceOnWithDeviceInfo:self.deviceInfo authorizationAccessToken:authorization theContentType:contentType acceptFormat:accept bodyDictionary:(NSDictionary *)dictionary];
+// Turns the charging station on
+- (void)turnChargingStationOnWithStation:(PFObject *)station {
+    // Find Devices that belong to the station
+    PFQuery *query = [PFQuery queryWithClassName:@"Devices"];
+    [query whereKey:@"station" equalTo:station];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error && objects.count) {
+            PFObject *deviceObject = [objects firstObject];
+            // Once successfully checked in, find the device information for little
+            [LittleBitsObject retrieveDeviceInfoWithDeviceID:deviceObject[@"deviceID"] authorizationAccessToken:deviceObject[@"accessToken"] theContentType:contentType acceptFormat:accept withCompletionBlock:^(NSDictionary *deviceInfo) {
+                self.deviceInfo = deviceInfo;
+
+                // Set HTTP Body, turns on the module in 50,000 microsecond
+                NSDictionary *dictionary = @{
+                                             @"percent": @100,
+                                             @"duration_ms": @10000
+                                             };
+                [LittleBitsObject turnDeviceOnWithDeviceInfo:self.deviceInfo authorizationAccessToken:deviceObject[@"accessToken"] theContentType:contentType acceptFormat:accept bodyDictionary:(NSDictionary *)dictionary];
+            }];
+        }
+        else
+        {
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Device not Connected" message:@"The device could not be turned on because it was not found. Please contact owner." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [errorAlertView show];
+        }
+
     }];
 }
 
@@ -381,7 +394,7 @@
                     if (succeeded) {
                         NSLog(@"Check In Completed");
 
-                        [self turnChargingStationOn];
+                        [self turnChargingStationOnWithStation:self.stationObject];
                     }
                 }];
             }
