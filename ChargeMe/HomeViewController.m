@@ -176,6 +176,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     }
 }
 
+//User filter for level of Charger
 - (NSMutableArray *)filterForLevelOfCharger:(long)value
 
 {
@@ -378,6 +379,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
      }];
 }
 
+//Pin annotation color choice by filter
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     // Lets the mapView display the blue dot & circle animation

@@ -143,6 +143,10 @@
                              MKLaunchOptionsDirectionsModeKey, nil];
     [MKMapItem openMapsWithItems: items launchOptions: options];
 }
+
+-(IBAction)callPhone:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.chargingStation.stationPhone]]];
+}
 - (IBAction)onMessageButtonPressed:(id)sender {
     
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Send a Message" message:nil preferredStyle:UIAlertControllerStyleAlert];
