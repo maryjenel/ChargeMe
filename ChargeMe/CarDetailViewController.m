@@ -49,8 +49,7 @@
                 // If current user, fetch user details
 
 
-                BOOL isCurrentUser = [self date:[NSDate date] isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
-              //  PFQuery *stationQuery = [PFQuery queryWithClassName:@"station"];
+                BOOL isCurrentUser = [self date:[NSDate date]isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
 
 
                 if (isCurrentUser)
@@ -59,7 +58,16 @@
                     double sinceCheckIn = [[NSDate date] timeIntervalSinceDate:checkInObject[@"checkInDate"]] / 60;
                     self.timeLabel.text = [NSString stringWithFormat:@"%.2f minutes since you check in", sinceCheckIn];
                     [self.locationLabel setHidden:NO];
-               //     self.locationLabel.text = addressString;
+                    //create new PF object for station pointer
+                    PFObject *station = checkInObject[@"station"];
+                    //grabs all information from station pointer parse
+                    [station fetch];
+                    //sets the station Name to location label
+                    self.locationLabel.text = [NSString stringWithFormat:@"%@", station[@"stationName"]];
+                    [self.ifChargingLabel setHidden:NO];
+                    self.ifChargingLabel.text =@"Charging";
+                    [self.doneChargingButton setHidden:NO];
+                    
 
                 }
 
