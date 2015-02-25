@@ -25,6 +25,7 @@
 		18CBAEF91A8E688000762576 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBAEF81A8E688000762576 /* libxml2.dylib */; };
 		18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */; };
 		18D468401A9C352100C554DF /* LittleBitsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D4683F1A9C352100C554DF /* LittleBitsObject.m */; };
+		18D468781A9D99F700C554DF /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D468771A9D99F700C554DF /* GraphView.m */; };
 		18D64FFE1A97F3EB0079217E /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D64FFD1A97F3EB0079217E /* SpeechKit.framework */; };
 		18E6E4311A96FE0B00FA4174 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */; };
 		18E6E4341A970D0700FA4174 /* CurrentUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6E4331A970D0700FA4174 /* CurrentUserViewController.m */; };
@@ -125,6 +126,8 @@
 		18D01B4A1A955000006DA8B1 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		18D4683E1A9C352100C554DF /* LittleBitsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittleBitsObject.h; sourceTree = "<group>"; };
 		18D4683F1A9C352100C554DF /* LittleBitsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittleBitsObject.m; sourceTree = "<group>"; };
+		18D468761A9D99F700C554DF /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		18D468771A9D99F700C554DF /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		18D64FFD1A97F3EB0079217E /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = ../../../../../../../../Downloads/SpeechKit.framework; sourceTree = "<group>"; };
 		18E6E42F1A96FE0B00FA4174 /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
 		18E6E4301A96FE0B00FA4174 /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 		627B3EDE1A8C05CA00B3438A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				18D468761A9D99F700C554DF /* GraphView.h */,
+				18D468771A9D99F700C554DF /* GraphView.m */,
 				18D4683E1A9C352100C554DF /* LittleBitsObject.h */,
 				18D4683F1A9C352100C554DF /* LittleBitsObject.m */,
 				626FD7ED1A8D6F590087911F /* ChargingStation.h */,
@@ -601,7 +606,6 @@
 				18F0676D1A92A7CE0070B346 /* FindLocationOnMapViewController.m in Sources */,
 				627B3ECF1A8BE04B00B3438A /* NavViewController.m in Sources */,
 				627B3EAD1A8AB41100B3438A /* LoginViewController.m in Sources */,
-				627B3ED51A8C03F300B3438A /* PromotionsViewController.m in Sources */,
 				18D468401A9C352100C554DF /* LittleBitsObject.m in Sources */,
 				62850D7C1A8D4E170076739F /* SignUpDetailViewController.m in Sources */,
 				627B3E531A89623500B3438A /* HomeViewController.m in Sources */,
@@ -614,6 +618,7 @@
 				18E6E4371A970E7E00FA4174 /* OwnerPaymentsViewController.m in Sources */,
 				627B3EDB1A8C059100B3438A /* CustomProfileCollectionViewCell.m in Sources */,
 				626FD7EF1A8D6F590087911F /* ChargingStation.m in Sources */,
+				18D468781A9D99F700C554DF /* GraphView.m in Sources */,
 				18D01B4B1A955000006DA8B1 /* FavoritesTableViewController.m in Sources */,
 				18E6E4341A970D0700FA4174 /* CurrentUserViewController.m in Sources */,
 			);
