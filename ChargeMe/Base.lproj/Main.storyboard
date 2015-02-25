@@ -23,8 +23,8 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="E4n-9n-lwq"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Search Address" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
-                                <rect key="frame" x="0.0" y="64" width="281" height="44"/>
+                            <searchBar contentMode="redraw" placeholder="Search Address" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
+                                <rect key="frame" x="0.0" y="64" width="280" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -261,12 +261,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KhH-gL-S0t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.1160420583" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Map" textLabel="Wkp-vl-NFL" imageView="1ID-ix-1uE" style="IBUITableViewCellStyleDefault" id="Zqt-h0-wTl">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -277,16 +277,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Map" id="1ID-ix-1uE">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="map" id="1ID-ix-1uE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="07f-Lr-6uV" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="G0T-N3-VAF"/>
@@ -309,7 +309,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="tHf-OU-TFl" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="CRF-p2-mn6"/>
@@ -332,7 +332,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.1160420583" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="1eA-23-WiC" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="4e6-uR-Cwo"/>
@@ -361,7 +361,7 @@
                                     <segue destination="g1Y-FD-zbM" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="JQ3-5P-gvs"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Favorites" textLabel="O3w-rs-QAu" imageView="t1M-Jx-j4x" style="IBUITableViewCellStyleDefault" id="AgV-mf-9TJ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Favorites" textLabel="O3w-rs-QAu" imageView="t1M-Jx-j4x" style="IBUITableViewCellStyleDefault" id="AgV-mf-9TJ">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AgV-mf-9TJ" id="FvE-7u-EGD">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -395,7 +395,7 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="SupportIcon" id="z7f-yR-FLx">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Promotions" id="z7f-yR-FLx">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1191,7 +1191,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1405,16 +1405,16 @@
     <resources>
         <image name="CurrentLocationIcon" width="56" height="56"/>
         <image name="Heart" width="35" height="35"/>
-        <image name="Map" width="35" height="35"/>
         <image name="MenuTiny" width="25" height="25"/>
         <image name="ProfileIcon" width="35" height="35"/>
+        <image name="Promotions" width="35" height="35"/>
         <image name="Share" width="65" height="85"/>
         <image name="Star" width="504" height="360"/>
-        <image name="SupportIcon" width="86" height="79"/>
         <image name="baybridge" width="1023" height="624"/>
         <image name="car" width="30" height="30"/>
         <image name="dollar-sign" width="30" height="30"/>
         <image name="greenCar" width="300" height="162"/>
+        <image name="map" width="35" height="35"/>
         <image name="microphone" width="40" height="40"/>
         <image name="moon" width="504" height="360"/>
         <image name="profile" width="204" height="204"/>
