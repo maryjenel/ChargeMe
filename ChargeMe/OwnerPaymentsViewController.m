@@ -43,6 +43,9 @@
         self.totalEarned.text = [NSString stringWithFormat:@"$%.2f", self.totalEarnedAmount];
         [self.tableView reloadData];
     }];
+
+    self.title = @"Payments";
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 #pragma mark TABLE VIEW
