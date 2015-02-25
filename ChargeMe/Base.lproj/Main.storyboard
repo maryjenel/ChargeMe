@@ -409,17 +409,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChargeMeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FAx-kP-I0p">
-                                <rect key="frame" x="43" y="235" width="240" height="128"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sorry! No promotions available! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-hi-35I">
-                                <rect key="frame" x="37" y="117" width="246" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sorry! No promotions available! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-hi-35I">
+                                <rect key="frame" x="27" y="273" width="267" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="267" id="cpB-ty-FCV"/>
+                                    <constraint firstAttribute="height" constant="21" id="fiU-Yx-kJZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="321-SZ-jBt">
+                                <rect key="frame" x="132" y="320" width="21" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Wax-sb-kgV"/>
+                                    <constraint firstAttribute="height" constant="15" id="eLa-9T-xl7"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="whiteCar" translatesAutoresizingMaskIntoConstraints="NO" id="Nw6-NH-goz">
+                                <rect key="frame" x="5" y="467" width="47" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="cXc-8Y-Kcu"/>
+                                    <constraint firstAttribute="height" constant="35" id="jaq-Ii-s4Z"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="whiteCar" translatesAutoresizingMaskIntoConstraints="NO" id="HHj-91-i3j">
+                                <rect key="frame" x="60" y="467" width="46" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="33M-9W-NXE"/>
+                                    <constraint firstAttribute="height" constant="35" id="cgw-m4-5CB"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="greenCar" translatesAutoresizingMaskIntoConstraints="NO" id="FAx-kP-I0p">
+                                <rect key="frame" x="42" y="467" width="38" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1Dh-JT-6MQ"/>
+                                    <constraint firstAttribute="width" constant="38" id="Hcb-F0-B1O"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="OgR-cg-Gl8">
+                                <rect key="frame" x="34" y="339" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="8T5-Xy-CUj">
+                                <rect key="frame" x="256" y="201" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="gVL-vx-sOa">
+                                <rect key="frame" x="42" y="186" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="23D-gz-Xwd">
+                                <rect key="frame" x="156" y="81" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="R1m-qJ-ePr">
+                                <rect key="frame" x="110" y="124" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="Fah-Ei-Yqh">
+                                <rect key="frame" x="18" y="81" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="GWM-Sg-vzJ">
+                                <rect key="frame" x="203" y="362" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="Ntm-Nq-WIF">
+                                <rect key="frame" x="273" y="320" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="mRz-l9-3Iy">
+                                <rect key="frame" x="191" y="156" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="eHw-P7-int">
+                                <rect key="frame" x="115" y="225" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="LS8-5F-T3x">
+                                <rect key="frame" x="235" y="72" width="75" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="RjO-Ab-wf2"/>
+                                    <constraint firstAttribute="height" constant="59" id="Vhw-26-FLJ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star2" translatesAutoresizingMaskIntoConstraints="NO" id="3cp-GI-H1e">
+                                <rect key="frame" x="150" y="422" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-Km-TB9">
+                                <rect key="frame" x="95" y="368" width="21" height="15"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baybridge" translatesAutoresizingMaskIntoConstraints="NO" id="rak-vn-7yJ">
+                                <rect key="frame" x="0.0" y="368" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bhu-Bt-rQq"/>
+                                    <constraint firstAttribute="width" constant="320" id="qzT-6A-d9T"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LS8-5F-T3x" firstAttribute="top" secondItem="RuX-SO-Pa1" secondAttribute="bottom" constant="8" id="5Sv-eC-gv9"/>
+                            <constraint firstItem="a7H-VW-Lhd" firstAttribute="top" secondItem="Nw6-NH-goz" secondAttribute="bottom" constant="66" id="CIO-bC-MV4"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ca-hi-35I" secondAttribute="trailing" constant="26" id="R7d-qZ-Bxn"/>
+                            <constraint firstItem="0Ca-hi-35I" firstAttribute="leading" secondItem="tYw-Yw-dZy" secondAttribute="leading" constant="27" id="bFU-J2-xeE"/>
+                            <constraint firstAttribute="trailing" secondItem="rak-vn-7yJ" secondAttribute="trailing" id="bxs-iL-f8s"/>
+                            <constraint firstItem="a7H-VW-Lhd" firstAttribute="top" secondItem="FAx-kP-I0p" secondAttribute="bottom" constant="66" id="l6K-C9-iFg"/>
+                            <constraint firstAttribute="trailing" secondItem="LS8-5F-T3x" secondAttribute="trailing" constant="10" id="tec-iL-hYy"/>
+                            <constraint firstItem="rak-vn-7yJ" firstAttribute="leading" secondItem="tYw-Yw-dZy" secondAttribute="leading" id="u5x-vu-KeN"/>
+                            <constraint firstItem="a7H-VW-Lhd" firstAttribute="top" secondItem="rak-vn-7yJ" secondAttribute="bottom" id="uf6-bX-Jsj"/>
+                            <constraint firstItem="a7H-VW-Lhd" firstAttribute="top" secondItem="HHj-91-i3j" secondAttribute="bottom" constant="66" id="umE-iZ-419"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5J4-4k-3XA">
                         <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="nRz-K5-i03">
@@ -428,6 +520,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="carImageView" destination="FAx-kP-I0p" id="2l0-gM-b7g"/>
+                        <outlet property="menuButton" destination="nRz-K5-i03" id="AaD-ie-VDS"/>
+                        <outlet property="star1" destination="R1m-qJ-ePr" id="xbg-mb-xz0"/>
+                        <outlet property="star2" destination="gVL-vx-sOa" id="Znt-NZ-aZU"/>
+                        <outlet property="star3" destination="mRz-l9-3Iy" id="1xc-8e-Jo5"/>
+                        <outlet property="star4" destination="321-SZ-jBt" id="Bop-zT-xG7"/>
+                        <outlet property="star5" destination="Ntm-Nq-WIF" id="Jhk-Hn-37k"/>
+                        <outlet property="star6" destination="OgR-cg-Gl8" id="Tkt-bx-nyT"/>
+                        <outlet property="star7" destination="3cp-GI-H1e" id="QPE-U9-IQa"/>
+                        <outlet property="whiteCar" destination="Nw6-NH-goz" id="Vgs-9y-pIK"/>
+                        <outlet property="whiteCar2" destination="HHj-91-i3j" id="bR3-Lb-FpX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6d-aB-ylf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1279,18 +1381,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChargeMeLogo" width="1614" height="802"/>
         <image name="CurrentLocationButton" width="40" height="40"/>
         <image name="Heart" width="35" height="35"/>
         <image name="Map" width="35" height="35"/>
         <image name="MenuTiny" width="25" height="25"/>
+        <image name="Moon" width="504" height="360"/>
         <image name="ProfileIcon" width="35" height="35"/>
         <image name="Share" width="65" height="85"/>
+        <image name="Star" width="504" height="360"/>
         <image name="SupportIcon" width="86" height="79"/>
+        <image name="baybridge" width="1023" height="624"/>
         <image name="car" width="30" height="30"/>
         <image name="dollar-sign" width="30" height="30"/>
+        <image name="greenCar" width="300" height="162"/>
         <image name="profile" width="204" height="204"/>
         <image name="smiley-smile" width="30" height="30"/>
+        <image name="star2" width="504" height="360"/>
+        <image name="whiteCar" width="300" height="162"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
