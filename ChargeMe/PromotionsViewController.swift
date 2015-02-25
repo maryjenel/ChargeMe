@@ -37,14 +37,23 @@ class PromotionsViewController: UIViewController
     @IBOutlet weak var star6: UIImageView!
     @IBOutlet weak var star7: UIImageView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var revealViewController: SWRevealViewController = SWRevealViewController()
+
+
+
+
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        self.menuButton.target = self
+        self.menuButton = UIBarButtonItem()
+        self.menuButton.target = self.revealViewController()
+        self.menuButton.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController.panGestureRecognizer())
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool)
+    {
         super.viewWillAppear(animated)
 
 
