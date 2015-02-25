@@ -120,9 +120,12 @@
 {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    // Changes the background color of the cell when highlighted
     UIView *selectedBackgroundView = [[UIView alloc] init];
     selectedBackgroundView.backgroundColor = [UIColor grayColor];
     cell.selectedBackgroundView = selectedBackgroundView;
+
     return cell;
 }
 

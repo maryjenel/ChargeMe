@@ -94,6 +94,12 @@
     PFObject *stationInfo = self.stationsArray[indexPath.row];
     cell.textLabel.text = stationInfo[@"stationName"];
     cell.detailTextLabel.text = stationInfo[@"stationAddress"];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+    
     return cell;
 }
 
