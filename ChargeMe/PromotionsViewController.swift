@@ -46,11 +46,8 @@ class PromotionsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        menuButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self.revealViewController(), action: Selector("revealToggle:"))
 
-        self.menuButton = UIBarButtonItem()
-        self.menuButton.target = self.revealViewController()
-        self.menuButton.action = Selector("revealToggle:")
-        self.view.addGestureRecognizer(self.revealViewController.panGestureRecognizer())
     }
     override func viewWillAppear(animated: Bool)
     {
@@ -91,6 +88,14 @@ class PromotionsViewController: UIViewController
                 self.animateCars(car)
 
         });
+    }
+    @IBAction func menuButton(sender: UIBarButtonItem)
+        {
+        
+            self.view.addGestureRecognizer(self.revealViewController.panGestureRecognizer());
+            self.menuButton.target = self.revealViewController()
+            self.menuButton.action = Selector("revealToggle:")
+
     }
 
     func blinkingStar(star:UIImageView)
