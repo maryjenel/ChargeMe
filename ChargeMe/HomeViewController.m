@@ -67,10 +67,14 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
 
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
+
     self.chargeStationsArray = [NSMutableArray new];
     self.publicChargeStationsArray = [NSMutableArray new];
     self.privateChargeStationsArray = [NSMutableArray new];
 
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    
     //change background color to black & nav barr
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
@@ -314,6 +318,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
         annotation.coordinate = coordinate;
         annotation.filterType = filterType;
 
+
         [self.annotationsArray addObject:annotation];
         [self.mapView addAnnotation:annotation];
     }
@@ -401,10 +406,26 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
             break;
     }
     pin.canShowCallout = YES;
+
+    // Create a button with a arrow and display it in the callout
+//    UIImage *buttonImage = [UIImage imageNamed:@"DisclosureIndicator"];
+//    UIButton *disclosureIndicator = [UIButton new];
+//    [disclosureIndicator setImage:buttonImage forState:UIControlStateNormal];
+
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    pin.rightCalloutAccessoryView = disclosureIndicator;
 
     return pin;
 }
+//
+//-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+//{
+//    // Define the Grid Color and Background Color
+//    UIColor *annotationBackgroundColor = [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0];
+//    for (MKAnnotationView *annotationView in views) {
+//        annotationView.backgroundColor = annotationBackgroundColor;
+//    }
+//}
 
 // Segue to station detail view controller when callout accessory button is tapped
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control

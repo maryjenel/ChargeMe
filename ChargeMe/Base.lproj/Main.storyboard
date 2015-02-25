@@ -23,12 +23,14 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="E4n-9n-lwq"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Search Address" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I42-YO-A8f">
                                 <rect key="frame" x="0.0" y="64" width="281" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
-                                <rect key="frame" x="28" y="509" width="276" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-jb-7cd">
+                                <rect key="frame" x="16" y="520" width="288" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Public"/>
@@ -40,10 +42,29 @@
                                     <action selector="onSegmentedControlButtonPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="jre-xY-WWP"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-ta-h02">
-                                <rect key="frame" x="262" y="118" width="42" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFH-NB-z1e">
+                                <rect key="frame" x="280" y="66" width="40" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="CurrentLocationButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="j5J-Ef-RH9"/>
+                                    <constraint firstAttribute="height" constant="40" id="wll-uS-Y5x"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="microphone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRecordButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="U7n-rX-5NP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-ta-h02">
+                                <rect key="frame" x="279" y="487" width="25" height="25"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Hzq-3O-kNC"/>
+                                    <constraint firstAttribute="width" constant="25" id="g4s-kB-DzP"/>
+                                </constraints>
+                                <state key="normal" image="CurrentLocationIcon">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -51,27 +72,26 @@
                                     <action selector="onCurrentLocationButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2MV-bx-37U"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFH-NB-z1e">
-                                <rect key="frame" x="281" y="64" width="39" height="46"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="🎤">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onRecordButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="U7n-rX-5NP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VQd-ta-h02" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="8HN-VL-i6E"/>
+                            <constraint firstItem="yOI-jb-7cd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="CAm-Wr-h0p"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="yOI-jb-7cd" secondAttribute="bottom" constant="20" id="DRm-s3-5zb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LNR-PG-mys" secondAttribute="trailing" constant="-16" id="Zby-rM-YVi"/>
                             <constraint firstItem="LNR-PG-mys" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bzS-j0-wtM"/>
+                            <constraint firstItem="I42-YO-A8f" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="cfi-mF-fMd"/>
+                            <constraint firstItem="I42-YO-A8f" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eHx-gW-iGK"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="LNR-PG-mys" secondAttribute="bottom" id="g2D-KD-Olx"/>
+                            <constraint firstItem="yOI-jb-7cd" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="gCJ-Zv-Fhp"/>
+                            <constraint firstItem="yOI-jb-7cd" firstAttribute="top" secondItem="VQd-ta-h02" secondAttribute="bottom" constant="8" id="iWr-jd-7dq"/>
+                            <constraint firstItem="oFH-NB-z1e" firstAttribute="leading" secondItem="I42-YO-A8f" secondAttribute="trailing" id="opk-Sd-RG6"/>
+                            <constraint firstItem="oFH-NB-z1e" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="2" id="vB7-KA-LEU"/>
                             <constraint firstItem="LNR-PG-mys" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="w2J-nA-CqK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oFH-NB-z1e" secondAttribute="trailing" constant="-16" id="yqm-iM-5jn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XCW-P5-rp3">
+                    <navigationItem key="navigationItem" title="ChargeMe" id="XCW-P5-rp3">
                         <barButtonItem key="leftBarButtonItem" image="MenuTiny" id="Qxv-Fq-JHj">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -115,8 +135,9 @@
                                     <action selector="onAddToFavoritesButtonPressed:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="ATa-Hc-nxP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-MX-avP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-MX-avP">
                                 <rect key="frame" x="16" y="314" width="121" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Directions to here">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -478,7 +499,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="eHw-P7-int">
                                 <rect key="frame" x="115" y="225" width="21" height="15"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="LS8-5F-T3x">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon" translatesAutoresizingMaskIntoConstraints="NO" id="LS8-5F-T3x">
                                 <rect key="frame" x="235" y="72" width="75" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="RjO-Ab-wf2"/>
@@ -1172,6 +1193,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -1381,11 +1403,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CurrentLocationButton" width="40" height="40"/>
+        <image name="CurrentLocationIcon" width="56" height="56"/>
         <image name="Heart" width="35" height="35"/>
         <image name="Map" width="35" height="35"/>
         <image name="MenuTiny" width="25" height="25"/>
-        <image name="Moon" width="504" height="360"/>
         <image name="ProfileIcon" width="35" height="35"/>
         <image name="Share" width="65" height="85"/>
         <image name="Star" width="504" height="360"/>
@@ -1394,6 +1415,8 @@
         <image name="car" width="30" height="30"/>
         <image name="dollar-sign" width="30" height="30"/>
         <image name="greenCar" width="300" height="162"/>
+        <image name="microphone" width="40" height="40"/>
+        <image name="moon" width="504" height="360"/>
         <image name="profile" width="204" height="204"/>
         <image name="smiley-smile" width="30" height="30"/>
         <image name="star2" width="504" height="360"/>
