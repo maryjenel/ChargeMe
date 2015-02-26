@@ -13,6 +13,7 @@
 @interface TabBarViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property NSArray *titleArray;
 
 @end
 
@@ -20,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.titleArray = [[NSArray alloc] initWithObjects:@"Current User", @"Analytics", @"Payment History", nil];
 
     _menuButton.target = self.revealViewController;
     _menuButton.action = @selector(revealToggle:);
@@ -34,7 +37,25 @@
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
+
+    // Set the navigation title to Current User on first load
+    self.navigationItem.title = self.titleArray[0];
+}
+
+// Changes the titles of the tab bar navigation item title on item selected
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if ([item.title isEqualToString:@"Current User"]) {
+        self.navigationItem.title = self.titleArray[0];
+    }
+    else if ([item.title isEqualToString:@"Analytics"])
+    {
+        self.navigationItem.title = self.titleArray[1];
+    }
+    else
+    {
+        self.navigationItem.title = self.titleArray[2];
+    }
 }
 
 - (IBAction)onAddChargerButtonTapped:(UIBarButtonItem *)sender

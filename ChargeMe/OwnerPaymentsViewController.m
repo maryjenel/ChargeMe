@@ -44,7 +44,6 @@
         [self.tableView reloadData];
     }];
 
-    self.title = @"Payments";
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
