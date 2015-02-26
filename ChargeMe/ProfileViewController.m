@@ -15,6 +15,7 @@
 #import "Crittercism.h"
 #import "SignUpViewController.h"
 #import "CarDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ProfileViewController ()<UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CrittercismDelegate>
@@ -23,7 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property NSMutableArray *carArray;
-@property (weak, nonatomic) IBOutlet UILabel *carTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -39,6 +41,12 @@
     self.imagePicker = [[UIImagePickerController alloc]init];
     self.imagePicker.delegate = self;
     self.carArray = [NSMutableArray new];
+
+    //log out button customization
+    self.logoutButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.logoutButton.layer.borderWidth = 0.5;
+    self.logoutButton.layer.cornerRadius = 10.0;
+    self.logoutButton.layer.masksToBounds = YES;
     _menuButton.target = self.revealViewController;
     _menuButton.action = @selector(revealToggle:);
 
@@ -79,14 +87,28 @@
          {
              UIImage *image = [UIImage imageWithData:data];
              self.profileImageView.image = image;
+             self.profileImageView.layer.borderWidth = 3.0f;
+             self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
              self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
              self.profileImageView.clipsToBounds = YES;
          }];
         PFObject *user = [PFUser currentUser];
-        self.title = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
+        //name label
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
+    //    self.nameLabel.font = [UIFont fontWithName:@"DamascusBold" size:20];
+        
+        //email label
         self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", user[@"email"]];
+    //    self.emailLabel.font = [UIFont fontWithName:@"TimesNewRomanPSMT" size:15];
+      //  self.emailLabel.textColor = [UIColor grayColor];
+
+
+        //mobile label
         self.mobileLabel.text = [NSString stringWithFormat:@"#: %@", user[@"phoneNumber"]];
+
+        //navbar
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.title = @"Profile";
 
 
 
@@ -238,6 +260,8 @@
 }
 - (IBAction)logOutButtonPressed:(UIButton *)sender
 {
+
+    
     [Crittercism leaveBreadcrumb:@"merppp failllll log out"];
     [PFUser logOut];
     [Crittercism endTransaction:@"my_transaction"];

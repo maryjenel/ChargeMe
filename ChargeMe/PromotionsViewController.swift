@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import QuartzCore
+
 
 
 // Util delay function
