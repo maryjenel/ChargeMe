@@ -64,16 +64,26 @@
                     [station fetch];
                     //sets the station Name to location label
                     self.locationLabel.text = [NSString stringWithFormat:@"%@", station[@"stationName"]];
+                    //Charging Label
                     [self.ifChargingLabel setHidden:NO];
                     self.ifChargingLabel.text =@"Charging";
-                    [self.doneChargingButton setHidden:NO];
-                    
+                    //log out button customization
+//                    self.doneChargingButton.layer.borderColor = [UIColor whiteColor].CGColor;
+//                    self.doneChargingButton.layer.borderWidth = 0.5;
+//                    self.doneChargingButton.layer.cornerRadius = 10.0;
+//                    self.doneChargingButton.layer.masksToBounds = YES;
+//                    [self.doneChargingButton setHidden:NO];
+
 
                 }
 
                 else
                 {
                     self.timeLabel.text = @"Please check in!";
+                    self.timeLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+                    self.timeLabel.layer.borderWidth = 0.5;
+                    self.timeLabel.layer.cornerRadius = 10.0;
+                    self.timeLabel.layer.masksToBounds = YES;
                     [self.ifChargingLabel setHidden:YES];
                     [self.locationLabel setHidden:YES];
                     [self.doneChargingButton setHidden:YES];
