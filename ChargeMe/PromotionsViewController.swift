@@ -37,7 +37,6 @@ class PromotionsViewController: UIViewController
     @IBOutlet weak var star6: UIImageView!
     @IBOutlet weak var star7: UIImageView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var revealViewController: SWRevealViewController = SWRevealViewController()
 
 
 
@@ -46,24 +45,26 @@ class PromotionsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        menuButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self.revealViewController(), action: Selector("revealToggle:"))
+
+        //when menu button clicked reveals the side menu
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
 
     }
-    override func viewWillAppear(animated: Bool)
-    {
-        super.viewWillAppear(animated)
 
-
-    }
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
 
-
+//call the animated cars method
     animateCars(self.carImageView)
     animateCars(self.whiteCar)
     animateCars(self.whiteCar2)
-
+//call the blinking star method
     blinkingStar(self.star1)
     blinkingStar2(self.star2)
     blinkingStar3(self.star3)
@@ -89,15 +90,8 @@ class PromotionsViewController: UIViewController
 
         });
     }
-    @IBAction func menuButton(sender: UIBarButtonItem)
-        {
-        
-            self.view.addGestureRecognizer(self.revealViewController.panGestureRecognizer());
-            self.menuButton.target = self.revealViewController()
-            self.menuButton.action = Selector("revealToggle:")
 
-    }
-
+//blinking star method
     func blinkingStar(star:UIImageView)
     {
 
@@ -111,6 +105,8 @@ class PromotionsViewController: UIViewController
         pulseAnimation.repeatCount = FLT_MAX;
         star.layer.addAnimation(pulseAnimation, forKey: nil)
     }
+
+//blinking star method but different time
     func blinkingStar2(star:UIImageView)
     {
 
@@ -124,6 +120,8 @@ class PromotionsViewController: UIViewController
         pulseAnimation.repeatCount = FLT_MAX;
         star.layer.addAnimation(pulseAnimation, forKey: nil)
     }
+
+// blink star method but slower
     func blinkingStar3(star:UIImageView)
     {
 
