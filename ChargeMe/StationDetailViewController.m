@@ -238,9 +238,6 @@
 
 }
 
--(IBAction)callPhone:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.chargingStation.stationPhone]];
-}
 #pragma mark Tableview Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -172,6 +172,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="callPhone:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="eDM-Zx-MfV"/>
                                     <action selector="onMessageButtonPressed:" destination="HCX-Oe-OXG" eventType="touchUpInside" id="sfs-bj-1Dk"/>
                                 </connections>
                             </button>
@@ -297,7 +298,7 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Map" id="1ID-ix-1uE">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="map" id="1ID-ix-1uE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
@@ -1606,7 +1607,6 @@
         <image name="CurrentLocationIcon" width="56" height="56"/>
         <image name="CurrentUser" width="35" height="35"/>
         <image name="Heart" width="35" height="35"/>
-        <image name="Map" width="35" height="35"/>
         <image name="MenuTiny" width="25" height="25"/>
         <image name="ProfileIcon" width="35" height="35"/>
         <image name="Promotions" width="35" height="35"/>
@@ -1619,6 +1619,7 @@
         <image name="bluredd" width="640" height="339"/>
         <image name="dollar-sign" width="30" height="30"/>
         <image name="greenCar" width="300" height="162"/>
+        <image name="map" width="35" height="35"/>
         <image name="microphone" width="40" height="40"/>
         <image name="moon" width="504" height="360"/>
         <image name="profile" width="204" height="204"/>
