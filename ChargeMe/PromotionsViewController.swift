@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import QuartzCore
+
 
 
 // Util delay function
@@ -38,26 +38,33 @@ class PromotionsViewController: UIViewController
     @IBOutlet weak var star7: UIImageView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
+
+
+
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        self.menuButton.target = self
-    }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        //when menu button clicked reveals the side menu
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
 
 
     }
+
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
 
-
+//call the animated cars method
     animateCars(self.carImageView)
     animateCars(self.whiteCar)
     animateCars(self.whiteCar2)
-
+//call the blinking star method
     blinkingStar(self.star1)
     blinkingStar2(self.star2)
     blinkingStar3(self.star3)
@@ -84,6 +91,7 @@ class PromotionsViewController: UIViewController
         });
     }
 
+//blinking star method
     func blinkingStar(star:UIImageView)
     {
 
@@ -97,6 +105,8 @@ class PromotionsViewController: UIViewController
         pulseAnimation.repeatCount = FLT_MAX;
         star.layer.addAnimation(pulseAnimation, forKey: nil)
     }
+
+//blinking star method but different time
     func blinkingStar2(star:UIImageView)
     {
 
@@ -110,6 +120,8 @@ class PromotionsViewController: UIViewController
         pulseAnimation.repeatCount = FLT_MAX;
         star.layer.addAnimation(pulseAnimation, forKey: nil)
     }
+
+// blink star method but slower
     func blinkingStar3(star:UIImageView)
     {
 

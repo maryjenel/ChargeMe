@@ -250,6 +250,11 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PFObject *comment = self.commentsArray[indexPath.row];
+    PFObject *user = comment[@"user"];
+    [user fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", object[@"firstName"], object[@"lastName"]];
+        [tableView reloadData];
+    }];
     cell.textLabel.text = comment[@"commentContext"];
     
     return cell;

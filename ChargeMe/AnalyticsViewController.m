@@ -7,9 +7,11 @@
 //
 
 #import "AnalyticsViewController.h"
+#import "GraphView.h"
 
 @interface AnalyticsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *analyticsView;
 
 @property NSMutableArray *stationsArray;
 
@@ -49,24 +51,78 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChargingStationsCell"];
     PFObject *station = self.stationsArray[indexPath.row];
     cell.textLabel.text = station[@"stationName"];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PFObject *station = self.stationsArray[indexPath.row];
+    [self retrievePaymentsWithSelectedStation:station andCompletion:^(NSMutableArray *payments)
+    {
+        // Add the graph view into the analytics view
+        GraphView *graphView = [[GraphView alloc] initWithFrame:self.analyticsView.bounds];
+
+        NSMutableArray *amountPaidArray = [NSMutableArray new];
+        NSMutableArray *datesPaidArray = [NSMutableArray new];
+
+        for (PFObject *payment in payments) {
+            [amountPaidArray addObject:payment[@"amountPaid"]];
+
+            // Format created date
+            NSDate *createdDate = payment.createdAt;
+            NSDateFormatter *dateFormatter = [NSDateFormatter new];
+            [dateFormatter setDateFormat:@"dd/MM"];
+            NSString *theDate = [dateFormatter stringFromDate:createdDate];
+
+            [datesPaidArray addObject:theDate];
+        }
+
+        graphView.dataArray = [NSArray arrayWithArray:amountPaidArray];
+        graphView.yAxisArray = [NSArray arrayWithArray:datesPaidArray];
+
+        if (payments.count) {
+            for(UIView *subview in [self.analyticsView subviews]) {
+                [subview removeFromSuperview];
+            }
+            [self.analyticsView addSubview:graphView];
+        }
+    }];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Charging Stations";
+}
+
+- (void)retrievePaymentsWithSelectedStation:(PFObject *)station andCompletion:(void (^)(NSMutableArray *payments))complete
+{
     // Find all the checkins that were made for the station selected on the table above
     PFQuery *query = [PFQuery queryWithClassName:@"CheckIn"];
-    PFObject *station = self.stationsArray[indexPath.row];
     [query whereKey:@"station" equalTo:station];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSMutableArray *paymentsMade = [NSMutableArray new];
         for (PFObject *checkInObject in objects) {
-            PFObject *user = checkInObject[@"user"];
-            [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                NSString *fullName = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
-                PFObject *payment = checkInObject[@"payment"];
-                [payment fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                    NSLog(@"%@ paid: %@", fullName, payment[@"amountPaid"]);
-                }];
+
+            // Find the payment details
+            PFObject *payment = checkInObject[@"payment"];
+            [payment fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+
+                if (paymentsMade.count < 7) {
+                    // Get the amount paid
+                    [paymentsMade addObject:payment];
+                }
+
+                // Return the payments once its on the last checkin object
+                if (checkInObject == objects.lastObject) {
+                    complete(paymentsMade);
+                }
+
             }];
         }
     }];

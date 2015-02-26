@@ -12,6 +12,8 @@
 
 @interface NavViewController ()
 
+@property UIColor *gray;
+
 @end
 
 @implementation NavViewController
@@ -56,19 +58,26 @@
 
     //create a view for the header
     UIView *headerView = [[UIView alloc]initWithFrame:frame];
+
     //added a imageview for profile image..
     UIImageView *headerImage = [[UIImageView alloc]initWithFrame:CGRectMake(15.0, 15.0, 40.0, 40.0)];
+
     //makes the image into a circle
-     headerImage.layer.cornerRadius = headerImage.frame.size.width / 2;
+    headerImage.layer.cornerRadius = headerImage.frame.size.width / 2;
     headerImage.clipsToBounds = YES;
+
     //create a name label
-    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(60.0, 20.0, self.tableView.frame.size.width - 5, 18)];
+    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(65.0, 20.0, self.tableView.frame.size.width - 5, 18)];
+
     //create a sublabel for the car
-    UILabel *carLabel = [[UILabel alloc]initWithFrame:CGRectMake(60.0, 40.0, self.tableView.frame.size.width, 13)];
+    UILabel *carLabel = [[UILabel alloc]initWithFrame:CGRectMake(65.0, 40.0, self.tableView.frame.size.width, 13)];
+
     //create an object for the user to grab Name & car information
     PFObject *user = [PFUser currentUser];
     nameLabel.text = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
     nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.font = [UIFont boldSystemFontOfSize:16];
+
     //added subview for nameLabel
     [headerView addSubview:nameLabel];
 
@@ -88,12 +97,14 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         PFObject *car = [objects firstObject];
         carLabel.text = car[@"carType"];
-        carLabel.textColor = [UIColor whiteColor];
-        carLabel.font = [UIFont italicSystemFontOfSize:12];
+        carLabel.textColor = [UIColor grayColor];
+        carLabel.font = [UIFont systemFontOfSize:12];
         [headerView addSubview:carLabel];
     }];
-//creates headerview background color to black
-    headerView.backgroundColor = [UIColor blackColor];
+    
+    //creates headerview background color to black
+    self.gray = [UIColor colorWithRed:18.0/255.0 green:18.0/255.0 blue:18.0/255.0 alpha:1.0];
+    headerView.backgroundColor = self.gray;
 
     return headerView;
 
@@ -109,6 +120,12 @@
 {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+
     return cell;
 }
 
@@ -131,28 +148,5 @@
 
     }
 }
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -12,8 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *stationsArray;
+@property NSMutableArray *currentUsers;
 @property (weak, nonatomic) IBOutlet UILabel *customerName;
 @property (weak, nonatomic) IBOutlet UILabel *hoursSince;
+@property (weak, nonatomic) IBOutlet UITableView *currentUserTableView;
 
 @end
 
@@ -28,7 +30,8 @@
     [super viewWillAppear:YES];
 
     self.stationsArray = [NSMutableArray new];
-    
+    self.currentUsers = [NSMutableArray new];
+
     // Find all the station this owner has added
     PFQuery *query = [PFQuery queryWithClassName:@"Stations"];
     [query whereKey:@"owner" equalTo:[PFUser currentUser]];
@@ -51,7 +54,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChargingStationsCell"];
     PFObject *station = self.stationsArray[indexPath.row];
     cell.textLabel.text = station[@"stationName"];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Charging Stations";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,21 +79,24 @@
     [checkInUserQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if (objects.count) {
-                PFObject *checkInObject = [objects firstObject];
-                NSLog(@"These are the objects: %@", checkInObject);
+                for (PFObject *checkInObject in objects) {
+                    NSLog(@"These are the objects: %@", checkInObject);
 
-                // Check if the person is currently checked in
-                BOOL isCurrentUser = [self date:[NSDate date] isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
+                    // Check if the person is currently checked in
+                    BOOL isCurrentUser = [self date:[NSDate date] isBetweenDate:checkInObject[@"checkInDate"] andDate:checkInObject[@"checkOutDate"]];
 
-                // If current user, fetch user details
-                if (isCurrentUser) {
-                    PFUser *user = checkInObject[@"user"];
-                    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        self.customerName.text = [NSString stringWithFormat:@"%@ %@", object[@"firstName"], object[@"lastName"]];
+                    // If current user, fetch user details
+                    if (isCurrentUser) {
+                        PFUser *user = checkInObject[@"user"];
+                        [self.currentUsers addObject:user];
+                        [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                            self.customerName.text = [NSString stringWithFormat:@"%@ %@", object[@"firstName"], object[@"lastName"]];
 
-                        double sinceCheckIn = [checkInObject[@"checkOutDate"] timeIntervalSinceDate:[NSDate date]] / 3600;
-                        self.hoursSince.text = [NSString stringWithFormat:@"%.2f hours since check in", sinceCheckIn];
-                    }];
+                            NSDate *checkInDate = checkInObject[@"checkInDate"];
+                            double sinceCheckIn = [[NSDate date] timeIntervalSinceDate:checkInDate] / 60;
+                            self.hoursSince.text = [NSString stringWithFormat:@"%.f minutes since check in", sinceCheckIn];
+                        }];
+                    }
                 }
             }
         }
