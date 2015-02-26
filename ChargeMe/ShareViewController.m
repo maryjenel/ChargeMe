@@ -10,9 +10,12 @@
 #import "SWRevealViewController.h"
 #import "FindLocationOnMapViewController.h"
 #import "ChargingStation.h"
+#import <QuartzCore/QuartzCore.h>
+#import <CoreImage/CoreImage.h>
 
 @interface ShareViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (weak, nonatomic) IBOutlet UIView *whiteView;
 @property (weak, nonatomic) IBOutlet UIButton *pickLocation;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property NSArray *plugTypes;
@@ -21,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *plugTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *numberOfPods;
 @property (weak, nonatomic) IBOutlet UITextField *costTextField;
+@property (weak, nonatomic) IBOutlet UIView *transparentView;
 
 @end
 
@@ -31,6 +35,22 @@
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     self.addressLabel.hidden = YES;
+
+    //white view design
+    _whiteView.layer.shadowColor = [UIColor blueColor].CGColor;
+    _whiteView.layer.shadowOffset = CGSizeMake(5.0f, 5.0f);
+    _whiteView.layer.shadowOpacity = 1.0f;
+    _whiteView.layer.shadowRadius = 10.0f;
+
+    //textfields border
+    self.plugTypeTextField.layer.borderColor = [[UIColor blackColor]CGColor];
+    self.plugTypeTextField.layer.borderWidth = 1.0f;
+
+    self.numberOfPods.layer.borderColor = [[UIColor blackColor]CGColor];
+    self.numberOfPods.layer.borderWidth = 1.0f;
+
+    self.costTextField.layer.borderColor = [[UIColor blackColor]CGColor];
+    self.costTextField.layer.borderWidth = 1.0f;
 
     self.pickerView = [UIPickerView new];
     self.pickerView.delegate = self;
@@ -59,8 +79,41 @@
     if (self.menuHidden) {
         self.navigationItem.leftBarButtonItem = nil;
         self.title = @"Add New Station";
+
+        //
+     //   self.blurImage.alpha = 0.0;
     }
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+   // [self performSelector:@selector(captureBlur) withObject:nil];
+}
+
+//blur method
+//-(void)captureBlur
+//{
+//    //get ui image from uiview
+//    UIGraphicsBeginImageContext(self.view.bounds.size);
+//    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+//    //blur image
+//    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
+//    CIFilter *blurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+//    [blurFilter setValue:imageToBlur forKey:@"inputImage"];
+//    [blurFilter setValue:[NSNumber numberWithFloat:5] forKey:@"inputRadius"];
+//    CIImage *resultImage = [blurFilter valueForKey:@"outputImage"];
+//
+//    //create image from filtered image
+//    self.view.backgroundColor = [[UIImage alloc]initWithCIImage:resultImage];
+//    UIImageView *newView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+//    newView.image = self.blurImage.image;
+//
+//    [self.blurImage insertSubview:newView belowSubview:self.transparentView];
+//
+//
+//}
 
 // Retreieves the address from the modal view that appears
 - (IBAction)unwindFromFindLocationOnMap:(UIStoryboardSegue *)segue

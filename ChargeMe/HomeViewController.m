@@ -93,7 +93,7 @@ const unsigned char SpeechKitApplicationKey[] = {0xf8, 0x4c, 0xee, 0xcf, 0x34, 0
     //updates current location after the view loads app always has users current location
     self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [self.appDelegate updateCurrentLocation];
- //   [self.appDelegate setupSpeechKitConnection];
+   [self.appDelegate setupSpeechKitConnection];
 
     self.searchBar.returnKeyType = UIReturnKeySearch;
     SWRevealViewController *revealViewController = self.revealViewController;
