@@ -11,7 +11,7 @@
 #define kGraphHeight 200
 #define kDefaultGraphWidth 300
 
-#define kOffsetX 30
+#define kOffsetX 40
 #define kStepX 40
 
 #define kStepY 50
@@ -160,14 +160,14 @@
     topLabel.textColor = [UIColor grayColor];
     topLabel.textAlignment = NSTextAlignmentRight;
     topLabel.font = [topLabel.font fontWithSize:10];
-    [topLabel setText:[NSString stringWithFormat:@"%i", max]];
+    [topLabel setText:[NSString stringWithFormat:@"$%i", max]];
     [self addSubview:topLabel];
 
     UILabel *bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(kOffsetX - 55, kGraphBottom - 25, 50, 30)];
     bottomLabel.textColor = [UIColor grayColor];
     bottomLabel.textAlignment = NSTextAlignmentRight;
     bottomLabel.font = [bottomLabel.font fontWithSize:10];
-    [bottomLabel setText:[NSString stringWithFormat:@"%i", min]];
+    [bottomLabel setText:[NSString stringWithFormat:@"$%i", min]];
     [self addSubview:bottomLabel];
 
 }

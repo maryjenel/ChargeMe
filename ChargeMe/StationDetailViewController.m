@@ -149,6 +149,10 @@
                              MKLaunchOptionsDirectionsModeKey, nil];
     [MKMapItem openMapsWithItems: items launchOptions: options];
 }
+
+-(IBAction)callPhone:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.chargingStation.stationPhone]]];
+}
 - (IBAction)onMessageButtonPressed:(id)sender {
 //    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Send a Message" message:nil preferredStyle:UIAlertControllerStyleAlert];
 //    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField)
@@ -246,6 +250,11 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PFObject *comment = self.commentsArray[indexPath.row];
+    PFObject *user = comment[@"user"];
+    [user fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", object[@"firstName"], object[@"lastName"]];
+        [tableView reloadData];
+    }];
     cell.textLabel.text = comment[@"commentContext"];
     
     return cell;

@@ -37,6 +37,8 @@
         [self.menuButton setAction: @selector(revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,6 +96,12 @@
     PFObject *stationInfo = self.stationsArray[indexPath.row];
     cell.textLabel.text = stationInfo[@"stationName"];
     cell.detailTextLabel.text = stationInfo[@"stationAddress"];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+    
     return cell;
 }
 
