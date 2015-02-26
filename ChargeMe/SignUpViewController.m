@@ -21,6 +21,13 @@
     [super viewDidLoad];
     [self.signUpView.additionalField setPlaceholder:@"Phone Number"];
     self.delegate = self;
+    self.signUpView.logo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ChargeMeLogo"]];
+    self.signUpView.backgroundColor = [UIColor blackColor];
+    self.signUpView.usernameField.backgroundColor = [UIColor grayColor];
+    self.signUpView.passwordField.backgroundColor = [UIColor grayColor];
+    self.signUpView.emailField.backgroundColor = [UIColor grayColor];
+
+
 }
 
 
