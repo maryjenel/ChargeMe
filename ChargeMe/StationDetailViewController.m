@@ -97,6 +97,8 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
+    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
 }
 
 - (void)loadMap
