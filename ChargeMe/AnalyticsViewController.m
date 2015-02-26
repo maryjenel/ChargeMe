@@ -105,24 +105,15 @@
     // Find all the checkins that were made for the station selected on the table above
     PFQuery *query = [PFQuery queryWithClassName:@"CheckIn"];
     [query whereKey:@"station" equalTo:station];
+    query.limit = 7;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSMutableArray *paymentsMade = [NSMutableArray new];
         for (PFObject *checkInObject in objects) {
-
             // Find the payment details
             PFObject *payment = checkInObject[@"payment"];
-            [payment fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-
-                if (paymentsMade.count < 7) {
-                    // Get the amount paid
-                    [paymentsMade addObject:payment];
-                }
-
-                // Return the payments once its on the last checkin object
-                if (checkInObject == objects.lastObject) {
-                    complete(paymentsMade);
-                }
-
+            [payment fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                [paymentsMade addObject:payment];
+                complete(paymentsMade);
             }];
         }
     }];
