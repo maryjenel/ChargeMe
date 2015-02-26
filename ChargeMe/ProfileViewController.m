@@ -42,11 +42,7 @@
     self.imagePicker.delegate = self;
     self.carArray = [NSMutableArray new];
 
-    //log out button customization
-    self.logoutButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.logoutButton.layer.borderWidth = 0.5;
-    self.logoutButton.layer.cornerRadius = 10.0;
-    self.logoutButton.layer.masksToBounds = YES;
+  
     _menuButton.target = self.revealViewController;
     _menuButton.action = @selector(revealToggle:);
 
