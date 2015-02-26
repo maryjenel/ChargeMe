@@ -60,7 +60,18 @@
     PFObject *payment = self.paymentsArray[indexPath.row];
     cell.textLabel.text = payment[@"shortDescription"];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"$%@", payment[@"amountPaid"]];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Previous Payments";
 }
 
 @end

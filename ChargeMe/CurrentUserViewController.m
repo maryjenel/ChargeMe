@@ -51,7 +51,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChargingStationsCell"];
     PFObject *station = self.stationsArray[indexPath.row];
     cell.textLabel.text = station[@"stationName"];
+
+    // Changes the background color of the cell when highlighted
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.selectedBackgroundView = selectedBackgroundView;
+    
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Charging Stations";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
