@@ -177,7 +177,7 @@
 
                 else if ([object[@"carType"] isEqualToString:@"Toyota Prius"])
                 {
-                    UIImage *prius = [UIImage imageNamed:@"Prius"];
+                    UIImage *prius = [UIImage imageNamed:@"prius"];
                     car.carImage = prius;
                     car.carName = @"Toyota Prius";
                     car.outletTypeArray = @[@"DC Combo/CHAdeMO", @"DC Combo/CHAdeMO/AC"];

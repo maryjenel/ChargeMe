@@ -29,6 +29,15 @@
 
 
 }
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    [self.signUpView.usernameField setFrame:CGRectMake(35.0f, 220.0f, 250.0f, 40.0f)];
+    [self.signUpView.passwordField setFrame:CGRectMake(35.0f, 250.0f, 250.0f, 40.0f)];
+    [self.signUpView.emailField setFrame:CGRectMake(35.0f, 287.0f, 250.0f, 40.0f)];
+    [self.signUpView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 250.0f, 40.0f)];
+}
 
 
 -(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user

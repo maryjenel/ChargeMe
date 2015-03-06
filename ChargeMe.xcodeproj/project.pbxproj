@@ -46,7 +46,6 @@
 		627B3E671A89623500B3438A /* ChargeMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 627B3E661A89623500B3438A /* ChargeMeTests.m */; };
 		627B3E801A8AB03700B3438A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E7F1A8AB03700B3438A /* AudioToolbox.framework */; };
 		627B3E821A8AB03C00B3438A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E811A8AB03C00B3438A /* Accounts.framework */; };
-		627B3E841A8AB04100B3438A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E831A8AB04100B3438A /* AdSupport.framework */; };
 		627B3E861A8AB04500B3438A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E851A8AB04500B3438A /* CFNetwork.framework */; };
 		627B3E881A8AB05100B3438A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E871A8AB05100B3438A /* CoreGraphics.framework */; };
 		627B3E8A1A8AB05700B3438A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627B3E891A8AB05700B3438A /* CoreLocation.framework */; };
@@ -162,7 +161,6 @@
 		627B3E661A89623500B3438A /* ChargeMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeMeTests.m; sourceTree = "<group>"; };
 		627B3E7F1A8AB03700B3438A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		627B3E811A8AB03C00B3438A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		627B3E831A8AB04100B3438A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		627B3E851A8AB04500B3438A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		627B3E871A8AB05100B3438A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		627B3E891A8AB05700B3438A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -241,7 +239,6 @@
 				627B3E8C1A8AB06800B3438A /* libsqlite3.dylib in Frameworks */,
 				627B3E881A8AB05100B3438A /* CoreGraphics.framework in Frameworks */,
 				627B3E861A8AB04500B3438A /* CFNetwork.framework in Frameworks */,
-				627B3E841A8AB04100B3438A /* AdSupport.framework in Frameworks */,
 				627B3E821A8AB03C00B3438A /* Accounts.framework in Frameworks */,
 				627B3E801A8AB03700B3438A /* AudioToolbox.framework in Frameworks */,
 			);
@@ -387,7 +384,6 @@
 				627B3E891A8AB05700B3438A /* CoreLocation.framework */,
 				627B3E871A8AB05100B3438A /* CoreGraphics.framework */,
 				627B3E851A8AB04500B3438A /* CFNetwork.framework */,
-				627B3E831A8AB04100B3438A /* AdSupport.framework */,
 				627B3E811A8AB03C00B3438A /* Accounts.framework */,
 				627B3E7F1A8AB03700B3438A /* AudioToolbox.framework */,
 				627B3E931A8AB07F00B3438A /* Security.framework */,
